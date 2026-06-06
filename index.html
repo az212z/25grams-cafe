@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="25grams · ٢٥ جرام — قهوة مختصة في تبوك. الجرعة المثالية، أجواء هادئة، وقهوة محضّرة بدقة. قائمة وأسعار وموقع.">
+<title>25grams · ٢٥ جرام — قهوة مختصة في تبوك</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+
+<style>
+:root{
+  --bg:#EAE3D7;
+  --bg2:#E2DACA;
+  --paper:#F3EDE1;
+  --ink:#2A2420;
+  --clay:#B26A45;
+  --clay-dk:#8F4F2D;
+  --espresso:#5A4636;
+  --sage:#76805F;
+  --muted:#8d8275;
+  --line:rgba(42,36,32,.13);
+  --f:'IBM Plex Sans Arabic',sans-serif;
+  --f-d:'Fraunces',serif;
+  --f-m:'Space Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
+::selection{background:var(--clay);color:#fff}
+
+.rv{opacity:0;transform:translateY(34px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+.eyebrow{font-family:var(--f-m);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-dk);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--clay);display:inline-block}
+.h-sec{font-family:var(--f-d);font-weight:500;font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.2;color:var(--ink);letter-spacing:-.01em}
+
+.logo{display:inline-flex;align-items:baseline;gap:3px;line-height:1;color:#fff;transition:color .4s var(--ease)}
+.logo b{font-family:var(--f-m);font-weight:700;font-size:1.35rem;letter-spacing:-.02em}
+.logo span{font-family:var(--f-d);font-weight:500;font-size:1.2rem;font-style:italic}
+
+/* ============ NAV ============ */
+#nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:24px 0;transition:all .45s var(--ease)}
+#nav.scrolled{background:rgba(234,227,215,.92);backdrop-filter:blur(14px);padding:14px 0;box-shadow:0 1px 0 var(--line)}
+#nav.scrolled .logo{color:var(--ink)}
+#nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.95rem;font-weight:500;color:rgba(255,255,255,.85);position:relative;transition:color .35s}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;right:0;width:0;height:1.5px;background:var(--clay);transition:width .35s var(--ease)}
+.nav-links a:hover::after{width:100%}
+#nav.scrolled .nav-links a{color:var(--ink)}
+.nav-cta{font-weight:600;font-size:.9rem;padding:10px 24px;border-radius:100px;background:#fff;color:var(--ink);transition:all .35s var(--ease)}
+#nav.scrolled .nav-cta{background:var(--ink);color:var(--bg)}
+.nav-cta:hover{background:var(--clay)!important;color:#fff;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;padding:6px}
+.burger span{width:26px;height:2px;background:#fff;border-radius:2px;transition:.35s}
+#nav.scrolled .burger span{background:var(--ink)}
+
+#mnav{position:fixed;inset:0;z-index:2000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+#mnav.open{opacity:1;pointer-events:all}
+#mnav a{font-family:var(--f-d);font-size:1.8rem;color:var(--bg);font-weight:500}
+#mnav a:hover{color:var(--clay)}
+#mnav .logo{position:absolute;top:24px;right:28px;color:var(--bg)}
+.mclose{position:absolute;top:30px;left:28px;font-size:1.7rem;color:var(--bg)}
+
+/* ============ HERO ============ */
+#hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;background:url('img/storefront.jpg') center 30%/cover no-repeat;transform:scale(1.08);animation:hz 13s var(--ease) forwards}
+@keyframes hz{to{transform:scale(1)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,.5)0%,rgba(20,16,12,.3)42%,rgba(20,16,12,.9)100%)}
+.hero-inner{position:relative;z-index:3;width:100%;padding-bottom:8vh;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-m);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);border:1px solid rgba(255,255,255,.3);padding:7px 16px;border-radius:100px;margin-bottom:20px}
+.hero-name{font-family:var(--f-d);font-weight:500;font-size:clamp(3.2rem,11vw,8rem);color:#fff;line-height:.95;letter-spacing:-.02em}
+.hero-name b{font-family:var(--f-m);font-weight:700}
+.hero-ar-name{font-weight:600;font-size:clamp(1.2rem,3.4vw,1.9rem);color:var(--clay);margin-top:8px}
+.hero-tag{font-family:var(--f-d);font-style:italic;font-size:clamp(1rem,2.2vw,1.4rem);color:rgba(255,255,255,.9);margin-top:12px}
+.hero-desc{font-weight:300;font-size:clamp(1rem,1.8vw,1.18rem);color:rgba(255,255,255,.82);max-width:560px;margin:16px auto 0;line-height:2}
+.hero-actions{display:flex;gap:15px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;padding:15px 34px;border-radius:100px;transition:all .4s var(--ease)}
+.btn-main{background:#fff;color:var(--ink)}
+.btn-main:hover{background:var(--clay);color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px rgba(178,106,69,.35)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.55);font-family:var(--f-m);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bob 2.2s infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ============ MARQUEE ============ */
+.marq{background:var(--ink);color:var(--bg);padding:15px 0;overflow:hidden}
+.marq-t{display:flex;white-space:nowrap;animation:marq 32s linear infinite;width:max-content}
+.marq-i{display:inline-flex;align-items:center;gap:16px;padding:0 24px;font-family:var(--f-d);font-style:italic;font-size:1.12rem;color:rgba(234,227,215,.92)}
+.marq-i b{font-family:var(--f-m);font-style:normal;font-weight:700;font-size:.92rem;color:var(--clay);letter-spacing:.05em}
+@keyframes marq{to{transform:translateX(50%)}}
+
+/* ============ INTRO ============ */
+#intro{padding:120px 0;background:var(--bg)}
+.intro-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
+.intro-imgs{position:relative}
+.intro-imgs .im1{border-radius:8px;width:100%;aspect-ratio:4/5;object-fit:cover;box-shadow:0 30px 70px rgba(42,36,32,.2)}
+.intro-imgs .im2{position:absolute;bottom:-40px;right:-38px;width:46%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:6px solid var(--bg);box-shadow:0 20px 44px rgba(42,36,32,.22)}
+.intro-tag{position:absolute;top:22px;left:-14px;background:var(--clay);color:#fff;font-family:var(--f-m);font-weight:700;font-size:1.05rem;padding:12px 18px;border-radius:10px;box-shadow:0 12px 26px rgba(0,0,0,.18);line-height:1;text-align:center}
+.intro-tag small{display:block;font-family:var(--f);font-size:.58rem;letter-spacing:.06em;margin-top:5px;font-weight:500;opacity:.9}
+.intro-body p{font-size:1.07rem;color:#48413a;line-height:2.1;margin-bottom:20px}
+.intro-body .lead{font-family:var(--f-d);font-size:1.3rem;color:var(--ink);font-weight:600;font-style:italic}
+.intro-feats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
+.feat{display:flex;align-items:center;gap:11px}
+.feat i{font-size:1.4rem;color:var(--clay)}
+.feat span{font-weight:600;font-size:.96rem}
+
+/* ============ STATS ============ */
+#stats{background:var(--espresso);padding:66px 0;color:var(--bg)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{text-align:center;padding:14px 20px;position:relative}
+.stat:not(:last-child)::after{content:'';position:absolute;top:18%;left:0;height:64%;width:1px;background:rgba(255,255,255,.16)}
+.stat .n{font-family:var(--f-m);font-size:clamp(2.1rem,4vw,3.1rem);font-weight:700;color:#fff;line-height:1}
+.stat .n .u{font-size:1.1rem;color:var(--clay)}
+.stat .l{font-size:.92rem;color:rgba(234,227,215,.66);margin-top:10px;font-weight:300}
+
+/* ============ MENU ============ */
+#menu{padding:120px 0;background:var(--paper)}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+.sec-head p{color:var(--muted);margin-top:14px;font-size:1.05rem}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.tab{font-weight:600;font-size:.95rem;padding:10px 26px;border-radius:100px;border:1.5px solid var(--line);color:var(--ink);background:transparent;transition:all .35s var(--ease)}
+.tab:hover{border-color:var(--clay)}
+.tab.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.panel{display:none;max-width:880px;margin:0 auto}
+.panel.active{display:block;animation:pf .5s var(--ease)}
+@keyframes pf{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.mrow{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px dashed var(--line)}
+.mrow .nm{font-weight:600;font-size:1.02rem;color:var(--ink)}
+.mrow .nm small{font-weight:400;color:var(--muted);font-size:.8rem;margin-right:6px}
+.mrow .dot{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+.mrow .pr{font-family:var(--f-m);font-weight:700;font-size:1rem;color:var(--clay-dk);white-space:nowrap}
+.mrow .pr small{font-size:.68rem;color:var(--muted)}
+.menu-note{text-align:center;margin-top:42px;color:var(--muted);font-size:.95rem}
+.menu-note b{color:var(--clay-dk)}
+
+/* ============ GALLERY ============ */
+#atmos{padding:120px 0;background:var(--bg)}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:14px;margin-top:50px}
+.g{overflow:hidden;border-radius:8px;cursor:pointer;position:relative}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.g::after{content:'';position:absolute;inset:0;background:rgba(42,36,32,0);transition:background .4s}
+.g:hover::after{background:rgba(42,36,32,.18)}
+.g:hover img{transform:scale(1.06)}
+.g .zoom{position:absolute;bottom:14px;left:14px;width:38px;height:38px;border-radius:50%;background:var(--clay);display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:opacity .4s;z-index:2}
+.g:hover .zoom{opacity:1}
+.g1{grid-column:span 5;grid-row:span 2}
+.g2{grid-column:span 4;grid-row:span 2}
+.g3{grid-column:span 3;grid-row:span 2}
+.g4{grid-column:span 4;grid-row:span 2}
+.g5{grid-column:span 4;grid-row:span 2}
+.g6{grid-column:span 4;grid-row:span 2}
+
+/* ============ STORY ============ */
+#story{position:relative;padding:150px 0;background:url('img/interior-hall.jpg') center/cover fixed no-repeat;color:#fff;text-align:center}
+#story::before{content:'';position:absolute;inset:0;background:rgba(24,18,13,.74)}
+.story-in{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.story-in .ic{font-size:1.9rem;color:var(--clay);margin-bottom:18px;display:block}
+.story-in .q{font-family:var(--f-d);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.5;color:#fff}
+.story-in .ar{font-weight:300;font-size:1.1rem;color:rgba(255,255,255,.82);margin-top:22px;line-height:2}
+
+/* ============ REVIEWS ============ */
+#reviews{padding:120px 0;background:var(--paper)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:34px 30px;position:relative}
+.rev .stars{color:var(--clay);font-size:1rem;display:flex;gap:3px;margin-bottom:16px}
+.rev .tx{font-size:1.02rem;line-height:1.95;color:#48413a;margin-bottom:22px}
+.rev .who{display:flex;align-items:center;gap:13px}
+.rev .av{width:46px;height:46px;border-radius:50%;background:var(--espresso);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--f-d);font-weight:600;font-size:1.15rem}
+.rev .nm{font-weight:700;font-size:.97rem}
+.rev .src{font-size:.82rem;color:var(--muted)}
+.rev .qmark{position:absolute;top:16px;left:26px;font-family:var(--f-d);font-size:4rem;color:var(--clay);opacity:.18;line-height:1}
+.rev-foot{text-align:center;margin-top:40px;color:var(--muted)}
+.rev-foot b{color:var(--ink)}
+
+/* ============ LOCATION ============ */
+#loc{padding:120px 0;background:var(--bg)}
+.loc-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:stretch}
+.loc-info .row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.loc-info .row:first-of-type{padding-top:0}
+.loc-ic{width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--clay);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.loc-info .row strong{display:block;font-family:var(--f-d);font-size:1.05rem;margin-bottom:3px;font-weight:600}
+.loc-info .row p{color:var(--muted);font-size:.95rem;line-height:1.7}
+.loc-info .row a{color:var(--clay-dk);font-weight:700;font-family:var(--f-m)}
+.loc-actions{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-ink:hover{background:var(--clay);color:#fff;transform:translateY(-2px)}
+.btn-line{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--bg)}
+.map-wrap{border-radius:12px;overflow:hidden;box-shadow:0 24px 54px rgba(42,36,32,.16);min-height:430px}
+.map-wrap iframe{width:100%;height:100%;min-height:430px;border:0;display:block;filter:grayscale(.3) sepia(.18)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:var(--bg);padding:80px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:50px;margin-bottom:54px}
+.foot-brand .logo{color:var(--bg);font-size:1.1rem;margin-bottom:14px}
+.foot-brand p{color:rgba(234,227,215,.55);font-size:.95rem;line-height:1.9;max-width:300px}
+.foot-soc{display:flex;gap:12px;margin-top:22px}
+.foot-soc a{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(234,227,215,.75);font-size:1.15rem;transition:all .35s}
+.foot-soc a:hover{background:var(--clay);color:#fff;transform:translateY(-3px)}
+.foot-col h4{font-family:var(--f-d);font-size:1.1rem;margin-bottom:20px;font-weight:600}
+.foot-col li{margin-bottom:11px}
+.foot-col a{color:rgba(234,227,215,.55);font-size:.94rem;transition:color .3s}
+.foot-col a:hover{color:var(--clay)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.foot-bottom p{font-size:.85rem;color:rgba(234,227,215,.4)}
+.foot-bottom .en{font-family:var(--f-m);color:var(--clay);font-size:.8rem;letter-spacing:.08em}
+
+/* ============ FLOATS + LIGHTBOX ============ */
+.floats{position:fixed;bottom:26px;left:26px;z-index:900;display:flex;flex-direction:column;gap:12px}
+.fbtn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .35s var(--ease)}
+.fbtn:hover{transform:translateY(-3px) scale(1.05)}
+.f-call{background:var(--clay);color:#fff}
+.f-top{background:var(--ink);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.f-top.show{opacity:1;pointer-events:all}
+#lb{position:fixed;inset:0;z-index:5000;background:rgba(18,14,10,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
+#lb.open{opacity:1;pointer-events:all}
+#lb img{max-width:90vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#lb .x{position:absolute;top:22px;left:22px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center}
+#lb .ar-btn{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:background .3s}
+#lb .ar-btn:hover{background:rgba(255,255,255,.25)}
+#lb .prev{right:22px}
+#lb .next{left:22px}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:980px){
+  .intro-grid{grid-template-columns:1fr;gap:90px}
+  .intro-imgs{max-width:480px;margin:0 auto}
+  .loc-grid{grid-template-columns:1fr;gap:40px}
+  #story{background-attachment:scroll}
+}
+@media(max-width:820px){
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  #intro,#menu,#atmos,#reviews,#loc{padding:80px 0}
+  #story{padding:110px 0}
+  #stats{padding:54px 0}
+  .sec-head{margin-bottom:40px}
+  .mgrid{grid-template-columns:1fr;gap:0}
+  .rev-grid{grid-template-columns:1fr;max-width:480px;margin:54px auto 0}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px 0}
+  .stat:nth-child(2)::after{display:none}
+  .foot-grid{grid-template-columns:1fr;gap:38px}
+  .gal{grid-auto-rows:150px}
+  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 6;grid-row:span 2}
+}
+@media(max-width:520px){
+  .wrap{padding:0 18px}
+  #intro,#menu,#atmos,#reviews,#loc{padding:64px 0}
+  .intro-grid{gap:72px}
+  .intro-imgs{max-width:340px}
+  .intro-imgs .im2{right:0;bottom:-28px;border-width:5px}
+  .intro-body p{font-size:1rem}
+  .hero-desc{font-size:1.02rem}
+  .hero-actions{flex-direction:column}
+  .btn{width:100%;justify-content:center}
+  .stats-grid{gap:30px 0}
+  .story-in .q{font-size:1.4rem}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .g3,.g6{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap">
+    <a href="#hero" class="logo"><b>25</b><span>grams</span></a>
+    <ul class="nav-links">
+      <li><a href="#intro">عن المقهى</a></li>
+      <li><a href="#menu">القائمة</a></li>
+      <li><a href="#atmos">الأجواء</a></li>
+      <li><a href="#reviews">آراؤكم</a></li>
+      <li><a href="#loc">الموقع</a></li>
+    </ul>
+    <a href="tel:0144251768" class="nav-cta">اتصل بنا</a>
+    <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div id="mnav">
+  <a href="#hero" class="logo"><b>25</b><span>grams</span></a>
+  <button class="mclose" id="mclose" aria-label="إغلاق">✕</button>
+  <a href="#intro" class="ml">عن المقهى</a>
+  <a href="#menu" class="ml">القائمة</a>
+  <a href="#atmos" class="ml">الأجواء</a>
+  <a href="#reviews" class="ml">آراؤكم</a>
+  <a href="#loc" class="ml">الموقع</a>
+  <a href="tel:0144251768">اتصل بنا</a>
+</div>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner wrap">
+    <div class="hero-badge"><i class="ph-fill ph-scales"></i> Specialty Coffee · قهوة مختصة</div>
+    <h1 class="hero-name"><b>25</b>grams</h1>
+    <div class="hero-ar-name">٢٥ جرام · تبوك</div>
+    <p class="hero-tag">The perfect dose.</p>
+    <p class="hero-desc">الجرعة المثالية من القهوة المختصة، في مساحة هادئة بتبوك. كل كوب محضّر بدقة، وكل تفصيلة محسوبة — تمامًا كاسمنا.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-main"><i class="ph-bold ph-coffee"></i> تصفّح القائمة</a>
+      <a href="#atmos" class="btn btn-ghost"><i class="ph-bold ph-images"></i> أجواء المكان</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><i class="ph ph-arrow-down"></i></div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marq" aria-hidden="true">
+  <div class="marq-t">
+    <span class="marq-i">قهوة مختصة <b>25g</b></span>
+    <span class="marq-i">Specialty Coffee <b>25g</b></span>
+    <span class="marq-i">أجواء هادئة <b>25g</b></span>
+    <span class="marq-i">V60 · فلات وايت · سبانش لاتيه <b>25g</b></span>
+    <span class="marq-i">حلا طازج <b>25g</b></span>
+    <span class="marq-i">قهوة مختصة <b>25g</b></span>
+    <span class="marq-i">Specialty Coffee <b>25g</b></span>
+    <span class="marq-i">أجواء هادئة <b>25g</b></span>
+    <span class="marq-i">V60 · فلات وايت · سبانش لاتيه <b>25g</b></span>
+    <span class="marq-i">حلا طازج <b>25g</b></span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="wrap intro-grid">
+    <div class="intro-imgs rv">
+      <img src="img/latte-sofa.jpg" class="im1" alt="لاتيه على طاولة الرخام في ٢٥ جرام">
+      <img src="img/cups.jpg" class="im2" alt="أكواب ٢٥ جرام">
+      <span class="intro-tag">25<small>grams · الجرعة المثالية</small></span>
+    </div>
+    <div class="intro-body rv">
+      <span class="eyebrow">عن المقهى · About</span>
+      <h2 class="h-sec">الدقّة في<br>كل جرام</h2>
+      <p style="margin-top:22px"><span class="lead">٢٥ جرام</span> اسمٌ يحمل فلسفتنا: الجرعة المثالية التي تصنع الكوب المثالي. مقهى قهوة مختصة في تبوك، صغير وهادئ ومرتّب — مساحة تشعر فيها أن كل تفصيلة محسوبة بعناية.</p>
+      <p>من اختيار المحصول إلى وزن البن وضبط التحضير، نهتم بالتفاصيل التي تصنع الفرق — ونقدّمها بأسعار تفاجئك، وحلا طازج يكمّل التجربة.</p>
+      <div class="intro-feats">
+        <div class="feat"><i class="ph-bold ph-scales"></i><span>تحضير بدقّة</span></div>
+        <div class="feat"><i class="ph-bold ph-armchair"></i><span>أجواء هادئة</span></div>
+        <div class="feat"><i class="ph-bold ph-hand-coins"></i><span>أسعار مناسبة</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap stats-grid">
+    <div class="stat rv"><div class="n">4.7<span class="u">★</span></div><div class="l">تقييم الزوّار على Google</div></div>
+    <div class="stat rv"><div class="n">305<span class="u">+</span></div><div class="l">مراجعة موثّقة</div></div>
+    <div class="stat rv"><div class="n">25<span class="u">g</span></div><div class="l">الجرعة المثالية</div></div>
+    <div class="stat rv"><div class="n">7<span class="u">﷼</span></div><div class="l">تبدأ الأسعار من</div></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">القائمة · Menu</span>
+      <h2 class="h-sec">قائمتنا</h2>
+      <p>قهوة مختصة، تقطير بطرق متعددة، وحلا طازج. الأسعار بالريال السعودي.</p>
+    </div>
+
+    <div class="tabs rv">
+      <button class="tab active" data-tab="hot">حارّة</button>
+      <button class="tab" data-tab="cold">باردة</button>
+      <button class="tab" data-tab="brew">تقطير</button>
+      <button class="tab" data-tab="sweet">حلا</button>
+    </div>
+
+    <div class="panel active rv" id="p-hot">
+      <div class="mgrid">
+        <div class="mrow"><span class="nm">إسبريسو</span><span class="dot"></span><span class="pr">10<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">أمريكانو</span><span class="dot"></span><span class="pr">12<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">فلات وايت</span><span class="dot"></span><span class="pr">14<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كورتادو</span><span class="dot"></span><span class="pr">14<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كابتشينو</span><span class="dot"></span><span class="pr">14<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">ميكاتو</span><span class="dot"></span><span class="pr">13<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كافيه لاتيه</span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">سبانش لاتيه</span><span class="dot"></span><span class="pr">17<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">سولتد كراميل لاتيه</span><span class="dot"></span><span class="pr">18<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">شوكولاتة ساخنة</span><span class="dot"></span><span class="pr">12<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">شاي إنجليزي</span><span class="dot"></span><span class="pr">7<small>﷼</small></span></div>
+      </div>
+    </div>
+
+    <div class="panel rv" id="p-cold">
+      <div class="mgrid">
+        <div class="mrow"><span class="nm">آيس لاتيه</span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">سبانش آيس لاتيه</span><span class="dot"></span><span class="pr">18–20<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">وايت شوكلت لاتيه</span><span class="dot"></span><span class="pr">18<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">بستاشيو لاتيه</span><span class="dot"></span><span class="pr">19<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كراميل ميكاتو</span><span class="dot"></span><span class="pr">19–20<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">شايب لاتيه</span><span class="dot"></span><span class="pr">20<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">لاتيه عربي</span><span class="dot"></span><span class="pr">22<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كولد برو</span><span class="dot"></span><span class="pr">—</span></div>
+      </div>
+    </div>
+
+    <div class="panel rv" id="p-brew">
+      <div class="mgrid">
+        <div class="mrow"><span class="nm">مكسيكي <small>Mexico</small></span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">إثيوبي <small>Ethiopian</small></span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كيمكس مكسيكي <small>Chemex</small></span><span class="dot"></span><span class="pr">—</span></div>
+      </div>
+      <p class="menu-note">إضافات: شوت <b>3 ﷼</b> · نكهة <b>2 ﷼</b> — اسأل الباريستا عن محصول اليوم.</p>
+    </div>
+
+    <div class="panel rv" id="p-sweet">
+      <div class="mgrid">
+        <div class="mrow"><span class="nm">كيكة أناناس</span><span class="dot"></span><span class="pr">25<small>﷼</small></span></div>
+        <div class="mrow"><span class="nm">كيكة التمر</span><span class="dot"></span><span class="pr">طازج</span></div>
+        <div class="mrow"><span class="nm">كيك بالكاس <small>طبقات</small></span><span class="dot"></span><span class="pr">طازج</span></div>
+      </div>
+      <p class="menu-note">حلا يُحضّر طازجًا · تتغيّر الأصناف بحسب اليوم.</p>
+    </div>
+
+    <p class="menu-note rv">الأسعار من قائمة المقهى وقد تتغيّر · للاستفسار عن الأصناف الموسمية <b>تواصلوا معنا</b></p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="atmos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">الأجواء · Atmosphere</span>
+      <h2 class="h-sec">لمحات من ٢٥ جرام</h2>
+      <p>جدران من الإسمنت الدافئ، خضرة، وجلسات هادئة. صور حقيقية من المكان.</p>
+    </div>
+    <div class="gal">
+      <div class="g g1" data-src="img/interior-hall.jpg" data-cap="جلسات ٢٥ جرام الهادئة"><img src="img/interior-hall.jpg" alt="داخل ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
+      <div class="g g2" data-src="img/counter.jpg" data-cap="ركن التحضير والعرض"><img src="img/counter.jpg" alt="كاونتر ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
+      <div class="g g3" data-src="img/desserts.jpg" data-cap="الحلا الطازج"><img src="img/desserts.jpg" alt="حلا ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
+      <div class="g g4" data-src="img/barista.jpg" data-cap="الباريستا أثناء التحضير"><img src="img/barista.jpg" alt="باريستا ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
+      <div class="g g5" data-src="img/icedtea.jpg" data-cap="شاي مثلج بالخوخ"><img src="img/icedtea.jpg" alt="شاي مثلج"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
+      <div class="g g6" data-src="img/latte-sofa.jpg" data-cap="لاتيه على الرخام"><img src="img/latte-sofa.jpg" alt="لاتيه ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-in wrap rv">
+    <i class="ph-fill ph-scales ic"></i>
+    <p class="q">“دقّة في الوزن،<br>صدق في الطعم.”</p>
+    <p class="ar">في ٢٥ جرام نؤمن أن القهوة الجيدة تبدأ من التفاصيل الصغيرة — الجرعة، الحرارة، الوقت — لنقدّم لك كوبًا متوازنًا يستحق التوقّف عنده.</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">آراؤكم · Reviews</span>
+      <h2 class="h-sec">ماذا قال زوّارنا</h2>
+      <p>مراجعات حقيقية من زوّار ٢٥ جرام على خرائط Google.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev rv">
+        <span class="qmark">”</span>
+        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="tx">المكان هادئ وصغير ومرتّب ومريح جدًا، والأسعار فاجأتني مرة! قهوة اليوم بـ ٧ ريال والحلويات لذيذة مرة وأسعارها مناسبة.</p>
+        <div class="who"><div class="av">W</div><div><div class="nm">W 3</div><div class="src">Local Guide · Google</div></div></div>
+      </div>
+      <div class="rev rv">
+        <span class="qmark">”</span>
+        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="tx">طلبت من عندهم ثلاث قهاوي كلها ممتازة ماشاءالله، وأسعار الـ V60 مناسبة جدًا وطعمها جدًا ممتاز.</p>
+        <div class="who"><div class="av">ف</div><div><div class="nm">فهد البلوي</div><div class="src">Local Guide · Google</div></div></div>
+      </div>
+      <div class="rev rv">
+        <span class="qmark">”</span>
+        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p class="tx">أول زيارة لي والله يسعدهم، خلوقين والقهوة ١٠ من ١٠ والحلا ولا أحلى منه. تجربة تستحق التكرار 🤍</p>
+        <div class="who"><div class="av">F</div><div><div class="nm">Faisal Asiri</div><div class="src">Google</div></div></div>
+      </div>
+    </div>
+    <p class="rev-foot rv">تقييم <b>4.7 من 5</b> بناءً على <b>305+</b> مراجعة على خرائط Google</p>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="loc">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:right;margin:0 0 50px">
+      <span class="eyebrow">الموقع · Find Us</span>
+      <h2 class="h-sec">زورونا في تبوك</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info rv">
+        <div class="row"><div class="loc-ic"><i class="ph-bold ph-map-pin"></i></div><div><strong>العنوان</strong><p>شارع عشرين، طريق الملك فهد<br>تبوك ٤٧٩١١، المملكة العربية السعودية</p></div></div>
+        <div class="row"><div class="loc-ic"><i class="ph-bold ph-clock"></i></div><div><strong>أوقات العمل</strong><p>يوميًا حتى ١٢:٣٠ بعد منتصف الليل</p></div></div>
+        <div class="row"><div class="loc-ic"><i class="ph-bold ph-phone"></i></div><div><strong>للتواصل</strong><p><a href="tel:0144251768">٠١٤ ٤٢٥ ١٧٦٨</a></p></div></div>
+        <div class="row"><div class="loc-ic"><i class="ph-bold ph-storefront"></i></div><div><strong>الخدمة</strong><p>تناول في المقهى · طلب خارجي · توصيل</p></div></div>
+        <div class="loc-actions">
+          <a href="https://www.google.com/maps/place/25+grams+cafe/@28.3883535,36.5887548,17z/data=!4m7!3m6!1s0x15a9ad17e7f82d35:0x2ee95195bd0e7b11!8m2!3d28.3883535!4d36.5887548!16s%2Fg%2F11n0v6ywvt" target="_blank" rel="noopener" class="btn btn-ink"><i class="ph-bold ph-navigation-arrow"></i> الاتجاهات</a>
+          <a href="tel:0144251768" class="btn btn-line"><i class="ph-bold ph-phone-call"></i> اتصل بنا</a>
+        </div>
+      </div>
+      <div class="map-wrap rv">
+        <iframe src="https://www.google.com/maps?q=28.3883535,36.5887548&z=16&output=embed" title="موقع ٢٥ جرام على الخريطة" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><b>25</b><span>grams</span></div>
+        <p>٢٥ جرام · قهوة مختصة في تبوك. الجرعة المثالية، أجواء هادئة، وقهوة محضّرة بدقّة — مع حلا طازج كل يوم.</p>
+        <div class="foot-soc">
+          <a href="tel:0144251768" aria-label="اتصال"><i class="ph-bold ph-phone"></i></a>
+          <a href="https://www.google.com/maps/place/25+grams+cafe/@28.3883535,36.5887548,17z/data=!4m7!3m6!1s0x15a9ad17e7f82d35:0x2ee95195bd0e7b11!8m2!3d28.3883535!4d36.5887548!16s%2Fg%2F11n0v6ywvt" target="_blank" rel="noopener" aria-label="خرائط Google"><i class="ph-bold ph-map-pin"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>تصفّح</h4>
+        <ul>
+          <li><a href="#intro">عن المقهى</a></li>
+          <li><a href="#menu">القائمة</a></li>
+          <li><a href="#atmos">الأجواء</a></li>
+          <li><a href="#reviews">آراؤكم</a></li>
+          <li><a href="#loc">الموقع</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>زورونا</h4>
+        <ul>
+          <li><a href="#loc">شارع عشرين، تبوك</a></li>
+          <li><a href="tel:0144251768">٠١٤ ٤٢٥ ١٧٦٨</a></li>
+          <li><a href="#loc">حتى ١٢:٣٠ ليلاً</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 25grams · ٢٥ جرام — جميع الحقوق محفوظة</p>
+      <span class="en">The perfect dose.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATS -->
+<div class="floats">
+  <button class="fbtn f-top" id="ftop" aria-label="للأعلى"><i class="ph-bold ph-arrow-up"></i></button>
+  <a href="tel:0144251768" class="fbtn f-call" aria-label="اتصال"><i class="ph-bold ph-phone-call"></i></a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb" role="dialog" aria-modal="true">
+  <button class="x" id="lbx" aria-label="إغلاق">✕</button>
+  <button class="ar-btn prev" id="lbp" aria-label="السابق"><i class="ph ph-caret-right"></i></button>
+  <img id="lbimg" src="" alt="">
+  <button class="ar-btn next" id="lbn" aria-label="التالي"><i class="ph ph-caret-left"></i></button>
+</div>
+
+<script>
+const nav=document.getElementById('nav'),ftop=document.getElementById('ftop');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);ftop.classList.toggle('show',scrollY>500)},{passive:true});
+ftop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+const mnav=document.getElementById('mnav');
+document.getElementById('burger').onclick=()=>{mnav.classList.add('open');document.body.style.overflow='hidden'};
+const closeM=()=>{mnav.classList.remove('open');document.body.style.overflow=''};
+document.getElementById('mclose').onclick=closeM;
+document.querySelectorAll('#mnav a:not([href^="#"])').forEach(a=>a.addEventListener('click',closeM));
+
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('p-'+t.dataset.tab).classList.add('active');
+}));
+
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href'));
+  if(!t)return;
+  e.preventDefault();
+  const wasOpen=mnav.classList.contains('open');
+  closeM();
+  const go=()=>scrollTo({top:t.getBoundingClientRect().top+scrollY-70,behavior:'smooth'});
+  wasOpen?setTimeout(go,60):go();
+}));
+
+const gs=[...document.querySelectorAll('.g')],lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');let ci=0;
+const show=i=>{ci=(i+gs.length)%gs.length;lbimg.src=gs[ci].dataset.src;lbimg.alt=gs[ci].dataset.cap||''};
+const openLb=i=>{show(i);lb.classList.add('open');document.body.style.overflow='hidden'};
+const closeLb=()=>{lb.classList.remove('open');document.body.style.overflow=''};
+gs.forEach((g,i)=>g.onclick=()=>openLb(i));
+document.getElementById('lbx').onclick=closeLb;
+document.getElementById('lbp').onclick=()=>show(ci-1);
+document.getElementById('lbn').onclick=()=>show(ci+1);
+lb.onclick=e=>{if(e.target===lb)closeLb()};
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')show(ci-1);if(e.key==='ArrowLeft')show(ci+1)});
+</script>
+</body>
+</html>
