@@ -3,520 +3,600 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="25grams · ٢٥ جرام — قهوة مختصة في تبوك. الجرعة المثالية، أجواء هادئة، وقهوة محضّرة بدقة. قائمة وأسعار وموقع.">
-<title>25grams · ٢٥ جرام — قهوة مختصة في تبوك</title>
+<meta name="theme-color" content="#1A1B18">
+<meta name="description" content="بُنيان — مكتب تصميم هندسي ومعماري. تصميم معماري وداخلي وإنشائي، إشراف هندسي، إظهار ثلاثي الأبعاد، واستخراج رخص البناء. من الفكرة إلى البنيان.">
+<meta property="og:title" content="بُنيان · BUNYĀN — مكتب التصميم الهندسي والمعماري">
+<meta property="og:description" content="نُصمّم المكان قبل أن يُبنى. تصميم معماري · داخلي · إنشائي · إشراف · إظهار 3D · تراخيص.">
+<meta property="og:type" content="website">
+<title>بُنيان · BUNYĀN — مكتب التصميم الهندسي والمعماري</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1B18'/><text x='50' y='70' font-size='62' text-anchor='middle' fill='%23A9763F' font-family='serif' font-weight='700'>ب</text></svg>">
 
 <style>
 :root{
-  --bg:#EAE3D7;
-  --bg2:#E2DACA;
-  --paper:#F3EDE1;
-  --ink:#2A2420;
-  --clay:#B26A45;
-  --clay-dk:#8F4F2D;
-  --espresso:#5A4636;
-  --sage:#76805F;
-  --muted:#8d8275;
-  --line:rgba(42,36,32,.13);
+  --bg:#ECE8DF;
+  --bg2:#E4DFD2;
+  --paper:#F5F2EA;
+  --ink:#1A1B18;
+  --ink2:#2C2E29;
+  --bronze:#A9763F;
+  --bronze-dk:#83592C;
+  --steel:#52646A;
+  --steel-lt:#7E9197;
+  --muted:#8B857A;
+  --line:rgba(26,27,24,.13);
+  --line2:rgba(26,27,24,.07);
   --f:'IBM Plex Sans Arabic',sans-serif;
   --f-d:'Fraunces',serif;
-  --f-m:'Space Mono',monospace;
+  --f-m:'IBM Plex Mono',monospace;
   --ease:cubic-bezier(.22,.61,.36,1);
+  --blueprint:rgba(82,100,106,.16);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--f);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.8}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.85}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
-.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
-::selection{background:var(--clay);color:#fff}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+.wrap{width:100%;max-width:1260px;margin:0 auto;padding:0 30px}
+::selection{background:var(--bronze);color:#fff}
+svg{display:block}
 
-.rv{opacity:0;transform:translateY(34px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}.rv.d5{transition-delay:.4s}
 
-.eyebrow{font-family:var(--f-m);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-dk);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
-.eyebrow::before{content:'';width:24px;height:1px;background:var(--clay);display:inline-block}
-.h-sec{font-family:var(--f-d);font-weight:500;font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.2;color:var(--ink);letter-spacing:-.01em}
+.eyebrow{font-family:var(--f-m);font-size:.76rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-dk);display:inline-flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:'';width:30px;height:1px;background:var(--bronze);display:inline-block}
+.h-sec{font-family:var(--f-d);font-weight:500;font-size:clamp(2.1rem,4.8vw,3.6rem);line-height:1.18;color:var(--ink);letter-spacing:-.01em}
+.lead{color:var(--ink2);font-weight:300;font-size:clamp(1.02rem,1.7vw,1.18rem);line-height:2;max-width:60ch}
 
-.logo{display:inline-flex;align-items:baseline;gap:3px;line-height:1;color:#fff;transition:color .4s var(--ease)}
-.logo b{font-family:var(--f-m);font-weight:700;font-size:1.35rem;letter-spacing:-.02em}
-.logo span{font-family:var(--f-d);font-weight:500;font-size:1.2rem;font-style:italic}
+.logo{display:inline-flex;align-items:center;gap:11px;line-height:1;color:#fff}
+.logo .mark{width:34px;height:34px;flex:none}
+.logo .lt{display:flex;flex-direction:column;gap:2px}
+.logo b{font-family:var(--f-d);font-weight:600;font-size:1.32rem;letter-spacing:.01em}
+.logo small{font-family:var(--f-m);font-size:.6rem;letter-spacing:.4em;opacity:.7;text-transform:uppercase}
 
 /* ============ NAV ============ */
-#nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:24px 0;transition:all .45s var(--ease)}
-#nav.scrolled{background:rgba(234,227,215,.92);backdrop-filter:blur(14px);padding:14px 0;box-shadow:0 1px 0 var(--line)}
+#nav{position:fixed;inset:0 0 auto 0;z-index:1000;padding:26px 0;transition:all .45s var(--ease)}
+#nav.scrolled{background:rgba(236,232,223,.9);backdrop-filter:blur(16px);padding:14px 0;box-shadow:0 1px 0 var(--line)}
 #nav.scrolled .logo{color:var(--ink)}
 #nav .wrap{display:flex;align-items:center;justify-content:space-between}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:.95rem;font-weight:500;color:rgba(255,255,255,.85);position:relative;transition:color .35s}
-.nav-links a::after{content:'';position:absolute;bottom:-6px;right:0;width:0;height:1.5px;background:var(--clay);transition:width .35s var(--ease)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.96rem;font-weight:500;color:rgba(255,255,255,.85);position:relative;transition:color .35s}
+.nav-links a::after{content:'';position:absolute;bottom:-7px;right:0;width:0;height:1.5px;background:var(--bronze);transition:width .35s var(--ease)}
 .nav-links a:hover::after{width:100%}
-#nav.scrolled .nav-links a{color:var(--ink)}
-.nav-cta{font-weight:600;font-size:.9rem;padding:10px 24px;border-radius:100px;background:#fff;color:var(--ink);transition:all .35s var(--ease)}
+#nav.scrolled .nav-links a{color:var(--ink2)}
+.nav-cta{font-weight:600;font-size:.9rem;padding:11px 26px;border-radius:4px;background:#fff;color:var(--ink);transition:all .35s var(--ease)}
 #nav.scrolled .nav-cta{background:var(--ink);color:var(--bg)}
-.nav-cta:hover{background:var(--clay)!important;color:#fff;transform:translateY(-1px)}
-.burger{display:none;flex-direction:column;gap:5px;padding:6px}
-.burger span{width:26px;height:2px;background:#fff;border-radius:2px;transition:.35s}
+.nav-cta:hover{background:var(--bronze)!important;color:#fff;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:6px;padding:6px}
+.burger span{width:27px;height:2px;background:#fff;border-radius:2px;transition:.35s}
 #nav.scrolled .burger span{background:var(--ink)}
 
-#mnav{position:fixed;inset:0;z-index:2000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+#mnav{position:fixed;inset:0;z-index:2000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
 #mnav.open{opacity:1;pointer-events:all}
-#mnav a{font-family:var(--f-d);font-size:1.8rem;color:var(--bg);font-weight:500}
-#mnav a:hover{color:var(--clay)}
-#mnav .logo{position:absolute;top:24px;right:28px;color:var(--bg)}
-.mclose{position:absolute;top:30px;left:28px;font-size:1.7rem;color:var(--bg)}
+#mnav a{font-family:var(--f-d);font-size:1.9rem;color:var(--bg);font-weight:500}
+#mnav a:hover{color:var(--bronze)}
+#mnav .logo{position:absolute;top:26px;right:30px;color:var(--bg)}
+.mclose{position:absolute;top:32px;left:30px;font-size:1.8rem;color:var(--bg)}
 
 /* ============ HERO ============ */
-#hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
-.hero-bg{position:absolute;inset:0;background:url('img/storefront.jpg') center 30%/cover no-repeat;transform:scale(1.08);animation:hz 13s var(--ease) forwards}
-@keyframes hz{to{transform:scale(1)}}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,.5)0%,rgba(20,16,12,.3)42%,rgba(20,16,12,.9)100%)}
-.hero-inner{position:relative;z-index:3;width:100%;padding-bottom:8vh;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-m);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);border:1px solid rgba(255,255,255,.3);padding:7px 16px;border-radius:100px;margin-bottom:20px}
-.hero-name{font-family:var(--f-d);font-weight:500;font-size:clamp(3.2rem,11vw,8rem);color:#fff;line-height:.95;letter-spacing:-.02em}
-.hero-name b{font-family:var(--f-m);font-weight:700}
-.hero-ar-name{font-weight:600;font-size:clamp(1.2rem,3.4vw,1.9rem);color:var(--clay);margin-top:8px}
-.hero-tag{font-family:var(--f-d);font-style:italic;font-size:clamp(1rem,2.2vw,1.4rem);color:rgba(255,255,255,.9);margin-top:12px}
-.hero-desc{font-weight:300;font-size:clamp(1rem,1.8vw,1.18rem);color:rgba(255,255,255,.82);max-width:560px;margin:16px auto 0;line-height:2}
-.hero-actions{display:flex;gap:15px;justify-content:center;margin-top:32px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:1rem;padding:15px 34px;border-radius:100px;transition:all .4s var(--ease)}
-.btn-main{background:#fff;color:var(--ink)}
-.btn-main:hover{background:var(--clay);color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px rgba(178,106,69,.35)}
-.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
-.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
-.hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.55);font-family:var(--f-m);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bob 2.2s infinite}
-@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--ink);color:#fff}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--blueprint) 1px,transparent 1px),linear-gradient(90deg,var(--blueprint) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 80% at 70% 40%,#000 30%,transparent 80%);opacity:.9}
+.hero-glow{position:absolute;top:-10%;left:-5%;width:55vw;height:55vw;background:radial-gradient(circle,rgba(169,118,63,.22),transparent 62%);pointer-events:none}
+.hero-draw{position:absolute;bottom:0;left:0;width:min(50vw,640px);opacity:.9;pointer-events:none}
+.hero-draw svg{width:100%;height:auto}
+.hero-draw path,.hero-draw line,.hero-draw rect,.hero-draw polyline{stroke:var(--steel-lt);stroke-width:1.4;fill:none;vector-effect:non-scaling-stroke}
+.hero-draw .dr{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 3.4s var(--ease) .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-inner{position:relative;z-index:3;width:100%;padding:120px 0 90px}
+.hero-tagline{font-family:var(--f-m);font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bronze);display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;border:1px solid rgba(169,118,63,.4);padding:9px 18px;border-radius:100px}
+.hero-tagline::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--bronze);box-shadow:0 0 0 4px rgba(169,118,63,.2)}
+.hero-name{font-family:var(--f-d);font-weight:600;font-size:clamp(3.4rem,12vw,8.6rem);line-height:.94;letter-spacing:-.02em;color:#fff}
+.hero-name .en{display:block;font-family:var(--f-m);font-weight:500;font-size:clamp(.9rem,2.4vw,1.35rem);letter-spacing:.5em;color:var(--steel-lt);margin-top:18px;text-transform:uppercase}
+.hero-sub{font-family:var(--f-d);font-style:italic;font-weight:400;font-size:clamp(1.25rem,3vw,2rem);color:rgba(255,255,255,.92);margin-top:24px}
+.hero-desc{font-weight:300;font-size:clamp(1rem,1.8vw,1.16rem);color:rgba(255,255,255,.74);max-width:540px;margin-top:18px;line-height:2}
+.hero-actions{display:flex;gap:15px;margin-top:40px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;padding:15px 32px;border-radius:5px;transition:all .4s var(--ease)}
+.btn-main{background:var(--bronze);color:#fff}
+.btn-main:hover{background:#fff;color:var(--ink);transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.28)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.32)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-ink:hover{background:var(--bronze);color:#fff;transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-line:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.hero-meta{display:flex;gap:42px;margin-top:56px;flex-wrap:wrap}
+.hero-meta .hm{display:flex;flex-direction:column;gap:3px}
+.hero-meta .hm b{font-family:var(--f-d);font-size:2rem;font-weight:600;color:#fff;line-height:1}
+.hero-meta .hm span{font-size:.85rem;color:rgba(255,255,255,.6)}
+.hero-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.5);font-family:var(--f-m);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:7px;animation:bob 2.2s infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 
 /* ============ MARQUEE ============ */
-.marq{background:var(--ink);color:var(--bg);padding:15px 0;overflow:hidden}
-.marq-t{display:flex;white-space:nowrap;animation:marq 32s linear infinite;width:max-content}
-.marq-i{display:inline-flex;align-items:center;gap:16px;padding:0 24px;font-family:var(--f-d);font-style:italic;font-size:1.12rem;color:rgba(234,227,215,.92)}
-.marq-i b{font-family:var(--f-m);font-style:normal;font-weight:700;font-size:.92rem;color:var(--clay);letter-spacing:.05em}
-@keyframes marq{to{transform:translateX(50%)}}
+.marq{background:var(--ink);color:var(--bg);padding:17px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.08)}
+.marq-track{display:flex;gap:46px;white-space:nowrap;width:max-content;animation:scrollx 32s linear infinite}
+.marq-track span{font-family:var(--f-d);font-style:italic;font-size:1.15rem;display:inline-flex;align-items:center;gap:46px;color:rgba(255,255,255,.85)}
+.marq-track span::after{content:'◆';color:var(--bronze);font-size:.6rem;font-style:normal}
+@keyframes scrollx{to{transform:translateX(50%)}}
 
-/* ============ INTRO ============ */
-#intro{padding:120px 0;background:var(--bg)}
-.intro-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center}
-.intro-imgs{position:relative}
-.intro-imgs .im1{border-radius:8px;width:100%;aspect-ratio:4/5;object-fit:cover;box-shadow:0 30px 70px rgba(42,36,32,.2)}
-.intro-imgs .im2{position:absolute;bottom:-40px;right:-38px;width:46%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:6px solid var(--bg);box-shadow:0 20px 44px rgba(42,36,32,.22)}
-.intro-tag{position:absolute;top:22px;left:-14px;background:var(--clay);color:#fff;font-family:var(--f-m);font-weight:700;font-size:1.05rem;padding:12px 18px;border-radius:10px;box-shadow:0 12px 26px rgba(0,0,0,.18);line-height:1;text-align:center}
-.intro-tag small{display:block;font-family:var(--f);font-size:.58rem;letter-spacing:.06em;margin-top:5px;font-weight:500;opacity:.9}
-.intro-body p{font-size:1.07rem;color:#48413a;line-height:2.1;margin-bottom:20px}
-.intro-body .lead{font-family:var(--f-d);font-size:1.3rem;color:var(--ink);font-weight:600;font-style:italic}
-.intro-feats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
-.feat{display:flex;align-items:center;gap:11px}
-.feat i{font-size:1.4rem;color:var(--clay)}
-.feat span{font-weight:600;font-size:.96rem}
+/* ============ SECTION SHELL ============ */
+section{position:relative}
+.sec{padding:clamp(80px,11vw,140px) 0}
+.sec-head{max-width:760px}
+.sec-head.center{margin:0 auto;text-align:center}
+.sec-head.center .eyebrow{justify-content:center}
+.sec-head .lead{margin-top:22px}
+
+/* ============ ABOUT ============ */
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.about-text .h-sec{margin-bottom:24px}
+.about-text p{color:var(--ink2);margin-bottom:20px;font-weight:300;font-size:1.06rem;line-height:2.05}
+.about-text .sig{font-family:var(--f-d);font-style:italic;font-size:1.2rem;color:var(--bronze-dk);margin-top:6px}
+.about-vals{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.about-vals .v{background:var(--paper);padding:30px 26px;transition:background .4s}
+.about-vals .v:hover{background:#fff}
+.about-vals .v i{font-size:1.7rem;color:var(--bronze);display:block;margin-bottom:14px}
+.about-vals .v h4{font-family:var(--f-d);font-weight:600;font-size:1.18rem;margin-bottom:8px}
+.about-vals .v p{font-size:.92rem;color:var(--muted);line-height:1.8}
+
+/* ============ SERVICES ============ */
+#services{background:var(--ink);color:#fff}
+#services .eyebrow{color:var(--bronze)}
+#services .h-sec{color:#fff}
+#services .lead{color:rgba(255,255,255,.72)}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;margin-top:64px}
+.serv{background:var(--ink);padding:42px 34px;transition:background .45s var(--ease);position:relative;min-height:280px;display:flex;flex-direction:column}
+.serv:hover{background:#202220}
+.serv .num{font-family:var(--f-m);font-size:.75rem;color:var(--steel-lt);letter-spacing:.1em}
+.serv .ic{width:56px;height:56px;border-radius:8px;background:rgba(169,118,63,.13);border:1px solid rgba(169,118,63,.3);display:grid;place-items:center;font-size:1.6rem;color:var(--bronze);margin:18px 0 22px;transition:all .45s var(--ease)}
+.serv:hover .ic{background:var(--bronze);color:#fff;transform:translateY(-3px)}
+.serv h3{font-family:var(--f-d);font-weight:600;font-size:1.42rem;margin-bottom:12px;color:#fff}
+.serv p{font-size:.96rem;color:rgba(255,255,255,.66);line-height:1.95;flex:1}
+.serv .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.serv .tags span{font-family:var(--f-m);font-size:.68rem;color:var(--steel-lt);border:1px solid rgba(255,255,255,.14);padding:4px 10px;border-radius:100px}
+
+/* ============ PROCESS ============ */
+#process{background:var(--bg2)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:64px;counter-reset:step}
+.proc{position:relative;padding-top:30px}
+.proc::before{counter-increment:step;content:"0" counter(step);font-family:var(--f-d);font-weight:600;font-size:3.4rem;color:transparent;-webkit-text-stroke:1.3px var(--bronze);position:absolute;top:-18px;right:0;opacity:.5}
+.proc .ln{height:1px;background:var(--line);position:relative;margin-bottom:26px}
+.proc .ln::after{content:'';position:absolute;top:-3px;right:0;width:7px;height:7px;border-radius:50%;background:var(--bronze)}
+.proc h4{font-family:var(--f-d);font-weight:600;font-size:1.3rem;margin-bottom:10px}
+.proc p{font-size:.95rem;color:var(--muted);line-height:1.9}
+
+/* ============ PORTFOLIO ============ */
+#work{background:var(--paper)}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:54px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.proj{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg);transition:all .5s var(--ease);cursor:default}
+.proj:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(26,27,24,.12);border-color:transparent}
+.proj .art{aspect-ratio:16/10;background:var(--ink);position:relative;overflow:hidden}
+.proj .art .gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--blueprint) 1px,transparent 1px),linear-gradient(90deg,var(--blueprint) 1px,transparent 1px);background-size:30px 30px}
+.proj .art svg{position:absolute;inset:0;width:100%;height:100%}
+.proj .art svg [stroke]{stroke:var(--steel-lt);stroke-width:1.5;fill:none;vector-effect:non-scaling-stroke}
+.proj .art .fillb{fill:rgba(169,118,63,.16);stroke:var(--bronze)}
+.proj:hover .art svg{transform:scale(1.04);transition:transform .8s var(--ease)}
+.proj .cat{position:absolute;top:16px;right:16px;font-family:var(--f-m);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);padding:6px 13px;border-radius:100px;z-index:2}
+.proj .body{padding:26px 28px}
+.proj .body .meta{font-family:var(--f-m);font-size:.74rem;color:var(--bronze-dk);letter-spacing:.08em;margin-bottom:9px}
+.proj .body h3{font-family:var(--f-d);font-weight:600;font-size:1.5rem;margin-bottom:8px}
+.proj .body p{font-size:.96rem;color:var(--muted);line-height:1.85}
+.work-note{margin-top:34px;text-align:center;font-family:var(--f-m);font-size:.82rem;color:var(--muted);letter-spacing:.04em}
 
 /* ============ STATS ============ */
-#stats{background:var(--espresso);padding:66px 0;color:var(--bg)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{text-align:center;padding:14px 20px;position:relative}
-.stat:not(:last-child)::after{content:'';position:absolute;top:18%;left:0;height:64%;width:1px;background:rgba(255,255,255,.16)}
-.stat .n{font-family:var(--f-m);font-size:clamp(2.1rem,4vw,3.1rem);font-weight:700;color:#fff;line-height:1}
-.stat .n .u{font-size:1.1rem;color:var(--clay)}
-.stat .l{font-size:.92rem;color:rgba(234,227,215,.66);margin-top:10px;font-weight:300}
+#stats{background:var(--ink);color:#fff;padding:clamp(64px,9vw,100px) 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{text-align:center;padding:18px 12px;border-right:1px solid rgba(255,255,255,.1)}
+.stat:first-child{border-right:none}
+.stat b{font-family:var(--f-d);font-weight:600;font-size:clamp(2.6rem,5.5vw,4rem);color:var(--bronze);line-height:1;display:block}
+.stat span{font-size:.95rem;color:rgba(255,255,255,.7);margin-top:10px;display:block}
 
-/* ============ MENU ============ */
-#menu{padding:120px 0;background:var(--paper)}
-.sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
-.sec-head p{color:var(--muted);margin-top:14px;font-size:1.05rem}
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
-.tab{font-weight:600;font-size:.95rem;padding:10px 26px;border-radius:100px;border:1.5px solid var(--line);color:var(--ink);background:transparent;transition:all .35s var(--ease)}
-.tab:hover{border-color:var(--clay)}
-.tab.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.panel{display:none;max-width:880px;margin:0 auto}
-.panel.active{display:block;animation:pf .5s var(--ease)}
-@keyframes pf{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
-.mrow{display:flex;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px dashed var(--line)}
-.mrow .nm{font-weight:600;font-size:1.02rem;color:var(--ink)}
-.mrow .nm small{font-weight:400;color:var(--muted);font-size:.8rem;margin-right:6px}
-.mrow .dot{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
-.mrow .pr{font-family:var(--f-m);font-weight:700;font-size:1rem;color:var(--clay-dk);white-space:nowrap}
-.mrow .pr small{font-size:.68rem;color:var(--muted)}
-.menu-note{text-align:center;margin-top:42px;color:var(--muted);font-size:.95rem}
-.menu-note b{color:var(--clay-dk)}
+/* ============ WHY ============ */
+#why{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:60px}
+.why{padding:34px 30px;border:1px solid var(--line);border-radius:10px;background:var(--paper);transition:all .45s var(--ease)}
+.why:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,27,24,.08);border-color:var(--bronze)}
+.why i{font-size:2rem;color:var(--bronze);margin-bottom:18px;display:block}
+.why h4{font-family:var(--f-d);font-weight:600;font-size:1.35rem;margin-bottom:10px}
+.why p{color:var(--muted);font-size:.98rem;line-height:1.95}
 
-/* ============ GALLERY ============ */
-#atmos{padding:120px 0;background:var(--bg)}
-.gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:14px;margin-top:50px}
-.g{overflow:hidden;border-radius:8px;cursor:pointer;position:relative}
-.g img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.g::after{content:'';position:absolute;inset:0;background:rgba(42,36,32,0);transition:background .4s}
-.g:hover::after{background:rgba(42,36,32,.18)}
-.g:hover img{transform:scale(1.06)}
-.g .zoom{position:absolute;bottom:14px;left:14px;width:38px;height:38px;border-radius:50%;background:var(--clay);display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:opacity .4s;z-index:2}
-.g:hover .zoom{opacity:1}
-.g1{grid-column:span 5;grid-row:span 2}
-.g2{grid-column:span 4;grid-row:span 2}
-.g3{grid-column:span 3;grid-row:span 2}
-.g4{grid-column:span 4;grid-row:span 2}
-.g5{grid-column:span 4;grid-row:span 2}
-.g6{grid-column:span 4;grid-row:span 2}
+/* ============ TESTIMONIALS ============ */
+#words{background:var(--steel);color:#fff;overflow:hidden}
+#words .eyebrow{color:#fff;opacity:.9}
+#words .eyebrow::before{background:#fff}
+#words .h-sec{color:#fff}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:58px}
+.tst{background:rgba(255,255,255,.07);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:34px 30px}
+.tst .q{font-size:2.4rem;font-family:var(--f-d);color:var(--bronze);line-height:.6;height:24px}
+.tst p{font-size:1rem;line-height:1.95;color:rgba(255,255,255,.92);margin-bottom:22px}
+.tst .who{display:flex;align-items:center;gap:14px}
+.tst .who .av{width:46px;height:46px;border-radius:50%;background:var(--bronze);display:grid;place-items:center;font-family:var(--f-d);font-weight:600;font-size:1.2rem;color:#fff;flex:none}
+.tst .who b{display:block;font-weight:600;font-size:1rem}
+.tst .who span{font-size:.85rem;color:rgba(255,255,255,.65)}
 
-/* ============ STORY ============ */
-#story{position:relative;padding:150px 0;background:url('img/interior-hall.jpg') center/cover fixed no-repeat;color:#fff;text-align:center}
-#story::before{content:'';position:absolute;inset:0;background:rgba(24,18,13,.74)}
-.story-in{position:relative;z-index:2;max-width:760px;margin:0 auto}
-.story-in .ic{font-size:1.9rem;color:var(--clay);margin-bottom:18px;display:block}
-.story-in .q{font-family:var(--f-d);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.5;color:#fff}
-.story-in .ar{font-weight:300;font-size:1.1rem;color:rgba(255,255,255,.82);margin-top:22px;line-height:2}
-
-/* ============ REVIEWS ============ */
-#reviews{padding:120px 0;background:var(--paper)}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px}
-.rev{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:34px 30px;position:relative}
-.rev .stars{color:var(--clay);font-size:1rem;display:flex;gap:3px;margin-bottom:16px}
-.rev .tx{font-size:1.02rem;line-height:1.95;color:#48413a;margin-bottom:22px}
-.rev .who{display:flex;align-items:center;gap:13px}
-.rev .av{width:46px;height:46px;border-radius:50%;background:var(--espresso);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--f-d);font-weight:600;font-size:1.15rem}
-.rev .nm{font-weight:700;font-size:.97rem}
-.rev .src{font-size:.82rem;color:var(--muted)}
-.rev .qmark{position:absolute;top:16px;left:26px;font-family:var(--f-d);font-size:4rem;color:var(--clay);opacity:.18;line-height:1}
-.rev-foot{text-align:center;margin-top:40px;color:var(--muted)}
-.rev-foot b{color:var(--ink)}
-
-/* ============ LOCATION ============ */
-#loc{padding:120px 0;background:var(--bg)}
-.loc-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:stretch}
-.loc-info .row{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
-.loc-info .row:first-of-type{padding-top:0}
-.loc-ic{width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--clay);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
-.loc-info .row strong{display:block;font-family:var(--f-d);font-size:1.05rem;margin-bottom:3px;font-weight:600}
-.loc-info .row p{color:var(--muted);font-size:.95rem;line-height:1.7}
-.loc-info .row a{color:var(--clay-dk);font-weight:700;font-family:var(--f-m)}
-.loc-actions{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
-.btn-ink{background:var(--ink);color:var(--bg)}
-.btn-ink:hover{background:var(--clay);color:#fff;transform:translateY(-2px)}
-.btn-line{border:1.5px solid var(--ink);color:var(--ink)}
-.btn-line:hover{background:var(--ink);color:var(--bg)}
-.map-wrap{border-radius:12px;overflow:hidden;box-shadow:0 24px 54px rgba(42,36,32,.16);min-height:430px}
-.map-wrap iframe{width:100%;height:100%;min-height:430px;border:0;display:block;filter:grayscale(.3) sepia(.18)}
+/* ============ CONTACT ============ */
+#contact{background:var(--paper)}
+.cta-band{background:var(--ink);color:#fff;border-radius:16px;padding:clamp(40px,6vw,68px);position:relative;overflow:hidden}
+.cta-band .gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--blueprint) 1px,transparent 1px),linear-gradient(90deg,var(--blueprint) 1px,transparent 1px);background-size:40px 40px;opacity:.6;mask-image:radial-gradient(circle at 80% 20%,#000,transparent 70%)}
+.cta-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:54px}
+.cta-l .eyebrow{color:var(--bronze)}
+.cta-l h2{font-family:var(--f-d);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.2;margin-bottom:20px;color:#fff}
+.cta-l p{color:rgba(255,255,255,.75);font-weight:300;line-height:2;margin-bottom:30px;max-width:42ch}
+.cta-info{display:flex;flex-direction:column;gap:20px}
+.cta-info .row{display:flex;align-items:flex-start;gap:15px}
+.cta-info .ic{width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-size:1.25rem;color:var(--bronze);flex:none}
+.cta-info strong{display:block;font-weight:600;font-size:.98rem;margin-bottom:2px}
+.cta-info p{margin:0;color:rgba(255,255,255,.65);font-size:.92rem;line-height:1.7}
+.cta-info a{color:rgba(255,255,255,.65)}
+.cta-info a:hover{color:var(--bronze)}
+.form{background:var(--paper);border-radius:12px;padding:34px}
+.form h3{font-family:var(--f-d);font-weight:600;font-size:1.4rem;margin-bottom:6px;color:var(--ink)}
+.form .fnote{font-size:.86rem;color:var(--muted);margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--ink2);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;font-family:inherit;font-size:.96rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:7px;padding:13px 15px;transition:border .3s,box-shadow .3s}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--bronze);box-shadow:0 0 0 3px rgba(169,118,63,.13)}
+.form .btn{width:100%;justify-content:center;background:var(--ink);color:#fff;margin-top:6px}
+.form .btn:hover{background:var(--bronze)}
 
 /* ============ FOOTER ============ */
-footer{background:var(--ink);color:var(--bg);padding:80px 0 34px}
-.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:50px;margin-bottom:54px}
-.foot-brand .logo{color:var(--bg);font-size:1.1rem;margin-bottom:14px}
-.foot-brand p{color:rgba(234,227,215,.55);font-size:.95rem;line-height:1.9;max-width:300px}
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:74px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .logo{margin-bottom:18px;color:#fff}
+.foot-brand p{font-size:.95rem;line-height:1.95;max-width:38ch;color:rgba(255,255,255,.6)}
 .foot-soc{display:flex;gap:12px;margin-top:22px}
-.foot-soc a{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(234,227,215,.75);font-size:1.15rem;transition:all .35s}
-.foot-soc a:hover{background:var(--clay);color:#fff;transform:translateY(-3px)}
-.foot-col h4{font-family:var(--f-d);font-size:1.1rem;margin-bottom:20px;font-weight:600}
-.foot-col li{margin-bottom:11px}
-.foot-col a{color:rgba(234,227,215,.55);font-size:.94rem;transition:color .3s}
-.foot-col a:hover{color:var(--clay)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.foot-bottom p{font-size:.85rem;color:rgba(234,227,215,.4)}
-.foot-bottom .en{font-family:var(--f-m);color:var(--clay);font-size:.8rem;letter-spacing:.08em}
+.foot-soc a{width:42px;height:42px;border-radius:8px;border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-size:1.15rem;color:rgba(255,255,255,.8);transition:all .35s}
+.foot-soc a:hover{background:var(--bronze);border-color:var(--bronze);color:#fff;transform:translateY(-2px)}
+.foot-col h4{font-family:var(--f-d);font-weight:600;color:#fff;font-size:1.08rem;margin-bottom:18px}
+.foot-col ul li{margin-bottom:11px}
+.foot-col a{font-size:.94rem;color:rgba(255,255,255,.6);transition:color .3s}
+.foot-col a:hover{color:var(--bronze)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:28px}
+.foot-bottom p{font-size:.85rem;color:rgba(255,255,255,.5)}
+.foot-bottom .en{font-family:var(--f-m);font-size:.8rem;letter-spacing:.12em;color:var(--bronze)}
 
-/* ============ FLOATS + LIGHTBOX ============ */
-.floats{position:fixed;bottom:26px;left:26px;z-index:900;display:flex;flex-direction:column;gap:12px}
-.fbtn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .35s var(--ease)}
-.fbtn:hover{transform:translateY(-3px) scale(1.05)}
-.f-call{background:var(--clay);color:#fff}
-.f-top{background:var(--ink);color:var(--bg);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
-.f-top.show{opacity:1;pointer-events:all}
-#lb{position:fixed;inset:0;z-index:5000;background:rgba(18,14,10,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
-#lb.open{opacity:1;pointer-events:all}
-#lb img{max-width:90vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-#lb .x{position:absolute;top:22px;left:22px;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center}
-#lb .ar-btn{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:background .3s}
-#lb .ar-btn:hover{background:rgba(255,255,255,.25)}
-#lb .prev{right:22px}
-#lb .next{left:22px}
+/* ============ FLOATS ============ */
+.floats{position:fixed;bottom:24px;left:24px;z-index:900;display:flex;flex-direction:column;gap:12px}
+.fbtn{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;box-shadow:0 8px 22px rgba(0,0,0,.2);transition:all .35s var(--ease)}
+.f-top{background:var(--ink);color:#fff;opacity:0;pointer-events:none;transform:scale(.6)}
+.f-top.show{opacity:1;pointer-events:all;transform:none}
+.f-top:hover{background:var(--bronze)}
+.f-wa{background:#25D366;color:#fff}
+.f-wa:hover{transform:translateY(-3px)}
 
 /* ============ RESPONSIVE ============ */
 @media(max-width:980px){
-  .intro-grid{grid-template-columns:1fr;gap:90px}
-  .intro-imgs{max-width:480px;margin:0 auto}
-  .loc-grid{grid-template-columns:1fr;gap:40px}
-  #story{background-attachment:scroll}
+  .about-grid{grid-template-columns:1fr;gap:46px}
+  .serv-grid{grid-template-columns:1fr 1fr}
+  .proc-grid{grid-template-columns:1fr 1fr;gap:40px 26px}
+  .why-grid,.tst-grid,.stats-grid{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-right:none}
+  .cta-grid{grid-template-columns:1fr;gap:38px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+  .hero-draw{display:none}
 }
-@media(max-width:820px){
+@media(max-width:680px){
   .nav-links,.nav-cta{display:none}
   .burger{display:flex}
-  #intro,#menu,#atmos,#reviews,#loc{padding:80px 0}
-  #story{padding:110px 0}
-  #stats{padding:54px 0}
-  .sec-head{margin-bottom:40px}
-  .mgrid{grid-template-columns:1fr;gap:0}
-  .rev-grid{grid-template-columns:1fr;max-width:480px;margin:54px auto 0}
-  .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px 0}
-  .stat:nth-child(2)::after{display:none}
-  .foot-grid{grid-template-columns:1fr;gap:38px}
-  .gal{grid-auto-rows:150px}
-  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 6;grid-row:span 2}
+  .wrap{padding:0 22px}
+  .work-grid{grid-template-columns:1fr}
+  .serv-grid,.why-grid,.tst-grid{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .stat{border-right:none!important}
+  .stat:nth-child(odd){border-left:1px solid rgba(255,255,255,.1)}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-meta{gap:30px}
+  .floats{bottom:18px;left:18px}
 }
-@media(max-width:520px){
-  .wrap{padding:0 18px}
-  #intro,#menu,#atmos,#reviews,#loc{padding:64px 0}
-  .intro-grid{gap:72px}
-  .intro-imgs{max-width:340px}
-  .intro-imgs .im2{right:0;bottom:-28px;border-width:5px}
-  .intro-body p{font-size:1rem}
-  .hero-desc{font-size:1.02rem}
-  .hero-actions{flex-direction:column}
-  .btn{width:100%;justify-content:center}
-  .stats-grid{gap:30px 0}
-  .story-in .q{font-size:1.4rem}
-  .foot-bottom{flex-direction:column;text-align:center}
-  .g3,.g6{display:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.001s!important}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
+<header id="nav">
   <div class="wrap">
-    <a href="#hero" class="logo"><b>25</b><span>grams</span></a>
-    <ul class="nav-links">
-      <li><a href="#intro">عن المقهى</a></li>
-      <li><a href="#menu">القائمة</a></li>
-      <li><a href="#atmos">الأجواء</a></li>
-      <li><a href="#reviews">آراؤكم</a></li>
-      <li><a href="#loc">الموقع</a></li>
-    </ul>
-    <a href="tel:0144251768" class="nav-cta">اتصل بنا</a>
+    <a href="#hero" class="logo">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="6" stroke="#A9763F" stroke-width="1.6"/><path d="M8 30 L20 9 L32 30" stroke="#A9763F" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 30 L13 21 L27 21 L27 30" stroke="#A9763F" stroke-width="1.4"/><line x1="8" y1="30" x2="32" y2="30" stroke="#A9763F" stroke-width="1.8"/></svg>
+      <span class="lt"><b>بُنيان</b><small>Bunyān Studio</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">المكتب</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#process">منهجيتنا</a>
+      <a href="#work">أعمالنا</a>
+      <a href="#words">آراء العملاء</a>
+    </nav>
+    <a href="#contact" class="nav-cta">اطلب استشارة</a>
     <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
   </div>
-</nav>
+</header>
 
 <!-- MOBILE NAV -->
 <div id="mnav">
-  <a href="#hero" class="logo"><b>25</b><span>grams</span></a>
+  <a href="#hero" class="logo"><svg class="mark" viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="6" stroke="#A9763F" stroke-width="1.6"/><path d="M8 30 L20 9 L32 30" stroke="#A9763F" stroke-width="1.8" stroke-linejoin="round"/><line x1="8" y1="30" x2="32" y2="30" stroke="#A9763F" stroke-width="1.8"/></svg><span class="lt"><b>بُنيان</b></span></a>
   <button class="mclose" id="mclose" aria-label="إغلاق">✕</button>
-  <a href="#intro" class="ml">عن المقهى</a>
-  <a href="#menu" class="ml">القائمة</a>
-  <a href="#atmos" class="ml">الأجواء</a>
-  <a href="#reviews" class="ml">آراؤكم</a>
-  <a href="#loc" class="ml">الموقع</a>
-  <a href="tel:0144251768">اتصل بنا</a>
+  <a href="#about">المكتب</a>
+  <a href="#services">خدماتنا</a>
+  <a href="#process">منهجيتنا</a>
+  <a href="#work">أعمالنا</a>
+  <a href="#words">آراء العملاء</a>
+  <a href="#contact">اطلب استشارة</a>
 </div>
 
 <!-- HERO -->
-<header id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-inner wrap">
-    <div class="hero-badge"><i class="ph-fill ph-scales"></i> Specialty Coffee · قهوة مختصة</div>
-    <h1 class="hero-name"><b>25</b>grams</h1>
-    <div class="hero-ar-name">٢٥ جرام · تبوك</div>
-    <p class="hero-tag">The perfect dose.</p>
-    <p class="hero-desc">الجرعة المثالية من القهوة المختصة، في مساحة هادئة بتبوك. كل كوب محضّر بدقة، وكل تفصيلة محسوبة — تمامًا كاسمنا.</p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn btn-main"><i class="ph-bold ph-coffee"></i> تصفّح القائمة</a>
-      <a href="#atmos" class="btn btn-ghost"><i class="ph-bold ph-images"></i> أجواء المكان</a>
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-draw" aria-hidden="true">
+    <svg viewBox="0 0 640 460" preserveAspectRatio="xMinYMax meet">
+      <line class="dr" x1="0" y1="430" x2="640" y2="430"/>
+      <rect class="dr" x="70" y="200" width="150" height="230"/>
+      <rect class="dr" x="250" y="120" width="120" height="310"/>
+      <rect class="dr" x="400" y="260" width="170" height="170"/>
+      <polyline class="dr" points="250,120 310,70 430,70 370,120"/>
+      <line class="dr" x1="430" y1="70" x2="430" y2="260"/>
+      <line class="dr" x1="95" y1="200" x2="95" y2="430"/><line class="dr" x1="120" y1="200" x2="120" y2="430"/><line class="dr" x1="145" y1="200" x2="145" y2="430"/><line class="dr" x1="170" y1="200" x2="170" y2="430"/><line class="dr" x1="195" y1="200" x2="195" y2="430"/>
+      <line class="dr" x1="250" y1="170" x2="370" y2="170"/><line class="dr" x1="250" y1="220" x2="370" y2="220"/><line class="dr" x1="250" y1="270" x2="370" y2="270"/><line class="dr" x1="250" y1="320" x2="370" y2="320"/><line class="dr" x1="250" y1="370" x2="370" y2="370"/>
+      <line class="dr" x1="430" y1="300" x2="570" y2="300"/><line class="dr" x1="430" y1="340" x2="570" y2="340"/><line class="dr" x1="430" y1="380" x2="570" y2="380"/>
+      <circle class="dr" cx="0" cy="430" r="4" fill="#A9763F" stroke="none"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="hero-tagline">مكتب تصميم هندسي ومعماري معتمد</span>
+      <h1 class="hero-name">بُنيان<span class="en">Bunyān&nbsp;·&nbsp;Architecture Studio</span></h1>
+      <p class="hero-sub">نُصمّم المكان قبل أن يُبنى.</p>
+      <p class="hero-desc">من الفكرة الأولى إلى آخر تفصيلة في الموقع — نحوّل رؤيتك إلى تصميم معماري دقيق، ومخطط إنشائي آمن، وإظهار واقعي تراه قبل أن تبدأ البناء.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-main"><i class="ph-bold ph-paper-plane-tilt"></i> ابدأ مشروعك</a>
+        <a href="#work" class="btn btn-ghost"><i class="ph-bold ph-stack"></i> شاهد أعمالنا</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hm"><b>+١٢</b><span>سنة خبرة</span></div>
+        <div class="hm"><b>+٢٤٠</b><span>مشروع منفّذ</span></div>
+        <div class="hm"><b>٦</b><span>تخصصات هندسية</span></div>
+      </div>
     </div>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><i class="ph ph-arrow-down"></i></div>
-</header>
+  <div class="hero-scroll">اكتشف<i class="ph ph-caret-down"></i></div>
+</section>
 
 <!-- MARQUEE -->
-<div class="marq" aria-hidden="true">
-  <div class="marq-t">
-    <span class="marq-i">قهوة مختصة <b>25g</b></span>
-    <span class="marq-i">Specialty Coffee <b>25g</b></span>
-    <span class="marq-i">أجواء هادئة <b>25g</b></span>
-    <span class="marq-i">V60 · فلات وايت · سبانش لاتيه <b>25g</b></span>
-    <span class="marq-i">حلا طازج <b>25g</b></span>
-    <span class="marq-i">قهوة مختصة <b>25g</b></span>
-    <span class="marq-i">Specialty Coffee <b>25g</b></span>
-    <span class="marq-i">أجواء هادئة <b>25g</b></span>
-    <span class="marq-i">V60 · فلات وايت · سبانش لاتيه <b>25g</b></span>
-    <span class="marq-i">حلا طازج <b>25g</b></span>
+<div class="marq">
+  <div class="marq-track">
+    <span>تصميم معماري<span></span></span><span>تصميم داخلي</span><span>تصميم إنشائي</span><span>إشراف هندسي</span><span>إظهار ثلاثي الأبعاد</span><span>رخص بناء</span><span>دراسات جدوى</span>
+    <span>تصميم معماري</span><span>تصميم داخلي</span><span>تصميم إنشائي</span><span>إشراف هندسي</span><span>إظهار ثلاثي الأبعاد</span><span>رخص بناء</span><span>دراسات جدوى</span>
   </div>
 </div>
 
-<!-- INTRO -->
-<section id="intro">
-  <div class="wrap intro-grid">
-    <div class="intro-imgs rv">
-      <img src="img/latte-sofa.jpg" class="im1" alt="لاتيه على طاولة الرخام في ٢٥ جرام">
-      <img src="img/cups.jpg" class="im2" alt="أكواب ٢٥ جرام">
-      <span class="intro-tag">25<small>grams · الجرعة المثالية</small></span>
-    </div>
-    <div class="intro-body rv">
-      <span class="eyebrow">عن المقهى · About</span>
-      <h2 class="h-sec">الدقّة في<br>كل جرام</h2>
-      <p style="margin-top:22px"><span class="lead">٢٥ جرام</span> اسمٌ يحمل فلسفتنا: الجرعة المثالية التي تصنع الكوب المثالي. مقهى قهوة مختصة في تبوك، صغير وهادئ ومرتّب — مساحة تشعر فيها أن كل تفصيلة محسوبة بعناية.</p>
-      <p>من اختيار المحصول إلى وزن البن وضبط التحضير، نهتم بالتفاصيل التي تصنع الفرق — ونقدّمها بأسعار تفاجئك، وحلا طازج يكمّل التجربة.</p>
-      <div class="intro-feats">
-        <div class="feat"><i class="ph-bold ph-scales"></i><span>تحضير بدقّة</span></div>
-        <div class="feat"><i class="ph-bold ph-armchair"></i><span>أجواء هادئة</span></div>
-        <div class="feat"><i class="ph-bold ph-hand-coins"></i><span>أسعار مناسبة</span></div>
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text rv">
+        <span class="eyebrow">عن المكتب · About</span>
+        <h2 class="h-sec">هندسة تبدأ من الإصغاء، وتنتهي بمكانٍ يشبهك.</h2>
+        <p>«بُنيان» مكتب تصميم هندسي ومعماري يجمع بين الحسّ الجمالي والدقّة الإنشائية. نؤمن أنّ كل مشروع يبدأ بسؤال: كيف يُعاش هذا المكان؟ ومن هذا السؤال نبني تصميماً يوازن بين الجمال والوظيفة والكلفة.</p>
+        <p>فريقنا من المعماريين والمهندسين الإنشائيين والمصممين الداخليين يرافقك من الكروكي الأول حتى استلام المفتاح — تصميمٌ مدروس، مخططات معتمدة، وإشرافٌ يضمن أن يخرج البناء كما رأيته على الورق تماماً.</p>
+        <p class="sig">— نُصمّم لتعيش، لا لتُعجب فقط.</p>
+      </div>
+      <div class="about-vals rv d2">
+        <div class="v"><i class="ph-light ph-compass-tool"></i><h4>دقّة هندسية</h4><p>مخططات مطابقة للكود السعودي للبناء، ومراجعة إنشائية لكل تفصيلة.</p></div>
+        <div class="v"><i class="ph-light ph-cube-transparent"></i><h4>إظهار واقعي</h4><p>نماذج ثلاثية الأبعاد ترى بيتك قبل صبّ أول مترٍ من الخرسانة.</p></div>
+        <div class="v"><i class="ph-light ph-wallet"></i><h4>وعيٌ بالكلفة</h4><p>تصاميم تحترم ميزانيتك، مع جدول كميات واضح من البداية.</p></div>
+        <div class="v"><i class="ph-light ph-handshake"></i><h4>شراكة كاملة</h4><p>مهندس مسؤول يرافق مشروعك من الاستشارة حتى الإشراف على التنفيذ.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">خدماتنا · Services</span>
+      <h2 class="h-sec">كل ما يحتاجه مشروعك — تحت سقفٍ واحد</h2>
+      <p class="lead" style="margin-inline:auto">من أول مخطط حتى آخر إشراف. ستّ خدمات هندسية متكاملة تغنيك عن التنقّل بين أكثر من مكتب.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv rv"><span class="num">01</span><div class="ic"><i class="ph ph-buildings"></i></div><h3>التصميم المعماري</h3><p>تصميم فلل وعمائر ومجمّعات ومنشآت تجارية بهويةٍ بصرية مدروسة، وتوزيعٍ ذكيّ للمساحات يجمع الراحة والجمال.</p><div class="tags"><span>فلل سكنية</span><span>عمائر</span><span>تجاري</span></div></div>
+      <div class="serv rv d1"><span class="num">02</span><div class="ic"><i class="ph ph-armchair"></i></div><h3>التصميم الداخلي</h3><p>تصميم داخلي متكامل — توزيع، إضاءة، خامات، وأثاث — يحوّل المساحات إلى تجربةٍ متناغمة تعكس ذوقك وأسلوب حياتك.</p><div class="tags"><span>سكني</span><span>مكاتب</span><span>مطاعم</span></div></div>
+      <div class="serv rv d2"><span class="num">03</span><div class="ic"><i class="ph ph-blueprint"></i></div><h3>التصميم الإنشائي</h3><p>تحليل وتصميم إنشائي آمن ومطابق للكود، مع مخططات تنفيذية وجداول حديد دقيقة تضمن متانة المبنى وكفاءة الكلفة.</p><div class="tags"><span>خرسانة</span><span>حديد</span><span>أساسات</span></div></div>
+      <div class="serv rv"><span class="num">04</span><div class="ic"><i class="ph ph-hard-hat"></i></div><h3>الإشراف الهندسي</h3><p>إشراف ميداني على التنفيذ يضمن مطابقة البناء للمخططات والمواصفات، مع تقارير دورية ومتابعة للجودة والمقاول.</p><div class="tags"><span>متابعة موقع</span><span>تقارير</span><span>جودة</span></div></div>
+      <div class="serv rv d1"><span class="num">05</span><div class="ic"><i class="ph ph-cube"></i></div><h3>الإظهار ثلاثي الأبعاد</h3><p>صور ومجسّمات واقعية وجولات افتراضية تجعلك ترى مشروعك بكل تفاصيله — داخلاً وخارجاً — قبل أن يبدأ التنفيذ.</p><div class="tags"><span>3D Render</span><span>جولة افتراضية</span></div></div>
+      <div class="serv rv d2"><span class="num">06</span><div class="ic"><i class="ph ph-file-text"></i></div><h3>الرخص والتراخيص</h3><p>إعداد واعتماد المخططات واستخراج رخصة البناء عبر الجهات المختصة (بلدي)، ومتابعة الإجراءات نيابةً عنك.</p><div class="tags"><span>رخصة بناء</span><span>اعتماد</span><span>بلدي</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">منهجيتنا · Process</span>
+      <h2 class="h-sec">رحلة واضحة من الفكرة إلى المفتاح</h2>
+      <p class="lead">منهجية مرتّبة في أربع مراحل تعرف فيها أين وصل مشروعك في كل لحظة — بلا مفاجآت.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc rv"><div class="ln"></div><h4>الاستشارة والفكرة</h4><p>نستمع لاحتياجك ومتطلباتك وميزانيتك، ونحوّلها إلى رؤيةٍ أولية ومتطلبات تصميمية واضحة.</p></div>
+      <div class="proc rv d1"><div class="ln"></div><h4>الدراسة والتصميم</h4><p>دراسة الموقع والأنظمة، ثم تصميم معماري وإنشائي مدروس مع مخططات أولية للمراجعة.</p></div>
+      <div class="proc rv d2"><div class="ln"></div><h4>الإظهار والاعتماد</h4><p>إظهار ثلاثي الأبعاد، تعديل حتى الرضا التام، ثم اعتماد المخططات واستخراج الرخصة.</p></div>
+      <div class="proc rv d3"><div class="ln"></div><h4>الإشراف والتنفيذ</h4><p>إشراف هندسي على البناء حتى الاستلام، لضمان مطابقة الواقع للتصميم تماماً.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="work" class="sec">
+  <div class="wrap">
+    <div class="work-head rv">
+      <div class="sec-head">
+        <span class="eyebrow">أعمالنا · Selected Work</span>
+        <h2 class="h-sec">نماذج من تصاميمنا</h2>
+      </div>
+      <a href="#contact" class="btn btn-line"><i class="ph-bold ph-arrow-up-left"></i> مشروعك القادم معنا</a>
+    </div>
+    <div class="work-grid">
+      <div class="proj rv">
+        <div class="art"><div class="gridbg"></div>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet">
+            <line stroke x1="30" y1="210" x2="370" y2="210"/>
+            <rect stroke class="fillb" x="70" y="90" width="160" height="120"/>
+            <rect stroke x="230" y="130" width="100" height="80"/>
+            <polyline stroke points="70,90 150,50 230,90"/>
+            <rect stroke x="95" y="120" width="30" height="40"/><rect stroke x="140" y="120" width="30" height="40"/><rect stroke x="185" y="120" width="25" height="40"/>
+            <rect stroke x="250" y="150" width="22" height="60"/><rect stroke x="288" y="150" width="22" height="60"/>
+            <line stroke x1="150" y1="50" x2="150" y2="90"/>
+          </svg>
+        </div>
+        <span class="cat">سكني · فيلا</span>
+        <div class="body"><div class="meta">فيلا خاصة · ٤٥٠ م²</div><h3>فيلا الواحة</h3><p>تصميم عصري بطابع نجدي معاصر، يوازن الخصوصية والإضاءة الطبيعية حول فناءٍ داخلي.</p></div>
+      </div>
+      <div class="proj rv d1">
+        <div class="art"><div class="gridbg"></div>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet">
+            <line stroke x1="30" y1="215" x2="370" y2="215"/>
+            <rect stroke class="fillb" x="120" y="40" width="160" height="175"/>
+            <line stroke x1="120" y1="80" x2="280" y2="80"/><line stroke x1="120" y1="120" x2="280" y2="120"/><line stroke x1="120" y1="160" x2="280" y2="160"/>
+            <line stroke x1="173" y1="40" x2="173" y2="215"/><line stroke x1="227" y1="40" x2="227" y2="215"/>
+            <rect stroke x="285" y="120" width="45" height="95"/>
+          </svg>
+        </div>
+        <span class="cat">تجاري · عمارة</span>
+        <div class="body"><div class="meta">مبنى مكتبي · ٥ أدوار</div><h3>عمارة المحور التجارية</h3><p>واجهة زجاجية حديثة بوحداتٍ مكتبية مرنة، مصمّمة لكفاءة الطاقة والإطلالة.</p></div>
+      </div>
+      <div class="proj rv">
+        <div class="art"><div class="gridbg"></div>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet">
+            <rect stroke x="50" y="50" width="300" height="150"/>
+            <line stroke x1="50" y1="120" x2="200" y2="120"/><line stroke x1="200" y1="50" x2="200" y2="200"/>
+            <rect stroke class="fillb" x="70" y="70" width="110" height="35"/>
+            <line stroke x1="220" y1="70" x2="330" y2="70"/><line stroke x1="220" y1="100" x2="330" y2="100"/>
+            <circle stroke cx="120" cy="160" r="20"/><line stroke x1="250" y1="135" x2="320" y2="135"/><line stroke x1="250" y1="160" x2="320" y2="180"/>
+          </svg>
+        </div>
+        <span class="cat">داخلي · مخطط</span>
+        <div class="body"><div class="meta">تصميم داخلي · شقة فاخرة</div><h3>بنتهاوس الأفق</h3><p>توزيعٌ مفتوح بإضاءةٍ خافتة وخاماتٍ دافئة، يجمع الفخامة بالاستخدام اليومي المريح.</p></div>
+      </div>
+      <div class="proj rv d1">
+        <div class="art"><div class="gridbg"></div>
+          <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet">
+            <line stroke x1="30" y1="210" x2="370" y2="210"/>
+            <rect stroke class="fillb" x="60" y="120" width="90" height="90"/>
+            <rect stroke x="150" y="80" width="100" height="130"/>
+            <rect stroke x="250" y="140" width="90" height="70"/>
+            <polyline stroke points="150,80 200,45 250,80"/>
+            <line stroke x1="60" y1="120" x2="150" y2="120"/>
+            <rect stroke x="180" y="150" width="40" height="60"/>
+          </svg>
+        </div>
+        <span class="cat">سكني · مجمّع</span>
+        <div class="body"><div class="meta">مجمّع سكني · ١٢ وحدة</div><h3>مجمّع الندى السكني</h3><p>وحداتٌ متدرّجة الكتل تمنح كل أسرة خصوصيتها، مع مساحاتٍ خضراء مشتركة.</p></div>
+      </div>
+    </div>
+    <p class="work-note">◆ النماذج أعلاه تصاميم توضيحية لعرض أسلوب المكتب — تُستبدل بمشاريعكم الفعلية</p>
   </div>
 </section>
 
 <!-- STATS -->
 <section id="stats">
-  <div class="wrap stats-grid">
-    <div class="stat rv"><div class="n">4.7<span class="u">★</span></div><div class="l">تقييم الزوّار على Google</div></div>
-    <div class="stat rv"><div class="n">305<span class="u">+</span></div><div class="l">مراجعة موثّقة</div></div>
-    <div class="stat rv"><div class="n">25<span class="u">g</span></div><div class="l">الجرعة المثالية</div></div>
-    <div class="stat rv"><div class="n">7<span class="u">﷼</span></div><div class="l">تبدأ الأسعار من</div></div>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat rv"><b data-c="240" data-suf="+">٠</b><span>مشروع مكتمل</span></div>
+      <div class="stat rv d1"><b data-c="98" data-suf="٪">٠</b><span>عملاء راضون</span></div>
+      <div class="stat rv d2"><b data-c="12" data-suf="+">٠</b><span>سنوات خبرة</span></div>
+      <div class="stat rv d3"><b data-c="18" data-suf="">٠</b><span>مهندساً ومصمماً</span></div>
+    </div>
   </div>
 </section>
 
-<!-- MENU -->
-<section id="menu">
+<!-- WHY -->
+<section id="why" class="sec">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">لماذا بُنيان · Why Us</span>
+      <h2 class="h-sec">أسباب تجعل اختيارنا قراراً مطمئناً</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why rv"><i class="ph ph-seal-check"></i><h4>مكتب معتمد</h4><p>ترخيص هندسي ساري واعتماد لدى الجهات المختصة — مخططاتك مقبولة رسمياً منذ اللحظة الأولى.</p></div>
+      <div class="why rv d1"><i class="ph ph-clock-countdown"></i><h4>التزام بالمواعيد</h4><p>جدول زمني واضح لكل مرحلة، نسلّم في وقتنا ونحترم خطتك ومواعيد رخصتك.</p></div>
+      <div class="why rv d2"><i class="ph ph-currency-circle-dollar"></i><h4>شفافية في التكلفة</h4><p>عرض سعر مفصّل بلا بنودٍ خفية، وجدول كميات يجنّبك مفاجآت التنفيذ.</p></div>
+      <div class="why rv"><i class="ph ph-users-three"></i><h4>فريق متعدد التخصصات</h4><p>معماري وإنشائي وداخلي ومشرف تحت سقفٍ واحد — تناغمٌ كامل في مشروعك.</p></div>
+      <div class="why rv d1"><i class="ph ph-chats-circle"></i><h4>تواصل مستمر</h4><p>مهندس مسؤول يتابع معك خطوة بخطوة، ويردّ على استفساراتك في حينها.</p></div>
+      <div class="why rv d2"><i class="ph ph-leaf"></i><h4>تصميم مستدام</h4><p>حلول موفّرة للطاقة واستغلالٌ ذكيّ للإضاءة والتهوية الطبيعية تخفّض فواتيرك.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="words" class="sec">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">القائمة · Menu</span>
-      <h2 class="h-sec">قائمتنا</h2>
-      <p>قهوة مختصة، تقطير بطرق متعددة، وحلا طازج. الأسعار بالريال السعودي.</p>
+      <span class="eyebrow">آراء العملاء · Testimonials</span>
+      <h2 class="h-sec">ثقةٌ بنيناها مشروعاً تلو الآخر</h2>
     </div>
-
-    <div class="tabs rv">
-      <button class="tab active" data-tab="hot">حارّة</button>
-      <button class="tab" data-tab="cold">باردة</button>
-      <button class="tab" data-tab="brew">تقطير</button>
-      <button class="tab" data-tab="sweet">حلا</button>
+    <div class="tst-grid">
+      <div class="tst rv"><div class="q">”</div><p>صمّموا فيلتنا بدقّة مذهلة، والإظهار ثلاثي الأبعاد ساعدنا نقرّر كل تفصيلة قبل البناء. النتيجة طابقت الصورة تماماً.</p><div class="who"><div class="av">ع</div><div><b>عبدالعزيز الحربي</b><span>صاحب فيلا سكنية</span></div></div></div>
+      <div class="tst rv d1"><div class="q">”</div><p>أكثر ما أعجبني الشفافية في التكلفة والالتزام بالمواعيد. الإشراف الهندسي وفّر علينا أخطاء كانت ستكلّفنا الكثير.</p><div class="who"><div class="av">ن</div><div><b>نورة القحطاني</b><span>مستثمرة عقارية</span></div></div></div>
+      <div class="tst rv d2"><div class="q">”</div><p>تعاملٌ راقٍ وفريقٌ يفهم ما تريد. حوّلوا مكتبنا إلى مساحة عملٍ ملهمة، واستخرجوا الرخصة دون أي عناء منّا.</p><div class="who"><div class="av">م</div><div><b>محمد العتيبي</b><span>مدير شركة</span></div></div></div>
     </div>
-
-    <div class="panel active rv" id="p-hot">
-      <div class="mgrid">
-        <div class="mrow"><span class="nm">إسبريسو</span><span class="dot"></span><span class="pr">10<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">أمريكانو</span><span class="dot"></span><span class="pr">12<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">فلات وايت</span><span class="dot"></span><span class="pr">14<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كورتادو</span><span class="dot"></span><span class="pr">14<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كابتشينو</span><span class="dot"></span><span class="pr">14<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">ميكاتو</span><span class="dot"></span><span class="pr">13<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كافيه لاتيه</span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">سبانش لاتيه</span><span class="dot"></span><span class="pr">17<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">سولتد كراميل لاتيه</span><span class="dot"></span><span class="pr">18<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">شوكولاتة ساخنة</span><span class="dot"></span><span class="pr">12<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">شاي إنجليزي</span><span class="dot"></span><span class="pr">7<small>﷼</small></span></div>
-      </div>
-    </div>
-
-    <div class="panel rv" id="p-cold">
-      <div class="mgrid">
-        <div class="mrow"><span class="nm">آيس لاتيه</span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">سبانش آيس لاتيه</span><span class="dot"></span><span class="pr">18–20<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">وايت شوكلت لاتيه</span><span class="dot"></span><span class="pr">18<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">بستاشيو لاتيه</span><span class="dot"></span><span class="pr">19<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كراميل ميكاتو</span><span class="dot"></span><span class="pr">19–20<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">شايب لاتيه</span><span class="dot"></span><span class="pr">20<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">لاتيه عربي</span><span class="dot"></span><span class="pr">22<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كولد برو</span><span class="dot"></span><span class="pr">—</span></div>
-      </div>
-    </div>
-
-    <div class="panel rv" id="p-brew">
-      <div class="mgrid">
-        <div class="mrow"><span class="nm">مكسيكي <small>Mexico</small></span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">إثيوبي <small>Ethiopian</small></span><span class="dot"></span><span class="pr">15<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كيمكس مكسيكي <small>Chemex</small></span><span class="dot"></span><span class="pr">—</span></div>
-      </div>
-      <p class="menu-note">إضافات: شوت <b>3 ﷼</b> · نكهة <b>2 ﷼</b> — اسأل الباريستا عن محصول اليوم.</p>
-    </div>
-
-    <div class="panel rv" id="p-sweet">
-      <div class="mgrid">
-        <div class="mrow"><span class="nm">كيكة أناناس</span><span class="dot"></span><span class="pr">25<small>﷼</small></span></div>
-        <div class="mrow"><span class="nm">كيكة التمر</span><span class="dot"></span><span class="pr">طازج</span></div>
-        <div class="mrow"><span class="nm">كيك بالكاس <small>طبقات</small></span><span class="dot"></span><span class="pr">طازج</span></div>
-      </div>
-      <p class="menu-note">حلا يُحضّر طازجًا · تتغيّر الأصناف بحسب اليوم.</p>
-    </div>
-
-    <p class="menu-note rv">الأسعار من قائمة المقهى وقد تتغيّر · للاستفسار عن الأصناف الموسمية <b>تواصلوا معنا</b></p>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="atmos">
+<!-- CONTACT -->
+<section id="contact" class="sec">
   <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">الأجواء · Atmosphere</span>
-      <h2 class="h-sec">لمحات من ٢٥ جرام</h2>
-      <p>جدران من الإسمنت الدافئ، خضرة، وجلسات هادئة. صور حقيقية من المكان.</p>
-    </div>
-    <div class="gal">
-      <div class="g g1" data-src="img/interior-hall.jpg" data-cap="جلسات ٢٥ جرام الهادئة"><img src="img/interior-hall.jpg" alt="داخل ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
-      <div class="g g2" data-src="img/counter.jpg" data-cap="ركن التحضير والعرض"><img src="img/counter.jpg" alt="كاونتر ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
-      <div class="g g3" data-src="img/desserts.jpg" data-cap="الحلا الطازج"><img src="img/desserts.jpg" alt="حلا ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
-      <div class="g g4" data-src="img/barista.jpg" data-cap="الباريستا أثناء التحضير"><img src="img/barista.jpg" alt="باريستا ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
-      <div class="g g5" data-src="img/icedtea.jpg" data-cap="شاي مثلج بالخوخ"><img src="img/icedtea.jpg" alt="شاي مثلج"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
-      <div class="g g6" data-src="img/latte-sofa.jpg" data-cap="لاتيه على الرخام"><img src="img/latte-sofa.jpg" alt="لاتيه ٢٥ جرام"><span class="zoom"><i class="ph ph-magnifying-glass-plus"></i></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- STORY -->
-<section id="story">
-  <div class="story-in wrap rv">
-    <i class="ph-fill ph-scales ic"></i>
-    <p class="q">“دقّة في الوزن،<br>صدق في الطعم.”</p>
-    <p class="ar">في ٢٥ جرام نؤمن أن القهوة الجيدة تبدأ من التفاصيل الصغيرة — الجرعة، الحرارة، الوقت — لنقدّم لك كوبًا متوازنًا يستحق التوقّف عنده.</p>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">آراؤكم · Reviews</span>
-      <h2 class="h-sec">ماذا قال زوّارنا</h2>
-      <p>مراجعات حقيقية من زوّار ٢٥ جرام على خرائط Google.</p>
-    </div>
-    <div class="rev-grid">
-      <div class="rev rv">
-        <span class="qmark">”</span>
-        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-        <p class="tx">المكان هادئ وصغير ومرتّب ومريح جدًا، والأسعار فاجأتني مرة! قهوة اليوم بـ ٧ ريال والحلويات لذيذة مرة وأسعارها مناسبة.</p>
-        <div class="who"><div class="av">W</div><div><div class="nm">W 3</div><div class="src">Local Guide · Google</div></div></div>
-      </div>
-      <div class="rev rv">
-        <span class="qmark">”</span>
-        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-        <p class="tx">طلبت من عندهم ثلاث قهاوي كلها ممتازة ماشاءالله، وأسعار الـ V60 مناسبة جدًا وطعمها جدًا ممتاز.</p>
-        <div class="who"><div class="av">ف</div><div><div class="nm">فهد البلوي</div><div class="src">Local Guide · Google</div></div></div>
-      </div>
-      <div class="rev rv">
-        <span class="qmark">”</span>
-        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-        <p class="tx">أول زيارة لي والله يسعدهم، خلوقين والقهوة ١٠ من ١٠ والحلا ولا أحلى منه. تجربة تستحق التكرار 🤍</p>
-        <div class="who"><div class="av">F</div><div><div class="nm">Faisal Asiri</div><div class="src">Google</div></div></div>
-      </div>
-    </div>
-    <p class="rev-foot rv">تقييم <b>4.7 من 5</b> بناءً على <b>305+</b> مراجعة على خرائط Google</p>
-  </div>
-</section>
-
-<!-- LOCATION -->
-<section id="loc">
-  <div class="wrap">
-    <div class="sec-head rv" style="text-align:right;margin:0 0 50px">
-      <span class="eyebrow">الموقع · Find Us</span>
-      <h2 class="h-sec">زورونا في تبوك</h2>
-    </div>
-    <div class="loc-grid">
-      <div class="loc-info rv">
-        <div class="row"><div class="loc-ic"><i class="ph-bold ph-map-pin"></i></div><div><strong>العنوان</strong><p>شارع عشرين، طريق الملك فهد<br>تبوك ٤٧٩١١، المملكة العربية السعودية</p></div></div>
-        <div class="row"><div class="loc-ic"><i class="ph-bold ph-clock"></i></div><div><strong>أوقات العمل</strong><p>يوميًا حتى ١٢:٣٠ بعد منتصف الليل</p></div></div>
-        <div class="row"><div class="loc-ic"><i class="ph-bold ph-phone"></i></div><div><strong>للتواصل</strong><p><a href="tel:0144251768">٠١٤ ٤٢٥ ١٧٦٨</a></p></div></div>
-        <div class="row"><div class="loc-ic"><i class="ph-bold ph-storefront"></i></div><div><strong>الخدمة</strong><p>تناول في المقهى · طلب خارجي · توصيل</p></div></div>
-        <div class="loc-actions">
-          <a href="https://www.google.com/maps/place/25+grams+cafe/@28.3883535,36.5887548,17z/data=!4m7!3m6!1s0x15a9ad17e7f82d35:0x2ee95195bd0e7b11!8m2!3d28.3883535!4d36.5887548!16s%2Fg%2F11n0v6ywvt" target="_blank" rel="noopener" class="btn btn-ink"><i class="ph-bold ph-navigation-arrow"></i> الاتجاهات</a>
-          <a href="tel:0144251768" class="btn btn-line"><i class="ph-bold ph-phone-call"></i> اتصل بنا</a>
+    <div class="cta-band rv">
+      <div class="gridbg"></div>
+      <div class="cta-grid">
+        <div class="cta-l">
+          <span class="eyebrow">تواصل معنا · Contact</span>
+          <h2>لديك أرضٌ أو فكرة؟<br>لنحوّلها إلى تصميم.</h2>
+          <p>الاستشارة الأولى مجانية. أخبرنا عن مشروعك وسنعود إليك خلال ٢٤ ساعة بخطة وتصوّر مبدئي وعرض سعر واضح.</p>
+          <div class="cta-info">
+            <div class="row"><div class="ic"><i class="ph-bold ph-map-pin"></i></div><div><strong>العنوان</strong><p>طريق الملك فهد، الحيّ التجاري<br>المملكة العربية السعودية</p></div></div>
+            <div class="row"><div class="ic"><i class="ph-bold ph-phone"></i></div><div><strong>الهاتف · واتساب</strong><p><a href="tel:+966500000000" dir="ltr">+966 50 000 0000</a></p></div></div>
+            <div class="row"><div class="ic"><i class="ph-bold ph-envelope-simple"></i></div><div><strong>البريد</strong><p><a href="mailto:hello@bunyan.studio">hello@bunyan.studio</a></p></div></div>
+            <div class="row"><div class="ic"><i class="ph-bold ph-clock"></i></div><div><strong>أوقات العمل</strong><p>الأحد – الخميس · ٩ ص – ٦ م</p></div></div>
+          </div>
         </div>
-      </div>
-      <div class="map-wrap rv">
-        <iframe src="https://www.google.com/maps?q=28.3883535,36.5887548&z=16&output=embed" title="موقع ٢٥ جرام على الخريطة" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <form class="form" id="reqForm">
+          <h3>اطلب استشارة مجانية</h3>
+          <p class="fnote">املأ النموذج وسيصلك ردّنا عبر واتساب مباشرةً.</p>
+          <div class="field"><label for="nm">الاسم</label><input id="nm" name="nm" type="text" placeholder="اسمك الكريم" required></div>
+          <div class="field"><label for="ph">رقم الجوال</label><input id="ph" name="ph" type="tel" placeholder="05xxxxxxxx" required></div>
+          <div class="field"><label for="ty">نوع المشروع</label>
+            <select id="ty" name="ty">
+              <option>تصميم معماري — فيلا / منزل</option>
+              <option>تصميم معماري — عمارة / تجاري</option>
+              <option>تصميم داخلي</option>
+              <option>تصميم إنشائي</option>
+              <option>إشراف هندسي</option>
+              <option>إظهار ثلاثي الأبعاد</option>
+              <option>استخراج رخصة بناء</option>
+              <option>أخرى / غير محدد</option>
+            </select>
+          </div>
+          <div class="field"><label for="ms">تفاصيل المشروع</label><textarea id="ms" name="ms" placeholder="مساحة الأرض، الموقع، وما تطمح إليه..."></textarea></div>
+          <button type="submit" class="btn"><i class="ph-bold ph-whatsapp-logo"></i> إرسال عبر واتساب</button>
+        </form>
       </div>
     </div>
   </div>
@@ -527,35 +607,46 @@ footer{background:var(--ink);color:var(--bg);padding:80px 0 34px}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="logo"><b>25</b><span>grams</span></div>
-        <p>٢٥ جرام · قهوة مختصة في تبوك. الجرعة المثالية، أجواء هادئة، وقهوة محضّرة بدقّة — مع حلا طازج كل يوم.</p>
+        <a href="#hero" class="logo"><svg class="mark" viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" rx="6" stroke="#A9763F" stroke-width="1.6"/><path d="M8 30 L20 9 L32 30" stroke="#A9763F" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 30 L13 21 L27 21 L27 30" stroke="#A9763F" stroke-width="1.4"/><line x1="8" y1="30" x2="32" y2="30" stroke="#A9763F" stroke-width="1.8"/></svg><span class="lt"><b>بُنيان</b><small>Bunyān Studio</small></span></a>
+        <p>مكتب تصميم هندسي ومعماري — نرافقك من الفكرة إلى البنيان: تصميم، إظهار، اعتماد، وإشراف.</p>
         <div class="foot-soc">
-          <a href="tel:0144251768" aria-label="اتصال"><i class="ph-bold ph-phone"></i></a>
-          <a href="https://www.google.com/maps/place/25+grams+cafe/@28.3883535,36.5887548,17z/data=!4m7!3m6!1s0x15a9ad17e7f82d35:0x2ee95195bd0e7b11!8m2!3d28.3883535!4d36.5887548!16s%2Fg%2F11n0v6ywvt" target="_blank" rel="noopener" aria-label="خرائط Google"><i class="ph-bold ph-map-pin"></i></a>
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="واتساب"><i class="ph-bold ph-whatsapp-logo"></i></a>
+          <a href="#" aria-label="انستقرام"><i class="ph-bold ph-instagram-logo"></i></a>
+          <a href="#" aria-label="إكس"><i class="ph-bold ph-x-logo"></i></a>
+          <a href="mailto:hello@bunyan.studio" aria-label="البريد"><i class="ph-bold ph-envelope-simple"></i></a>
         </div>
       </div>
       <div class="foot-col">
-        <h4>تصفّح</h4>
+        <h4>الخدمات</h4>
         <ul>
-          <li><a href="#intro">عن المقهى</a></li>
-          <li><a href="#menu">القائمة</a></li>
-          <li><a href="#atmos">الأجواء</a></li>
-          <li><a href="#reviews">آراؤكم</a></li>
-          <li><a href="#loc">الموقع</a></li>
+          <li><a href="#services">تصميم معماري</a></li>
+          <li><a href="#services">تصميم داخلي</a></li>
+          <li><a href="#services">تصميم إنشائي</a></li>
+          <li><a href="#services">إشراف هندسي</a></li>
+          <li><a href="#services">إظهار 3D</a></li>
         </ul>
       </div>
       <div class="foot-col">
-        <h4>زورونا</h4>
+        <h4>المكتب</h4>
         <ul>
-          <li><a href="#loc">شارع عشرين، تبوك</a></li>
-          <li><a href="tel:0144251768">٠١٤ ٤٢٥ ١٧٦٨</a></li>
-          <li><a href="#loc">حتى ١٢:٣٠ ليلاً</a></li>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#process">منهجيتنا</a></li>
+          <li><a href="#work">أعمالنا</a></li>
+          <li><a href="#words">آراء العملاء</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>تواصل</h4>
+        <ul>
+          <li><a href="tel:+966500000000" dir="ltr">+966 50 000 0000</a></li>
+          <li><a href="mailto:hello@bunyan.studio">hello@bunyan.studio</a></li>
+          <li><a href="#contact">اطلب استشارة</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>© 2026 25grams · ٢٥ جرام — جميع الحقوق محفوظة</p>
-      <span class="en">The perfect dose.</span>
+      <p>© 2026 بُنيان · Bunyān Studio — جميع الحقوق محفوظة</p>
+      <span class="en">From concept to structure.</span>
     </div>
   </div>
 </footer>
@@ -563,58 +654,45 @@ footer{background:var(--ink);color:var(--bg);padding:80px 0 34px}
 <!-- FLOATS -->
 <div class="floats">
   <button class="fbtn f-top" id="ftop" aria-label="للأعلى"><i class="ph-bold ph-arrow-up"></i></button>
-  <a href="tel:0144251768" class="fbtn f-call" aria-label="اتصال"><i class="ph-bold ph-phone-call"></i></a>
-</div>
-
-<!-- LIGHTBOX -->
-<div id="lb" role="dialog" aria-modal="true">
-  <button class="x" id="lbx" aria-label="إغلاق">✕</button>
-  <button class="ar-btn prev" id="lbp" aria-label="السابق"><i class="ph ph-caret-right"></i></button>
-  <img id="lbimg" src="" alt="">
-  <button class="ar-btn next" id="lbn" aria-label="التالي"><i class="ph ph-caret-left"></i></button>
+  <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="fbtn f-wa" aria-label="واتساب"><i class="ph-bold ph-whatsapp-logo"></i></a>
 </div>
 
 <script>
 const nav=document.getElementById('nav'),ftop=document.getElementById('ftop');
-addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);ftop.classList.toggle('show',scrollY>500)},{passive:true});
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);ftop.classList.toggle('show',scrollY>600)},{passive:true});
 ftop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
 
 const mnav=document.getElementById('mnav');
 document.getElementById('burger').onclick=()=>{mnav.classList.add('open');document.body.style.overflow='hidden'};
 const closeM=()=>{mnav.classList.remove('open');document.body.style.overflow=''};
 document.getElementById('mclose').onclick=closeM;
-document.querySelectorAll('#mnav a:not([href^="#"])').forEach(a=>a.addEventListener('click',closeM));
 
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  t.classList.add('active');
-  document.getElementById('p-'+t.dataset.tab).classList.add('active');
-}));
-
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
+// counters (Arabic-Indic numerals)
+const toAr=n=>String(n).replace(/[0-9]/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{
+  if(!e.isIntersecting)return;const el=e.target,tgt=+el.dataset.c,suf=el.dataset.suf||'';let v=0;
+  const step=()=>{v+=Math.ceil(tgt/45);if(v>=tgt)v=tgt;el.textContent=toAr(v)+suf;if(v<tgt)requestAnimationFrame(step)};step();cio.unobserve(el);
+},{threshold:.6});
+document.querySelectorAll('.stat b[data-c]').forEach(el=>cio.observe(el));
+
+// smooth anchor + close mobile
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  const t=document.querySelector(a.getAttribute('href'));
-  if(!t)return;
-  e.preventDefault();
-  const wasOpen=mnav.classList.contains('open');
-  closeM();
-  const go=()=>scrollTo({top:t.getBoundingClientRect().top+scrollY-70,behavior:'smooth'});
+  const t=document.querySelector(a.getAttribute('href'));if(!t)return;
+  e.preventDefault();const wasOpen=mnav.classList.contains('open');closeM();
+  const go=()=>scrollTo({top:t.getBoundingClientRect().top+scrollY-66,behavior:'smooth'});
   wasOpen?setTimeout(go,60):go();
 }));
 
-const gs=[...document.querySelectorAll('.g')],lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');let ci=0;
-const show=i=>{ci=(i+gs.length)%gs.length;lbimg.src=gs[ci].dataset.src;lbimg.alt=gs[ci].dataset.cap||''};
-const openLb=i=>{show(i);lb.classList.add('open');document.body.style.overflow='hidden'};
-const closeLb=()=>{lb.classList.remove('open');document.body.style.overflow=''};
-gs.forEach((g,i)=>g.onclick=()=>openLb(i));
-document.getElementById('lbx').onclick=closeLb;
-document.getElementById('lbp').onclick=()=>show(ci-1);
-document.getElementById('lbn').onclick=()=>show(ci+1);
-lb.onclick=e=>{if(e.target===lb)closeLb()};
-addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')show(ci-1);if(e.key==='ArrowLeft')show(ci+1)});
+// contact -> WhatsApp (replace number with the office's real WhatsApp)
+const WA='966500000000';
+document.getElementById('reqForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target;
+  const msg=`*طلب استشارة — بُنيان*%0a— الاسم: ${f.nm.value}%0a— الجوال: ${f.ph.value}%0a— نوع المشروع: ${f.ty.value}%0a— التفاصيل: ${f.ms.value||'—'}`;
+  window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');
+});
 </script>
 </body>
 </html>
