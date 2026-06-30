@@ -78,6 +78,14 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
 
 @media(max-width:760px){.pair{grid-template-columns:1fr}.metrics{gap:30px}.wrap{padding:0 22px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.001s!important}.rv{opacity:1;transform:none}}
+
+.site .prev .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .7s var(--ease)}
+.site:hover .prev .thumb{transform:scale(1.07)}
+.site .prev::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,16,.25),rgba(10,12,16,.62));z-index:2}
+.site .prev .mock,.site .prev .swatches{z-index:3}
+.site .prev .mock .big{color:#fff!important}
+.site .prev .mock .ln{background:rgba(255,255,255,.65)!important;opacity:.7}
+.site .prev .mock .bar{box-shadow:0 0 0 3px rgba(0,0,0,.15)}
 </style>
 </head>
 <body>
@@ -92,7 +100,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
       <div class="m"><b>٥</b><span>مكاتب</span></div>
       <div class="m"><b>١٠</b><span>مواقع</span></div>
       <div class="m"><b>١٠</b><span>هويات بصرية</span></div>
-      <div class="m"><b>٠</b><span>صور خارجية</span></div>
+      <div class="m"><b>٨٨</b><span>صورة حقيقية</span></div>
     </div>
   </div>
 </header>
@@ -110,7 +118,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
     </div>
     <div class="pair">
       <a class="site" href="./01-mimar/a/">
-        <div class="prev" style="background:#EDE6DA">
+        <div class="prev" style="background:#EDE6DA"><img class="thumb" src="../assets/img/arch/01.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(33,28,22,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(33,28,22,.06) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#C0633B"></div><div class="big" style="color:#211C16">مِعمار</div><div class="ln" style="width:70%;background:#211C16"></div><div class="ln" style="width:50%;background:#211C16"></div></div>
           <div class="swatches"><i style="background:#EDE6DA"></i><i style="background:#C0633B"></i><i style="background:#211C16"></i></div>
@@ -118,7 +126,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
         <div class="body"><span class="tag">تصميم A · Editorial Sand</span><h3>افتتاحي رملي</h3><p>طابع مجلّة راقٍ، خطوط Fraunces كبيرة، مساحات بيضاء سخيّة ولمسة تيراكوتا.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
       </a>
       <a class="site" href="./01-mimar/b/">
-        <div class="prev" style="background:#0F1623">
+        <div class="prev" style="background:#0F1623"><img class="thumb" src="../assets/img/night/02.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(201,162,75,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.12) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#C9A24B"></div><div class="big" style="color:#ECE8DD;font-family:'Fraunces'">مِعمار</div><div class="ln" style="width:70%;background:#C9A24B"></div><div class="ln" style="width:50%;background:#8893A6"></div></div>
           <div class="swatches"><i style="background:#0F1623"></i><i style="background:#C9A24B"></i><i style="background:#ECE8DD"></i></div>
@@ -139,7 +147,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
     </div>
     <div class="pair">
       <a class="site" href="./02-ofoq/a/">
-        <div class="prev" style="background:#F4F7FB">
+        <div class="prev" style="background:#F4F7FB"><img class="thumb" src="../assets/img/structural/06.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(14,23,38,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(14,23,38,.05) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#2563EB"></div><div class="big" style="color:#0E1726;font-family:'IBM Plex Sans Arabic';font-weight:700">أُفق</div><div class="ln" style="width:70%;background:#0E1726"></div><div class="ln" style="width:50%;background:#64748B"></div></div>
           <div class="swatches"><i style="background:#FFFFFF"></i><i style="background:#2563EB"></i><i style="background:#0E1726"></i></div>
@@ -147,7 +155,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
         <div class="body"><span class="tag">تصميم A · Corporate Azure</span><h3>مؤسسي أزرق</h3><p>نظيف ومؤسسي، بطاقات مرتّبة وإحصائيات واضحة وأزرق ملكيّ موثوق.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
       </a>
       <a class="site" href="./02-ofoq/b/">
-        <div class="prev" style="background:#14171A">
+        <div class="prev" style="background:#14171A"><img class="thumb" src="../assets/img/structural/01.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(182,245,0,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(182,245,0,.1) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#B6F500"></div><div class="big" style="color:#E8EAE6;font-family:'IBM Plex Mono'">أُفق</div><div class="ln" style="width:70%;background:#B6F500"></div><div class="ln" style="width:50%;background:#8A9099"></div></div>
           <div class="swatches"><i style="background:#14171A"></i><i style="background:#B6F500"></i><i style="background:#E8EAE6"></i></div>
@@ -168,7 +176,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
     </div>
     <div class="pair">
       <a class="site" href="./03-masaha/a/">
-        <div class="prev" style="background:#F3EBE4">
+        <div class="prev" style="background:#F3EBE4"><img class="thumb" src="../assets/img/interior/01.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(42,33,28,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,33,28,.05) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#C98B7A"></div><div class="big" style="color:#2A211C">مساحة</div><div class="ln" style="width:70%;background:#B08968"></div><div class="ln" style="width:50%;background:#2A211C"></div></div>
           <div class="swatches"><i style="background:#F3EBE4"></i><i style="background:#B08968"></i><i style="background:#C98B7A"></i></div>
@@ -176,7 +184,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
         <div class="body"><span class="tag">تصميم A · Blush Walnut</span><h3>وردي كريمي</h3><p>بوتيك ناعم فاخر، زوايا دائرية ودفء وخطوط Fraunces أنيقة.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
       </a>
       <a class="site" href="./03-masaha/b/">
-        <div class="prev" style="background:#ECEAE0">
+        <div class="prev" style="background:#ECEAE0"><img class="thumb" src="../assets/img/interior/07.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(44,44,36,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(44,44,36,.05) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#6E7E5B"></div><div class="big" style="color:#2C2C24;font-family:'Fraunces'">مساحة</div><div class="ln" style="width:70%;background:#6E7E5B"></div><div class="ln" style="width:50%;background:#B07A52"></div></div>
           <div class="swatches"><i style="background:#ECEAE0"></i><i style="background:#6E7E5B"></i><i style="background:#B07A52"></i></div>
@@ -197,7 +205,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
     </div>
     <div class="pair">
       <a class="site" href="./04-riwaq/a/">
-        <div class="prev" style="background:#EAEDE6">
+        <div class="prev" style="background:#EAEDE6"><img class="thumb" src="../assets/img/landscape/01.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(28,42,32,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(28,42,32,.05) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#3E7A4F"></div><div class="big" style="color:#20402E">رواق</div><div class="ln" style="width:70%;background:#3E7A4F"></div><div class="ln" style="width:50%;background:#20402E"></div></div>
           <div class="swatches"><i style="background:#EAEDE6"></i><i style="background:#3E7A4F"></i><i style="background:#20402E"></i></div>
@@ -205,7 +213,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
         <div class="body"><span class="tag">تصميم A · Forest Calm</span><h3>أخضر غابي</h3><p>طبيعيّ هادئ برسومات نباتية ومنحنيات عضوية وحضورٍ أخضر منعش.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
       </a>
       <a class="site" href="./04-riwaq/b/">
-        <div class="prev" style="background:#F0E6DA">
+        <div class="prev" style="background:#F0E6DA"><img class="thumb" src="../assets/img/landscape/06.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(42,30,22,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,30,22,.05) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#B5562E"></div><div class="big" style="color:#8A4B33;font-family:'Fraunces'">رواق</div><div class="ln" style="width:70%;background:#B5562E"></div><div class="ln" style="width:50%;background:#7E875F"></div></div>
           <div class="swatches"><i style="background:#F0E6DA"></i><i style="background:#B5562E"></i><i style="background:#7E875F"></i></div>
@@ -226,7 +234,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
     </div>
     <div class="pair">
       <a class="site" href="./05-binaa/a/">
-        <div class="prev" style="background:#15161A">
+        <div class="prev" style="background:#15161A"><img class="thumb" src="../assets/img/structural/05.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(242,92,5,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(242,92,5,.1) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#F25C05"></div><div class="big" style="color:#ECECEA;font-family:'IBM Plex Mono'">بِناء</div><div class="ln" style="width:70%;background:#F25C05"></div><div class="ln" style="width:50%;background:#8A9099"></div></div>
           <div class="swatches"><i style="background:#15161A"></i><i style="background:#F25C05"></i><i style="background:#8A9099"></i></div>
@@ -234,7 +242,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
         <div class="body"><span class="tag">تصميم A · Industrial Orange</span><h3>صناعي برتقالي</h3><p>قوّة صناعية بخطوط تحذيرية مائلة وأرقام ضخمة وطاقة موقع البناء.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
       </a>
       <a class="site" href="./05-binaa/b/">
-        <div class="prev" style="background:#E8EBEE">
+        <div class="prev" style="background:#E8EBEE"><img class="thumb" src="../assets/img/structural/02.jpg" alt="" loading="lazy">
           <div class="pgrid" style="background-image:linear-gradient(rgba(47,93,124,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(47,93,124,.1) 1px,transparent 1px);background-size:26px 26px"></div>
           <div class="mock"><div class="bar" style="width:40px;background:#2F5D7C"></div><div class="big" style="color:#1A2026;font-weight:700">بِناء</div><div class="ln" style="width:70%;background:#2F5D7C"></div><div class="ln" style="width:50%;background:#6B7780"></div></div>
           <div class="swatches"><i style="background:#E8EBEE"></i><i style="background:#2F5D7C"></i><i style="background:#1A2026"></i></div>
@@ -244,7 +252,7 @@ footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
     </div>
   </section>
 
-  <p class="note">◆ جميع المواقع عيّنات تصميم ببيانات تواصل قابلة للاستبدال — تُسلَّم لأي مكتب ليصبح موقعه الرسمي.</p>
+  <p class="note">◆ جميع المواقع تتضمّن صوراً فوتوغرافية حقيقية وبيانات تواصل قابلة للاستبدال — تُسلَّم لأي مكتب ليصبح موقعه الرسمي.</p>
 </main>
 
 <footer>
