@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>مِعمار · MIMAR — عمارة معاصرة بروح التراث النجدي</title>
+<meta name="description" content="مكتب مِعمار للتصميم المعماري — فلل واستراحات ومبانٍ سكنية فاخرة بروح العمارة النجدية والسلمانية المعاصرة." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+<style>
+  :root{
+    --bg:#EDE6DA;
+    --sec:#E3DACB;
+    --ink:#211C16;
+    --terra:#C0633B;
+    --deep:#8F4326;
+    --muted:#8A7F70;
+    --line:rgba(33,28,22,.16);
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'IBM Plex Sans Arabic',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+    --maxw:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%;display:block}
+  ::selection{background:var(--terra);color:var(--bg)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+  .serif{font-family:var(--serif)}
+
+  /* ===== NAV ===== */
+  header.nav{
+    position:fixed;top:0;right:0;left:0;z-index:100;
+    transition:background .4s ease, box-shadow .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(237,230,218,.88);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand .ar{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:.02em}
+  .brand .en{font-family:var(--mono);font-size:.66rem;letter-spacing:.34em;color:var(--muted);text-transform:uppercase}
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a{
+    font-size:.92rem;color:var(--ink);position:relative;padding:4px 0;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;bottom:0;right:0;height:1px;width:0;background:var(--terra);transition:width .35s ease;
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    border:1px solid var(--ink);border-radius:999px;padding:9px 20px;font-size:.86rem;
+    transition:background .3s,color .3s;
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--bg)}
+  .burger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;color:var(--ink)}
+  .burger i{font-size:1.7rem}
+
+  /* mobile overlay */
+  .overlay{
+    position:fixed;inset:0;z-index:200;background:var(--bg);
+    transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+    display:flex;flex-direction:column;padding:28px;
+  }
+  .overlay.open{transform:translateY(0)}
+  .overlay-top{display:flex;justify-content:space-between;align-items:center;height:50px}
+  .overlay-close{background:none;border:none;color:var(--ink);font-size:1.9rem;cursor:pointer}
+  .overlay nav{display:flex;flex-direction:column;justify-content:center;flex:1;gap:6px}
+  .overlay nav a{
+    font-family:var(--serif);font-size:2.2rem;font-weight:500;padding:10px 0;
+    border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .overlay nav a span{font-family:var(--mono);font-size:.8rem;color:var(--terra)}
+
+  /* ===== HERO ===== */
+  .hero{padding:150px 0 70px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:end}
+  .hero-eyebrow{display:flex;align-items:center;gap:14px;color:var(--deep);margin-bottom:26px}
+  .hero-eyebrow .ln{height:1px;width:54px;background:var(--deep)}
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.8rem,7.6vw,6.2rem);line-height:.98;letter-spacing:-.01em;
+  }
+  .hero h1 em{font-style:italic;color:var(--terra)}
+  .hero h1 .thin{font-weight:300}
+  .hero-lead{margin-top:30px;font-size:1.12rem;max-width:46ch;color:#3a332a}
+  .hero-actions{margin-top:38px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:var(--bg);padding:14px 26px;border-radius:999px;
+    font-size:.94rem;transition:transform .3s,background .3s;border:1px solid var(--ink);cursor:pointer;
+  }
+  .btn:hover{background:var(--deep);border-color:var(--deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+
+  .hero-art{position:relative}
+  .hero-art .frame{
+    border:1px solid var(--line);background:linear-gradient(160deg,#E8E0D2,#E3DACB);
+    border-radius:4px;padding:22px;position:relative;overflow:hidden;
+  }
+  .hero-art .tag{
+    position:absolute;top:14px;left:14px;color:var(--muted);
+  }
+  .hero-meta{
+    display:flex;justify-content:space-between;margin-top:18px;color:var(--muted);
+    border-top:1px solid var(--line);padding-top:14px;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .sec{padding:96px 0;border-top:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:start;margin-bottom:56px}
+  .sec-num{font-family:var(--mono);font-size:.8rem;color:var(--terra);padding-top:8px}
+  .sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04}
+  .sec-title em{font-style:italic;color:var(--deep)}
+  .sec-sub{margin-top:16px;max-width:54ch;color:#3a332a;font-size:1.04rem}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-text p{margin-bottom:18px;color:#3a332a}
+  .about-text .sig{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--deep);margin-top:24px}
+  .princ{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .princ .cell{background:var(--bg);padding:26px 22px}
+  .princ .cell .k{font-family:var(--mono);font-size:.68rem;color:var(--terra);letter-spacing:.14em}
+  .princ .cell .v{font-family:var(--serif);font-size:1.5rem;margin-top:8px}
+  .princ .cell p{font-size:.9rem;color:var(--muted);margin-top:8px}
+
+  /* ===== SERVICES ===== */
+  .svc-list{border-top:1px solid var(--line)}
+  .svc-row{
+    display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;
+    padding:30px 0;border-bottom:1px solid var(--line);
+    transition:padding .4s ease;position:relative;
+  }
+  .svc-row::before{
+    content:"";position:absolute;inset:0;background:var(--sec);opacity:0;transition:opacity .35s;z-index:-1;
+    border-radius:6px;
+  }
+  .svc-row:hover{padding-right:18px;padding-left:18px}
+  .svc-row:hover::before{opacity:.6}
+  .svc-row .idx{font-family:var(--mono);font-size:.8rem;color:var(--terra)}
+  .svc-row .name{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);font-weight:400}
+  .svc-row .desc{color:var(--muted);font-size:.94rem;margin-top:4px;max-width:60ch}
+  .svc-row .ic{font-size:2rem;color:var(--deep)}
+
+  /* ===== PORTFOLIO ===== */
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .work-card{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--sec);transition:transform .4s,box-shadow .4s}
+  .work-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -28px rgba(33,28,22,.4)}
+  .work-vis{aspect-ratio:16/11;background:linear-gradient(165deg,#E8E0D2,#DCD2C0);position:relative;overflow:hidden}
+  .work-vis svg{position:absolute;inset:0;width:100%;height:100%}
+  .work-cat{position:absolute;top:14px;right:14px;background:var(--bg);color:var(--deep);padding:5px 12px;border-radius:999px}
+  .work-body{padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+  .work-body h3{font-family:var(--serif);font-size:1.5rem;font-weight:500}
+  .work-body .loc{color:var(--muted);font-size:.86rem;margin-top:4px}
+  .work-body .yr{font-family:var(--mono);font-size:.78rem;color:var(--terra)}
+
+  /* ===== STATS ===== */
+  .stats-band{background:var(--ink);color:var(--bg);border-radius:8px;padding:60px 40px}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+  .stat .num{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4rem);font-weight:400;color:#E8C9A0}
+  .stat .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:#cabfae;margin-top:6px;text-transform:uppercase}
+  .stat .desc{font-size:.9rem;color:#b8ad9c;margin-top:8px}
+
+  /* ===== TESTIMONIALS ===== */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .quote{border:1px solid var(--line);border-radius:6px;padding:30px 26px;background:var(--bg);display:flex;flex-direction:column}
+  .quote .mark{font-family:var(--serif);font-size:3.4rem;line-height:.6;color:var(--terra);height:32px}
+  .quote p{font-family:var(--serif);font-style:italic;font-size:1.18rem;line-height:1.5;color:var(--ink);flex:1}
+  .quote .who{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+  .quote .who .nm{font-weight:600}
+  .quote .who .rl{color:var(--muted);font-size:.84rem}
+
+  /* ===== CONTACT ===== */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}
+  .contact-info .item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .contact-info .item i{font-size:1.4rem;color:var(--deep);margin-top:4px}
+  .contact-info .item .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--terra)}
+  .contact-info .item .v{font-size:1.06rem;margin-top:2px}
+  form .field{margin-bottom:20px}
+  form label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);margin-bottom:8px;text-transform:uppercase}
+  form input,form textarea,form select{
+    width:100%;background:var(--sec);border:1px solid var(--line);border-radius:4px;
+    padding:14px 16px;font-family:var(--sans);font-size:.98rem;color:var(--ink);transition:border-color .3s;
+  }
+  form input:focus,form textarea:focus,form select:focus{outline:none;border-color:var(--terra)}
+  form .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  form textarea{resize:vertical;min-height:120px}
+
+  /* ===== FOOTER ===== */
+  footer.foot{background:var(--ink);color:var(--bg);padding:70px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:50px}
+  .foot .brand .ar{color:var(--bg)}
+  .foot-col h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:#E8C9A0;margin-bottom:18px;text-transform:uppercase}
+  .foot-col a{display:block;color:#cabfae;padding:6px 0;font-size:.94rem;transition:color .25s}
+  .foot-col a:hover{color:var(--bg)}
+  .foot-tag{font-family:var(--serif);font-size:1.4rem;margin:18px 0;max-width:34ch;line-height:1.4}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:#b8ad9c;font-size:.82rem}
+  .foot-socials{display:flex;gap:16px}
+  .foot-socials a{color:#cabfae;font-size:1.2rem}
+
+  /* ===== FLOATING ===== */
+  .floats{position:fixed;bottom:24px;left:24px;z-index:90;display:flex;flex-direction:column;gap:12px}
+  .float-btn{
+    width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;border:none;font-size:1.5rem;transition:transform .3s,opacity .3s;box-shadow:0 10px 24px -8px rgba(33,28,22,.5);
+  }
+  .float-wa{background:#1faf54;color:#fff}
+  .float-top{background:var(--ink);color:var(--bg);opacity:0;pointer-events:none}
+  .float-top.show{opacity:1;pointer-events:auto}
+  .float-btn:hover{transform:translateY(-3px)}
+
+  /* ===== REVEAL ===== */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:980px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+    .work-grid,.quotes{grid-template-columns:1fr 1fr}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .nav-links,.nav-cta{display:none}
+    .burger{display:flex;align-items:center;justify-content:center}
+    .work-grid,.quotes,.stats-grid,.foot-grid,.princ,form .two{grid-template-columns:1fr}
+    .sec{padding:64px 0}
+    .sec-head{grid-template-columns:1fr;gap:10px}
+    .svc-row{grid-template-columns:auto 1fr;gap:16px}
+    .svc-row .ic{display:none}
+    .stats-band{padding:40px 24px}
+    .wrap{padding:0 20px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important}
+    .rv{opacity:1 !important;transform:none !important;transition:none !important}
+    .work-card:hover,.btn:hover,.float-btn:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="ar">مِعمار</span>
+      <span class="en">MIMAR · EST. ٢٠١١</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">المكتب</a>
+      <a href="#services">الخدمات</a>
+      <a href="#work">الأعمال</a>
+      <a href="#process">المنهجية</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <a href="#contact" class="nav-cta">احجز استشارة</a>
+    <button class="burger" id="burger" aria-label="القائمة"><i class="ph ph-list"></i></button>
+  </div>
+</header>
+
+<!-- ===== MOBILE OVERLAY ===== -->
+<div class="overlay" id="overlay">
+  <div class="overlay-top">
+    <span class="brand"><span class="ar serif" style="font-size:1.5rem">مِعمار</span></span>
+    <button class="overlay-close" id="overlayClose" aria-label="إغلاق"><i class="ph ph-x"></i></button>
+  </div>
+  <nav>
+    <a href="#about" data-close>المكتب <span>٠١</span></a>
+    <a href="#services" data-close>الخدمات <span>٠٢</span></a>
+    <a href="#work" data-close>الأعمال <span>٠٣</span></a>
+    <a href="#process" data-close>المنهجية <span>٠٤</span></a>
+    <a href="#contact" data-close>تواصل <span>٠٥</span></a>
+  </nav>
+</div>
+
+<span id="top"></span>
+
+<!-- ===== HERO ===== -->
+<section class="hero wrap" id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="ln"></span>
+        <span class="mono">مكتب تصميم معماري · الرياض</span>
+      </div>
+      <h1 class="rv">
+        نُصمِّم <em>المكان</em><br/>
+        <span class="thin">قبل أن نبني</span> الجدار
+      </h1>
+      <p class="hero-lead rv d1">
+        مِعمار مكتبٌ متخصص في العمارة المعاصرة المستلهمة من روح التراث النجدي والسلماني — فللٌ واستراحاتٌ ومبانٍ سكنية فاخرة تُوازن بين الضوء والظل، والخصوصية والانفتاح، والمادة والمعنى.
+      </p>
+      <div class="hero-actions rv d2">
+        <a href="#work" class="btn">شاهد أعمالنا <i class="ph ph-arrow-left"></i></a>
+        <a href="#contact" class="btn btn-ghost">ابدأ مشروعك</a>
+      </div>
+    </div>
+
+    <div class="hero-art rv d2">
+      <div class="frame">
+        <span class="tag mono">ELEVATION · A-01</span>
+        <svg viewBox="0 0 400 320" fill="none" stroke="#8F4326" stroke-width="1.1" aria-label="واجهة معمارية">
+          <rect x="40" y="60" width="320" height="200" stroke-width="1.4"/>
+          <line x1="40" y1="120" x2="360" y2="120"/>
+          <line x1="40" y1="200" x2="360" y2="200"/>
+          <rect x="64" y="80" width="46" height="30" stroke="#C0633B"/>
+          <rect x="124" y="80" width="46" height="30" stroke="#C0633B"/>
+          <rect x="184" y="80" width="46" height="30" stroke="#C0633B"/>
+          <rect x="244" y="80" width="46" height="30" stroke="#C0633B"/>
+          <rect x="304" y="80" width="34" height="30" stroke="#C0633B"/>
+          <rect x="64" y="140" width="80" height="50"/>
+          <rect x="170" y="140" width="60" height="50"/>
+          <rect x="256" y="140" width="82" height="50"/>
+          <rect x="150" y="216" width="50" height="44" fill="#E8C9A0" fill-opacity=".4" stroke="#8F4326"/>
+          <path d="M40 60 L200 18 L360 60" stroke-width="1.4"/>
+          <line x1="200" y1="18" x2="200" y2="44" stroke-dasharray="3 3"/>
+          <line x1="20" y1="260" x2="380" y2="260" stroke="#211C16"/>
+          <text x="200" y="300" fill="#8A7F70" font-family="monospace" font-size="9" text-anchor="middle" stroke="none">المقياس ١:١٠٠ — فيلا السلام</text>
+        </svg>
+      </div>
+      <div class="hero-meta mono">
+        <span>٢١°٤٢′ ش — ٣٩°١١′ ق</span>
+        <span>المشاريع المسلَّمة: ٨٤+</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="sec wrap" id="about">
+  <div class="sec-head">
+    <span class="sec-num">٠١ — المكتب</span>
+    <div>
+      <h2 class="sec-title rv">فلسفةٌ تبدأ من <em>الأرض</em><br/>وتنتهي عند الإنسان</h2>
+      <p class="sec-sub rv d1">منذ عام ٢٠١١ ونحن نُترجم نمط الحياة إلى مساحات. نقرأ الأرض، والاتجاه، والمناخ، وعادات الأسرة، قبل أن نرسم أول خط.</p>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text rv">
+      <p>نؤمن أن العمارة الجيدة ليست واجهةً جميلة فحسب، بل تجربةٌ يومية متكاملة: كيف يدخل الضوء صباحًا، وأين تجلس العائلة مساءً، وكيف يتنفّس المبنى في حرّ الجزيرة. لذلك نُصمّم من الداخل إلى الخارج، لا العكس.</p>
+      <p>نستلهم من العمارة النجدية مفرداتها الذكية — السماكة الحرارية، والفناء الداخلي، والمشربيات، والكتل المصمتة المثقوبة بعناية — ونعيد صياغتها بلغة معاصرة من الخرسانة والحجر والخشب والضوء.</p>
+      <p class="sig">«نُصمّم بيوتًا تُشبه أصحابها، لا كتالوجات تتكرر.»</p>
+    </div>
+    <div class="princ rv d1">
+      <div class="cell">
+        <div class="k">المبدأ ٠١</div>
+        <div class="v serif">السياق أولًا</div>
+        <p>كل تصميم يولد من أرضه واتجاهه ومناخه، لا من قالب جاهز.</p>
+      </div>
+      <div class="cell">
+        <div class="k">المبدأ ٠٢</div>
+        <div class="v serif">الضوء مادة</div>
+        <p>نتعامل مع الإضاءة الطبيعية كعنصر إنشائي لا كأثرٍ جانبي.</p>
+      </div>
+      <div class="cell">
+        <div class="k">المبدأ ٠٣</div>
+        <div class="v serif">الخصوصية</div>
+        <p>انفتاحٌ على الداخل، وحجبٌ ذكي عن الخارج، يحفظ راحة الأسرة.</p>
+      </div>
+      <div class="cell">
+        <div class="k">المبدأ ٠٤</div>
+        <div class="v serif">التفصيل</div>
+        <p>الجمال في الوصلة والظل وملمس المادة، لا في الزخرفة الزائدة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec wrap" id="services">
+  <div class="sec-head">
+    <span class="sec-num">٠٢ — الخدمات</span>
+    <div>
+      <h2 class="sec-title rv">من الفكرة الأولى<br/>إلى <em>تسليم المفتاح</em></h2>
+      <p class="sec-sub rv d1">نرافق مشروعك في كل مرحلة، بفريق هندسي متكامل تحت سقفٍ واحد.</p>
+    </div>
+  </div>
+
+  <div class="svc-list">
+    <div class="svc-row rv">
+      <span class="idx">٠١</span>
+      <div>
+        <div class="name serif">التصميم المعماري</div>
+        <p class="desc">دراسة الأرض، المخططات المبدئية، توزيع الفراغات، الواجهات، والهوية المعمارية الكاملة للمشروع السكني أو الترفيهي.</p>
+      </div>
+      <i class="ph ph-compass-tool ic"></i>
+    </div>
+    <div class="svc-row rv">
+      <span class="idx">٠٢</span>
+      <div>
+        <div class="name serif">التصوُّر ثلاثي الأبعاد</div>
+        <p class="desc">مشاهد واقعية للداخل والخارج تُمكّنك من رؤية بيتك قبل البناء، مع جولات افتراضية ولقطات بالإضاءة الليلية والنهارية.</p>
+      </div>
+      <i class="ph ph-cube ic"></i>
+    </div>
+    <div class="svc-row rv">
+      <span class="idx">٠٣</span>
+      <div>
+        <div class="name serif">التراخيص والاعتماد</div>
+        <p class="desc">إعداد المخططات التنفيذية واستخراج رخص البناء واعتمادها لدى الأمانة والجهات المختصة بسلاسة وبلا تعثُّر.</p>
+      </div>
+      <i class="ph ph-stamp ic"></i>
+    </div>
+    <div class="svc-row rv">
+      <span class="idx">٠٤</span>
+      <div>
+        <div class="name serif">الإشراف الهندسي</div>
+        <p class="desc">متابعة ميدانية دورية لضمان مطابقة التنفيذ للتصميم، وجودة المواد، والالتزام بالجدول الزمني والميزانية.</p>
+      </div>
+      <i class="ph ph-hard-hat ic"></i>
+    </div>
+    <div class="svc-row rv">
+      <span class="idx">٠٥</span>
+      <div>
+        <div class="name serif">التصميم الداخلي</div>
+        <p class="desc">تكاملٌ بين العمارة والداخل: المواد، الإضاءة، الأثاث المخصص، والمعالجات التي تُكمل روح المكان وتُغني التجربة.</p>
+      </div>
+      <i class="ph ph-armchair ic"></i>
+    </div>
+    <div class="svc-row rv">
+      <span class="idx">٠٦</span>
+      <div>
+        <div class="name serif">تنسيق الموقع العام</div>
+        <p class="desc">تصميم الحدائق والمسطحات والمداخل والأفنية، وربط المبنى بمحيطه ربطًا يحترم المناخ ويوفّر الخصوصية.</p>
+      </div>
+      <i class="ph ph-tree ic"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="sec wrap" id="work">
+  <div class="sec-head">
+    <span class="sec-num">٠٣ — الأعمال</span>
+    <div>
+      <h2 class="sec-title rv">مشاريعٌ <em>مختارة</em></h2>
+      <p class="sec-sub rv d1">نماذج من فللٍ واستراحات نُفّذت ووثّقت روحًا معمارية واحدة بتعبيرات مختلفة.</p>
+    </div>
+  </div>
+
+  <div class="work-grid">
+    <!-- 1 -->
+    <article class="work-card rv">
+      <div class="work-vis">
+        <span class="work-cat mono">فيلا سكنية</span>
+        <svg viewBox="0 0 400 260" fill="none" stroke="#8F4326" stroke-width="1.2" preserveAspectRatio="xMidYMid meet">
+          <rect x="50" y="80" width="300" height="120"/>
+          <rect x="50" y="50" width="170" height="30" fill="#C0633B" fill-opacity=".18"/>
+          <line x1="50" y1="140" x2="350" y2="140"/>
+          <rect x="70" y="100" width="40" height="30"/><rect x="130" y="100" width="40" height="30"/>
+          <rect x="190" y="100" width="40" height="30"/><rect x="250" y="100" width="40" height="30"/>
+          <rect x="310" y="100" width="24" height="30"/>
+          <rect x="180" y="158" width="40" height="42" fill="#E8C9A0" fill-opacity=".5"/>
+          <line x1="30" y1="200" x2="370" y2="200" stroke="#211C16"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div>
+          <h3 class="serif">فيلا السلام</h3>
+          <div class="loc">حي الملقا — الرياض</div>
+        </div>
+        <span class="yr">٢٠٢٣</span>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="work-card rv d1">
+      <div class="work-vis">
+        <span class="work-cat mono">استراحة</span>
+        <svg viewBox="0 0 400 260" fill="none" stroke="#8F4326" stroke-width="1.2" preserveAspectRatio="xMidYMid meet">
+          <rect x="60" y="70" width="280" height="130"/>
+          <path d="M60 70 L200 40 L340 70" stroke-width="1.4"/>
+          <line x1="200" y1="40" x2="200" y2="200" stroke-dasharray="4 4"/>
+          <circle cx="130" cy="135" r="26" stroke="#C0633B"/>
+          <circle cx="270" cy="135" r="26" stroke="#C0633B"/>
+          <rect x="186" y="150" width="28" height="50" fill="#E8C9A0" fill-opacity=".5"/>
+          <line x1="40" y1="200" x2="360" y2="200" stroke="#211C16"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div>
+          <h3 class="serif">استراحة النخيل</h3>
+          <div class="loc">طريق الدرعية</div>
+        </div>
+        <span class="yr">٢٠٢٢</span>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="work-card rv d2">
+      <div class="work-vis">
+        <span class="work-cat mono">مبنى سكني</span>
+        <svg viewBox="0 0 400 260" fill="none" stroke="#8F4326" stroke-width="1.2" preserveAspectRatio="xMidYMid meet">
+          <rect x="90" y="40" width="220" height="170"/>
+          <line x1="90" y1="80" x2="310" y2="80"/><line x1="90" y1="120" x2="310" y2="120"/>
+          <line x1="90" y1="160" x2="310" y2="160"/>
+          <rect x="110" y="52" width="30" height="20" fill="#C0633B" fill-opacity=".22"/>
+          <rect x="160" y="52" width="30" height="20" fill="#C0633B" fill-opacity=".22"/>
+          <rect x="210" y="52" width="30" height="20" fill="#C0633B" fill-opacity=".22"/>
+          <rect x="260" y="52" width="30" height="20" fill="#C0633B" fill-opacity=".22"/>
+          <rect x="110" y="92" width="30" height="20"/><rect x="160" y="92" width="30" height="20"/>
+          <rect x="210" y="92" width="30" height="20"/><rect x="260" y="92" width="30" height="20"/>
+          <rect x="180" y="172" width="40" height="38" fill="#E8C9A0" fill-opacity=".5"/>
+          <line x1="60" y1="210" x2="340" y2="210" stroke="#211C16"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div>
+          <h3 class="serif">مبنى رواء</h3>
+          <div class="loc">حي حطين — الرياض</div>
+        </div>
+        <span class="yr">٢٠٢٤</span>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="work-card rv d3">
+      <div class="work-vis">
+        <span class="work-cat mono">مخطط أرضي</span>
+        <svg viewBox="0 0 400 260" fill="none" stroke="#8F4326" stroke-width="1.1" preserveAspectRatio="xMidYMid meet">
+          <rect x="60" y="40" width="280" height="180"/>
+          <line x1="200" y1="40" x2="200" y2="220"/>
+          <line x1="60" y1="130" x2="340" y2="130"/>
+          <rect x="74" y="54" width="110" height="62" stroke="#C0633B"/>
+          <rect x="216" y="54" width="110" height="62"/>
+          <rect x="74" y="144" width="70" height="62"/>
+          <rect x="160" y="144" width="80" height="62" fill="#E8C9A0" fill-opacity=".4"/>
+          <rect x="256" y="144" width="70" height="62"/>
+          <circle cx="200" cy="130" r="5" fill="#8F4326"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div>
+          <h3 class="serif">قصر الواحة</h3>
+          <div class="loc">العمارية — الرياض</div>
+        </div>
+        <span class="yr">٢٠٢١</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== STATS / PROCESS ===== -->
+<section class="sec wrap" id="process">
+  <div class="sec-head">
+    <span class="sec-num">٠٤ — بالأرقام</span>
+    <div>
+      <h2 class="sec-title rv">سجلٌّ نفخر به</h2>
+      <p class="sec-sub rv d1">ثقةٌ تراكمت عبر السنوات من ملّاكٍ ومستثمرين في مختلف مناطق المملكة.</p>
+    </div>
+  </div>
+
+  <div class="stats-band rv">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="num" data-count="84" data-suffix="+">٠</div>
+        <div class="lbl">مشروع مُسلَّم</div>
+        <div class="desc">فلل واستراحات ومبانٍ سكنية</div>
+      </div>
+      <div class="stat">
+        <div class="num" data-count="13">٠</div>
+        <div class="lbl">عامًا من الخبرة</div>
+        <div class="desc">منذ التأسيس عام ٢٠١١</div>
+      </div>
+      <div class="stat">
+        <div class="num" data-count="240" data-suffix="k">٠</div>
+        <div class="lbl">م² تم تصميمها</div>
+        <div class="desc">مساحات سكنية وترفيهية</div>
+      </div>
+      <div class="stat">
+        <div class="num" data-count="98" data-suffix="%">٠</div>
+        <div class="lbl">رضا العملاء</div>
+        <div class="desc">بناءً على استبيانات التسليم</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="sec wrap" id="voices">
+  <div class="sec-head">
+    <span class="sec-num">٠٥ — شهادات</span>
+    <div>
+      <h2 class="sec-title rv">ما يقوله <em>أصحاب البيوت</em></h2>
+    </div>
+  </div>
+
+  <div class="quotes">
+    <figure class="quote rv">
+      <div class="mark">”</div>
+      <p>فهموا طريقة حياتنا قبل أن يرسموا. البيت اليوم يُشبهنا في كل تفصيلة، والضوء فيه قصةٌ بحد ذاته.</p>
+      <figcaption class="who">
+        <div class="nm">أبو فيصل العتيبي</div>
+        <div class="rl">مالك فيلا — الملقا</div>
+      </figcaption>
+    </figure>
+    <figure class="quote rv d1">
+      <div class="mark">”</div>
+      <p>انضباطٌ نادر في الإشراف والمواعيد. كل ريالٍ أُنفق كان في مكانه، والنتيجة فاقت ما تخيّلناه على الورق.</p>
+      <figcaption class="who">
+        <div class="nm">منيرة القحطاني</div>
+        <div class="rl">مستثمرة عقارية — الرياض</div>
+      </figcaption>
+    </figure>
+    <figure class="quote rv d2">
+      <div class="mark">”</div>
+      <p>أخذوا روح بيت جدّي القديم وأعادوا صياغتها بشكلٍ عصري. استراحتنا أصبحت مقصدًا للعائلة في كل موسم.</p>
+      <figcaption class="who">
+        <div class="nm">سعد الدوسري</div>
+        <div class="rl">مالك استراحة — الدرعية</div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="sec wrap" id="contact">
+  <div class="sec-head">
+    <span class="sec-num">٠٦ — تواصل</span>
+    <div>
+      <h2 class="sec-title rv">لنبدأ <em>مشروعك</em></h2>
+      <p class="sec-sub rv d1">أخبرنا عن أرضك وفكرتك، وسنعود إليك باقتراحٍ مبدئي خلال ٤٨ ساعة.</p>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info rv">
+      <div class="item">
+        <i class="ph ph-phone"></i>
+        <div><div class="k">الهاتف · placeholder</div><div class="v">+٩٦٦ ٥٠ ٠٠٠ ٠٠٠٠</div></div>
+      </div>
+      <div class="item">
+        <i class="ph ph-envelope-simple"></i>
+        <div><div class="k">البريد · placeholder</div><div class="v">hello@mimar.example</div></div>
+      </div>
+      <div class="item">
+        <i class="ph ph-map-pin"></i>
+        <div><div class="k">العنوان · placeholder</div><div class="v">طريق الملك فهد، الرياض، المملكة العربية السعودية</div></div>
+      </div>
+      <div class="item">
+        <i class="ph ph-clock"></i>
+        <div><div class="k">أوقات العمل</div><div class="v">الأحد – الخميس · ٩ صباحًا – ٦ مساءً</div></div>
+      </div>
+    </div>
+
+    <form id="contactForm" class="rv d1">
+      <div class="two">
+        <div class="field">
+          <label for="name">الاسم</label>
+          <input id="name" name="name" type="text" placeholder="اسمك الكريم" required />
+        </div>
+        <div class="field">
+          <label for="phone">الجوال</label>
+          <input id="phone" name="phone" type="tel" placeholder="05XXXXXXXX" required />
+        </div>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="ptype">نوع المشروع</label>
+          <select id="ptype" name="ptype">
+            <option>فيلا سكنية</option>
+            <option>استراحة</option>
+            <option>مبنى سكني</option>
+            <option>تصميم داخلي</option>
+            <option>أخرى</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="area">مساحة الأرض (م²)</label>
+          <input id="area" name="area" type="text" placeholder="مثال: ٦٠٠" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="msg">تفاصيل المشروع</label>
+        <textarea id="msg" name="msg" placeholder="اكتب لنا عن موقع الأرض وفكرتك واحتياجات الأسرة..."></textarea>
+      </div>
+      <button type="submit" class="btn"><i class="ph ph-whatsapp-logo"></i> أرسل عبر واتساب</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand">
+          <span class="ar serif" style="font-size:1.6rem">مِعمار</span>
+          <span class="en mono">MIMAR</span>
+        </a>
+        <p class="foot-tag serif">نُصمّم بيوتًا تُشبه أصحابها، بروح المكان وذاكرة الجزيرة.</p>
+      </div>
+      <div class="foot-col">
+        <h4>روابط</h4>
+        <a href="#about">المكتب</a>
+        <a href="#services">الخدمات</a>
+        <a href="#work">الأعمال</a>
+        <a href="#process">المنهجية</a>
+        <a href="#contact">تواصل</a>
+      </div>
+      <div class="foot-col">
+        <h4>تواصل · placeholder</h4>
+        <a href="tel:+966500000000">+٩٦٦ ٥٠ ٠٠٠ ٠٠٠٠</a>
+        <a href="mailto:hello@mimar.example">hello@mimar.example</a>
+        <a href="#contact">الرياض، السعودية</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© ٢٠٢٦ مِعمار · MIMAR — جميع الحقوق محفوظة.</span>
+      <div class="foot-socials">
+        <a href="#" aria-label="إنستغرام"><i class="ph ph-instagram-logo"></i></a>
+        <a href="#" aria-label="X"><i class="ph ph-x-logo"></i></a>
+        <a href="#" aria-label="بينتيريست"><i class="ph ph-pinterest-logo"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING ===== -->
+<div class="floats">
+  <button class="float-btn float-wa" id="waFloat" aria-label="واتساب"><i class="ph ph-whatsapp-logo"></i></button>
+  <button class="float-btn float-top" id="topFloat" aria-label="للأعلى"><i class="ph ph-arrow-up"></i></button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var WA = '966500000000';
+
+  // ---- nav scroll bg + back-to-top ----
+  var nav = document.getElementById('nav');
+  var topFloat = document.getElementById('topFloat');
+  function onScroll(){
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle('scrolled', y > 40);
+    topFloat.classList.toggle('show', y > 600);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- mobile overlay ----
+  var overlay = document.getElementById('overlay');
+  var burger = document.getElementById('burger');
+  var oClose = document.getElementById('overlayClose');
+  function openMenu(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+  burger.addEventListener('click', openMenu);
+  oClose.addEventListener('click', closeMenu);
+  Array.prototype.forEach.call(overlay.querySelectorAll('[data-close]'), function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // ---- back to top ----
+  topFloat.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior: reduce ? 'auto':'smooth'});
+  });
+
+  // ---- reveal on scroll ----
+  var rvs = document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(rvs, function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+    Array.prototype.forEach.call(rvs, function(el){ io.observe(el); });
+  }
+
+  // ---- Arabic-Indic numeral counters ----
+  function toArabic(n){
+    var map = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    return String(n).replace(/[0-9]/g, function(d){ return map[+d]; });
+  }
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'),10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reduce){ el.textContent = toArabic(target)+suffix; return; }
+    var dur = 1600, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = toArabic(Math.round(target*eased)) + suffix;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var nums = document.querySelectorAll('[data-count]');
+  if(!('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(nums, animateCount);
+  } else {
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+      });
+    }, {threshold:.6});
+    Array.prototype.forEach.call(nums, function(el){ cio.observe(el); });
+  }
+
+  // ---- smooth anchor scrolling ----
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function(a){
+    a.addEventListener('click', function(ev){
+      var id = a.getAttribute('href');
+      if(id.length<2) return;
+      var t = document.querySelector(id);
+      if(t){ ev.preventDefault(); t.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'}); }
+    });
+  });
+
+  // ---- WhatsApp submit ----
+  function openWA(text){
+    var url = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
+  }
+  document.getElementById('contactForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    var msg = 'السلام عليكم، أرغب باستشارة من مكتب مِعمار.\n'
+      + 'الاسم: ' + (f.name.value||'-') + '\n'
+      + 'الجوال: ' + (f.phone.value||'-') + '\n'
+      + 'نوع المشروع: ' + (f.ptype.value||'-') + '\n'
+      + 'مساحة الأرض: ' + (f.area.value||'-') + '\n'
+      + 'التفاصيل: ' + (f.msg.value||'-');
+    openWA(msg);
+  });
+  document.getElementById('waFloat').addEventListener('click', function(){
+    openWA('السلام عليكم، أرغب بالاستفسار عن خدمات مكتب مِعمار.');
+  });
+})();
+</script>
+</body>
+</html>

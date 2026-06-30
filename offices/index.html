@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#15161A">
+<meta name="description" content="معرض أعمال — ٥ مكاتب هندسية، موقعان لكل مكتب بتصاميم وألوان مختلفة. عيّنات تصميم مواقع احترافية بريميوم بالعربية.">
+<title>معرض المواقع · ٥ مكاتب × موقعان — أعمال تصميم بريميوم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2315161A'/><path d='M22 74 L50 26 L78 74' stroke='%23C9A24B' stroke-width='7' fill='none' stroke-linejoin='round'/><line x1='22' y1='74' x2='78' y2='74' stroke='%23C9A24B' stroke-width='7'/></svg>">
+<style>
+:root{
+  --bg:#14151A;--bg2:#1B1D23;--card:#1E2027;--ink:#F1EFEA;--muted:#9A9CA6;
+  --gold:#C9A24B;--line:rgba(255,255,255,.1);
+  --f:'IBM Plex Sans Arabic',sans-serif;--f-d:'Fraunces',serif;--f-m:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.8;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 30px}
+::selection{background:var(--gold);color:#000}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* HERO */
+header.top{position:relative;padding:120px 0 70px;text-align:center;overflow:hidden}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,75,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.09) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(ellipse 70% 60% at 50% 30%,#000,transparent 75%)}
+.glow{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:60vw;height:60vw;background:radial-gradient(circle,rgba(201,162,75,.16),transparent 60%);pointer-events:none}
+.top .inner{position:relative;z-index:2}
+.kick{font-family:var(--f-m);font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(201,162,75,.35);padding:9px 20px;border-radius:100px;margin-bottom:30px}
+h1{font-family:var(--f-d);font-weight:600;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.05;letter-spacing:-.02em}
+h1 .en{display:block;font-family:var(--f-m);font-weight:500;font-size:clamp(.8rem,2vw,1.1rem);letter-spacing:.4em;color:var(--muted);margin-top:18px;text-transform:uppercase}
+.sub{max-width:620px;margin:24px auto 0;color:var(--muted);font-weight:300;font-size:clamp(1rem,1.8vw,1.15rem);line-height:2}
+.metrics{display:flex;gap:46px;justify-content:center;margin-top:46px;flex-wrap:wrap}
+.metrics .m b{font-family:var(--f-d);font-size:2.4rem;font-weight:600;color:var(--gold);display:block;line-height:1}
+.metrics .m span{font-size:.85rem;color:var(--muted)}
+
+/* OFFICE BLOCK */
+main{padding:30px 0 60px}
+.office{margin-top:70px}
+.office-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+.office-head .ttl{display:flex;align-items:center;gap:18px}
+.office-head .badge{width:54px;height:54px;border-radius:13px;display:grid;place-items:center;font-family:var(--f-d);font-weight:600;font-size:1.5rem;flex:none;border:1px solid var(--line)}
+.office-head h2{font-family:var(--f-d);font-weight:600;font-size:1.8rem;line-height:1.1}
+.office-head h2 small{display:block;font-family:var(--f-m);font-size:.72rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:4px;font-weight:400}
+.office-head .disc{font-size:.95rem;color:var(--muted)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.site{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
+.site:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.4);border-color:transparent}
+.site .prev{height:190px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.site .prev .pgrid{position:absolute;inset:0;opacity:.5}
+.site .prev .mock{position:relative;z-index:2;width:74%;text-align:center}
+.site .prev .mock .bar{height:9px;border-radius:5px;margin:0 auto 9px}
+.site .prev .mock .big{font-family:var(--f-d);font-weight:600;font-size:1.5rem;line-height:1.1;margin:8px 0 6px}
+.site .prev .mock .ln{height:6px;border-radius:4px;margin:5px auto;opacity:.55}
+.site .prev .swatches{position:absolute;bottom:12px;right:12px;display:flex;gap:6px;z-index:3}
+.site .prev .swatches i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.4);display:block}
+.site .body{padding:20px 22px 22px}
+.site .body .tag{font-family:var(--f-m);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.site .body h3{font-family:var(--f-d);font-weight:600;font-size:1.3rem;margin:7px 0 6px}
+.site .body p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:16px;min-height:48px}
+.site .body .open{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);padding:10px 18px;border-radius:8px;transition:all .35s var(--ease)}
+.site:hover .open{background:var(--gold);color:#000;border-color:var(--gold)}
+.site .body .open i{transition:transform .35s}
+.site:hover .open i{transform:translateX(-4px)}
+
+footer{border-top:1px solid var(--line);margin-top:80px;padding:40px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.foot p{font-size:.85rem;color:var(--muted)}
+.foot .en{font-family:var(--f-m);font-size:.8rem;letter-spacing:.12em;color:var(--gold)}
+.note{text-align:center;font-family:var(--f-m);font-size:.78rem;color:var(--muted);margin-top:26px;letter-spacing:.03em}
+
+@media(max-width:760px){.pair{grid-template-columns:1fr}.metrics{gap:30px}.wrap{padding:0 22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.001s!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="gridbg"></div><div class="glow"></div>
+  <div class="wrap inner">
+    <span class="kick"><i class="ph-bold ph-stack"></i> معرض الأعمال · Portfolio</span>
+    <h1>عشرة مواقع، خمسة مكاتب<span class="en">5 Offices · 2 Designs Each</span></h1>
+    <p class="sub">لكل مكتب هندسي موقعان مختلفان تماماً في الهوية واللون والتخطيط — عيّنات تصميم احترافية (بريميوم) بالعربية، جاهزة للتخصيص والنشر.</p>
+    <div class="metrics">
+      <div class="m"><b>٥</b><span>مكاتب</span></div>
+      <div class="m"><b>١٠</b><span>مواقع</span></div>
+      <div class="m"><b>١٠</b><span>هويات بصرية</span></div>
+      <div class="m"><b>٠</b><span>صور خارجية</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 01 MIMAR -->
+  <section class="office rv">
+    <div class="office-head">
+      <div class="ttl">
+        <div class="badge" style="background:#EDE6DA;color:#C0633B">م</div>
+        <div><h2>مِعمار<small>MIMAR · Architecture</small></h2></div>
+      </div>
+      <div class="disc">تصميم معماري — فلل واستراحات بروح معاصرة</div>
+    </div>
+    <div class="pair">
+      <a class="site" href="./01-mimar/a/">
+        <div class="prev" style="background:#EDE6DA">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(33,28,22,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(33,28,22,.06) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#C0633B"></div><div class="big" style="color:#211C16">مِعمار</div><div class="ln" style="width:70%;background:#211C16"></div><div class="ln" style="width:50%;background:#211C16"></div></div>
+          <div class="swatches"><i style="background:#EDE6DA"></i><i style="background:#C0633B"></i><i style="background:#211C16"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم A · Editorial Sand</span><h3>افتتاحي رملي</h3><p>طابع مجلّة راقٍ، خطوط Fraunces كبيرة، مساحات بيضاء سخيّة ولمسة تيراكوتا.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+      <a class="site" href="./01-mimar/b/">
+        <div class="prev" style="background:#0F1623">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(201,162,75,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.12) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#C9A24B"></div><div class="big" style="color:#ECE8DD;font-family:'Fraunces'">مِعمار</div><div class="ln" style="width:70%;background:#C9A24B"></div><div class="ln" style="width:50%;background:#8893A6"></div></div>
+          <div class="swatches"><i style="background:#0F1623"></i><i style="background:#C9A24B"></i><i style="background:#ECE8DD"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم B · Cinematic Night</span><h3>سينمائي ليلي</h3><p>كحليّ داكن دراميّ مع خطوط ذهبية رفيعة وواجهة سينمائية فاخرة.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 02 OFOQ -->
+  <section class="office rv">
+    <div class="office-head">
+      <div class="ttl">
+        <div class="badge" style="background:#2563EB;color:#fff">أ</div>
+        <div><h2>أُفق<small>OFOQ · Engineering</small></h2></div>
+      </div>
+      <div class="disc">استشارات هندسية — إنشائي وكهروميكانيكا وإدارة مشاريع</div>
+    </div>
+    <div class="pair">
+      <a class="site" href="./02-ofoq/a/">
+        <div class="prev" style="background:#F4F7FB">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(14,23,38,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(14,23,38,.05) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#2563EB"></div><div class="big" style="color:#0E1726;font-family:'IBM Plex Sans Arabic';font-weight:700">أُفق</div><div class="ln" style="width:70%;background:#0E1726"></div><div class="ln" style="width:50%;background:#64748B"></div></div>
+          <div class="swatches"><i style="background:#FFFFFF"></i><i style="background:#2563EB"></i><i style="background:#0E1726"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم A · Corporate Azure</span><h3>مؤسسي أزرق</h3><p>نظيف ومؤسسي، بطاقات مرتّبة وإحصائيات واضحة وأزرق ملكيّ موثوق.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+      <a class="site" href="./02-ofoq/b/">
+        <div class="prev" style="background:#14171A">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(182,245,0,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(182,245,0,.1) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#B6F500"></div><div class="big" style="color:#E8EAE6;font-family:'IBM Plex Mono'">أُفق</div><div class="ln" style="width:70%;background:#B6F500"></div><div class="ln" style="width:50%;background:#8A9099"></div></div>
+          <div class="swatches"><i style="background:#14171A"></i><i style="background:#B6F500"></i><i style="background:#E8EAE6"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم B · Graphite Lime</span><h3>تقني داكن</h3><p>جرافيت جريء بلمسة lime نيون، أرقام ضخمة وتسميات تقنية بخط مونو.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 03 MASAHA -->
+  <section class="office rv">
+    <div class="office-head">
+      <div class="ttl">
+        <div class="badge" style="background:#F3EBE4;color:#B08968">س</div>
+        <div><h2>مساحة<small>MASAHA · Interiors</small></h2></div>
+      </div>
+      <div class="disc">تصميم داخلي — سكني فاخر ومكاتب ومطاعم</div>
+    </div>
+    <div class="pair">
+      <a class="site" href="./03-masaha/a/">
+        <div class="prev" style="background:#F3EBE4">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(42,33,28,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,33,28,.05) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#C98B7A"></div><div class="big" style="color:#2A211C">مساحة</div><div class="ln" style="width:70%;background:#B08968"></div><div class="ln" style="width:50%;background:#2A211C"></div></div>
+          <div class="swatches"><i style="background:#F3EBE4"></i><i style="background:#B08968"></i><i style="background:#C98B7A"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم A · Blush Walnut</span><h3>وردي كريمي</h3><p>بوتيك ناعم فاخر، زوايا دائرية ودفء وخطوط Fraunces أنيقة.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+      <a class="site" href="./03-masaha/b/">
+        <div class="prev" style="background:#ECEAE0">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(44,44,36,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(44,44,36,.05) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#6E7E5B"></div><div class="big" style="color:#2C2C24;font-family:'Fraunces'">مساحة</div><div class="ln" style="width:70%;background:#6E7E5B"></div><div class="ln" style="width:50%;background:#B07A52"></div></div>
+          <div class="swatches"><i style="background:#ECEAE0"></i><i style="background:#6E7E5B"></i><i style="background:#B07A52"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم B · Sage Organic</span><h3>مريمية عضوي</h3><p>ترابيّ هادئ بأقواس وانحناءات، أخضر مريمية ولمسة طينية طبيعية.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 04 RIWAQ -->
+  <section class="office rv">
+    <div class="office-head">
+      <div class="ttl">
+        <div class="badge" style="background:#20402E;color:#fff">ر</div>
+        <div><h2>رواق<small>RIWAQ · Landscape</small></h2></div>
+      </div>
+      <div class="disc">لاندسكيب وتنسيق حدائق وتخطيط عمراني</div>
+    </div>
+    <div class="pair">
+      <a class="site" href="./04-riwaq/a/">
+        <div class="prev" style="background:#EAEDE6">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(28,42,32,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(28,42,32,.05) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#3E7A4F"></div><div class="big" style="color:#20402E">رواق</div><div class="ln" style="width:70%;background:#3E7A4F"></div><div class="ln" style="width:50%;background:#20402E"></div></div>
+          <div class="swatches"><i style="background:#EAEDE6"></i><i style="background:#3E7A4F"></i><i style="background:#20402E"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم A · Forest Calm</span><h3>أخضر غابي</h3><p>طبيعيّ هادئ برسومات نباتية ومنحنيات عضوية وحضورٍ أخضر منعش.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+      <a class="site" href="./04-riwaq/b/">
+        <div class="prev" style="background:#F0E6DA">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(42,30,22,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,30,22,.05) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#B5562E"></div><div class="big" style="color:#8A4B33;font-family:'Fraunces'">رواق</div><div class="ln" style="width:70%;background:#B5562E"></div><div class="ln" style="width:50%;background:#7E875F"></div></div>
+          <div class="swatches"><i style="background:#F0E6DA"></i><i style="background:#B5562E"></i><i style="background:#7E875F"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم B · Desert Clay</span><h3>طيني صحراوي</h3><p>واحة دافئة بأقواس ونخيل وكثبان، تيراكوتا وطينيّ مشمس.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 05 BINAA -->
+  <section class="office rv">
+    <div class="office-head">
+      <div class="ttl">
+        <div class="badge" style="background:#15161A;color:#F25C05">ب</div>
+        <div><h2>بِناء<small>BINAA · Structural</small></h2></div>
+      </div>
+      <div class="disc">هندسة إنشائية ومقاولات وفحص خرسانة وترميم</div>
+    </div>
+    <div class="pair">
+      <a class="site" href="./05-binaa/a/">
+        <div class="prev" style="background:#15161A">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(242,92,5,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(242,92,5,.1) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#F25C05"></div><div class="big" style="color:#ECECEA;font-family:'IBM Plex Mono'">بِناء</div><div class="ln" style="width:70%;background:#F25C05"></div><div class="ln" style="width:50%;background:#8A9099"></div></div>
+          <div class="swatches"><i style="background:#15161A"></i><i style="background:#F25C05"></i><i style="background:#8A9099"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم A · Industrial Orange</span><h3>صناعي برتقالي</h3><p>قوّة صناعية بخطوط تحذيرية مائلة وأرقام ضخمة وطاقة موقع البناء.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+      <a class="site" href="./05-binaa/b/">
+        <div class="prev" style="background:#E8EBEE">
+          <div class="pgrid" style="background-image:linear-gradient(rgba(47,93,124,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(47,93,124,.1) 1px,transparent 1px);background-size:26px 26px"></div>
+          <div class="mock"><div class="bar" style="width:40px;background:#2F5D7C"></div><div class="big" style="color:#1A2026;font-weight:700">بِناء</div><div class="ln" style="width:70%;background:#2F5D7C"></div><div class="ln" style="width:50%;background:#6B7780"></div></div>
+          <div class="swatches"><i style="background:#E8EBEE"></i><i style="background:#2F5D7C"></i><i style="background:#1A2026"></i></div>
+        </div>
+        <div class="body"><span class="tag">تصميم B · Blueprint Steel</span><h3>بلوبرنت فولاذي</h3><p>تقنيّ دقيق بمخططات إنشائية وأزرق فولاذي على خلفية إسمنتية فاتحة.</p><span class="open">معاينة الموقع <i class="ph-bold ph-arrow-left"></i></span></div>
+      </a>
+    </div>
+  </section>
+
+  <p class="note">◆ جميع المواقع عيّنات تصميم ببيانات تواصل قابلة للاستبدال — تُسلَّم لأي مكتب ليصبح موقعه الرسمي.</p>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <p>© 2026 — معرض تصميم مواقع المكاتب الهندسية</p>
+    <span class="en">5 Offices · 10 Premium Websites</span>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
