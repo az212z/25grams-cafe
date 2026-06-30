@@ -3,755 +3,494 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>أُفق // OFOQ — هندسة بلا حدود</title>
-<meta name="description" content="OFOQ — مكتب هندسي تقني: تصميم إنشائي، أنظمة MEP، إدارة مشاريع، دراسات جدوى، وإشراف. هندسة دقيقة بروح تقنية جريئة." />
+<title>أُفق · OFOQ — هندسة بلا حدود</title>
+<meta name="description" content="أُفق — مكتب استشارات هندسية: تصميم إنشائي، أنظمة MEP، إدارة مشاريع، دراسات جدوى، وإشراف. هندسة دقيقة بروح تقنية." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
 <style>
-  :root{
-    --bg:#14171A;
-    --panel:#1C2024;
-    --panel-2:#22272B;
-    --lime:#B6F500;
-    --text:#E8EAE6;
-    --muted:#8A9099;
-    --line:rgba(255,255,255,.1);
-    --line-2:rgba(255,255,255,.06);
-    --maxw:1240px;
-    --disp:'Space Grotesk',sans-serif;
-    --body:'IBM Plex Sans Arabic',sans-serif;
-    --mono:'IBM Plex Mono',monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:var(--body);background:var(--bg);color:var(--text);
-    line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  h1,h2,h3,.disp{font-family:var(--disp);font-weight:700;line-height:1.08;letter-spacing:-.02em}
-  .mono{font-family:var(--mono);letter-spacing:.04em}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
-  ::selection{background:var(--lime);color:#0c0e10}
+:root{
+  --bg:#14171A; --bg2:#1B1F23; --panel:#1E2429; --line:#2C343B;
+  --lime:#B6F500; --text:#E8EAE6; --muted:#94A0A4; --max:1240px;
+  --r:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans Arabic','Space Grotesk',system-ui,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+h1,h2,h3,.dsp{font-family:'Space Grotesk','IBM Plex Sans Arabic',sans-serif}
+.mono{font-family:'IBM Plex Mono',monospace}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 26px}
+.sec{padding:110px 0}
+.label{
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;
+}
+.label::before{content:"//";color:var(--lime);opacity:.7}
+.dsp-title{font-size:clamp(2rem,5vw,3.6rem);font-weight:700;line-height:1.06;letter-spacing:-.02em;text-transform:uppercase}
+.sub{color:var(--muted);font-size:1.06rem;max-width:640px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;padding:15px 30px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:all .2s;font-family:inherit;text-transform:uppercase;letter-spacing:.02em}
+.btn-lime{background:var(--lime);color:#0E1200;box-shadow:0 0 0 rgba(182,245,0,0)}
+.btn-lime:hover{box-shadow:0 0 30px rgba(182,245,0,.45);transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-line:hover{border-color:var(--lime);color:var(--lime)}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:4px}
 
-  .label{
-    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.22em;
-    color:var(--lime);display:inline-flex;align-items:center;gap:10px;
-  }
-  .label::before{content:"//";color:var(--lime);opacity:.7}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;
-    font-size:14px;text-transform:uppercase;letter-spacing:.06em;padding:14px 24px;
-    border-radius:4px;border:1px solid var(--line);cursor:pointer;transition:.25s;background:transparent;color:var(--text);
-  }
-  .btn-lime{background:var(--lime);color:#0c0e10;border-color:var(--lime)}
-  .btn-lime:hover{box-shadow:0 0 0 4px rgba(182,245,0,.18);transform:translateY(-2px)}
-  .btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
-  section{padding:110px 0;position:relative}
-  .sec-head{max-width:760px;margin-bottom:60px}
-  .sec-head h2{font-size:clamp(30px,5vw,52px);margin:18px 0 16px;text-transform:uppercase}
-  .sec-head p{color:var(--muted);font-size:17px}
+/* blueprint grid overlay */
+.bp{position:relative}
+.bp::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(182,245,0,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(182,245,0,.10) 1px,transparent 1px);
+  background-size:34px 34px;mix-blend-mode:screen;opacity:.55;
+}
 
-  /* blueprint bg */
-  .blueprint{
-    position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
-    background-image:
-      linear-gradient(var(--line-2) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
-    background-size:42px 42px;
-  }
+/* NAV */
+.nav{position:sticky;top:0;z-index:90;background:rgba(20,23,26,.72);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.nav.scrolled{border-color:var(--line);background:rgba(20,23,26,.94)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:13px;font-weight:700;font-size:1.3rem;font-family:'Space Grotesk'}
+.brand .mark{width:40px;height:40px;border-radius:9px;background:var(--lime);color:#0E1200;display:grid;place-items:center;font-weight:700;font-size:1.2rem}
+.brand small{display:block;font-size:.6rem;letter-spacing:.26em;color:var(--muted);font-weight:500;font-family:'IBM Plex Mono'}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{padding:10px 15px;border-radius:7px;font-size:.92rem;font-weight:500;color:var(--muted);transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--lime)}
+.nav-cta{margin-inline-start:10px}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line);background:var(--panel);border-radius:9px;cursor:pointer;font-size:1.4rem;color:var(--text);align-items:center;justify-content:center}
+.mobile{position:fixed;inset:0;z-index:120;background:rgba(14,17,19,.98);backdrop-filter:blur(10px);display:flex;flex-direction:column;padding:30px 26px;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1);visibility:hidden}
+.mobile.open{transform:translateY(0);visibility:visible}
+.mobile-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px}
+.mobile a{font-size:1.7rem;font-weight:700;padding:18px 0;border-bottom:1px solid var(--line);font-family:'Space Grotesk';text-transform:uppercase}
+.mobile a:hover{color:var(--lime)}
+.close-m{width:46px;height:46px;border:1px solid var(--line);background:var(--panel);border-radius:9px;font-size:1.5rem;cursor:pointer;color:var(--text)}
 
-  /* NAV */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:.3s;background:rgba(20,23,26,.6);backdrop-filter:blur(14px);border-bottom:1px solid transparent}
-  header.nav.scrolled{border-bottom-color:var(--line);background:rgba(20,23,26,.92)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;font-size:21px;letter-spacing:-.01em}
-  .brand .logo{width:40px;height:40px}
-  .nav-links{display:flex;align-items:center;gap:4px}
-  .nav-links a{padding:9px 14px;font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);transition:.2s;border-radius:4px}
-  .nav-links a:hover{color:var(--lime)}
-  .nav-cta{display:flex;align-items:center;gap:12px}
-  .hamb{display:none;width:46px;height:46px;border:1px solid var(--line);background:var(--panel);border-radius:6px;cursor:pointer;align-items:center;justify-content:center;font-size:22px;color:var(--text)}
+/* HERO full-bleed */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,26,.97),rgba(20,23,26,.78) 45%,rgba(20,23,26,.5))}
+.hero-grid-ov{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(182,245,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(182,245,0,.06) 1px,transparent 1px);background-size:46px 46px}
+.hero-in{position:relative;z-index:2;padding:80px 0}
+.hero .tag{font-family:'IBM Plex Mono';font-size:.78rem;letter-spacing:.2em;color:var(--lime);margin-bottom:24px;text-transform:uppercase}
+.hero h1{font-size:clamp(2.6rem,8vw,6rem);font-weight:700;line-height:.98;letter-spacing:-.03em;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero p.lead{color:var(--muted);font-size:1.18rem;margin:28px 0 36px;max-width:560px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:40px;margin-top:54px;flex-wrap:wrap}
+.hero-meta div b{font-family:'Space Grotesk';font-size:2.1rem;font-weight:700;color:var(--text);display:block;line-height:1}
+.hero-meta div span{font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
 
-  .overlay{position:fixed;inset:0;z-index:1100;background:rgba(8,10,12,.7);opacity:0;pointer-events:none;transition:.3s}
-  .overlay.open{opacity:1;pointer-events:auto}
-  .drawer{position:fixed;top:0;left:0;bottom:0;width:min(85%,360px);z-index:1200;background:var(--panel);border-left:1px solid var(--line);transform:translateX(-100%);transition:.35s cubic-bezier(.4,0,.2,1);padding:28px 24px;display:flex;flex-direction:column;gap:4px}
-  .drawer.open{transform:translateX(0)}
-  .drawer .dr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
-  .drawer a{padding:15px 12px;font-family:var(--mono);font-size:15px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line-2)}
-  .drawer a:hover{color:var(--lime)}
-  .x-btn{width:44px;height:44px;border:1px solid var(--line);background:transparent;color:var(--text);border-radius:6px;cursor:pointer;font-size:22px}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-frame{overflow:hidden;border-radius:var(--r);border:1px solid var(--line);aspect-ratio:4/3}
+.about-frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.about-frame:hover img{transform:scale(1.08)}
+.about-list{list-style:none;margin-top:26px;display:grid;gap:16px}
+.about-list li{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px}
+.about-list i{color:var(--lime);font-size:1.4rem}
+.about-list b{display:block;font-weight:600;font-family:'Space Grotesk'}
+.about-list span{color:var(--muted);font-size:.92rem}
 
-  /* HERO */
-  .hero{padding:150px 0 80px;position:relative;overflow:hidden}
-  .hero .blueprint{opacity:.6}
-  .hero-in{position:relative;z-index:2}
-  .hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:30px}
-  .hero h1{font-size:clamp(44px,9vw,118px);text-transform:uppercase;line-height:.92}
-  .hero h1 .lime{color:var(--lime)}
-  .hero h1 .out{-webkit-text-stroke:1.5px var(--muted);color:transparent}
-  .hero-sub{max-width:430px;color:var(--muted);font-size:18px}
-  .hero-coords{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:left;line-height:1.9}
-  .hero-coords b{color:var(--lime)}
-  .hero-band{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:8px;margin-top:46px;overflow:hidden;background:var(--panel)}
-  .hero-band .hb{padding:24px;border-left:1px solid var(--line)}
-  .hero-band .hb:last-child{border-left:none}
-  .hero-band .hb b{font-family:var(--disp);font-size:36px;display:block;color:var(--text)}
-  .hero-band .hb span{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:54px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.svc{background:var(--bg);padding:38px 32px;transition:background .25s;position:relative}
+.svc:hover{background:var(--panel)}
+.svc .n{font-family:'IBM Plex Mono';font-size:.78rem;color:var(--lime);letter-spacing:.1em}
+.svc i{font-size:2rem;color:var(--text);display:block;margin:18px 0 16px;transition:color .25s}
+.svc:hover i{color:var(--lime)}
+.svc h3{font-size:1.3rem;font-weight:600;font-family:'Space Grotesk';margin-bottom:10px}
+.svc p{color:var(--muted);font-size:.94rem}
 
-  /* marquee */
-  .marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel);overflow:hidden;padding:16px 0}
-  .marq-track{display:flex;gap:48px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:var(--mono);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
-  .marq-track span{display:inline-flex;align-items:center;gap:14px}
-  .marq-track i{color:var(--lime)}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* PROJECTS */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:54px}
+.proj{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);cursor:pointer;grid-column:span 2;aspect-ratio:1/1}
+.proj.tall{grid-column:span 3;aspect-ratio:16/10}
+.proj img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1);filter:saturate(.9) contrast(1.05)}
+.proj:hover img{transform:scale(1.12)}
+.proj-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:linear-gradient(to top,rgba(14,17,19,.9),transparent 60%)}
+.proj-cap small{font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.12em;color:var(--lime);text-transform:uppercase}
+.proj-cap b{font-size:1.18rem;font-weight:600;font-family:'Space Grotesk';margin-top:5px}
+.proj-grid-ov{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(182,245,0,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(182,245,0,.08) 1px,transparent 1px);background-size:28px 28px;opacity:0;transition:opacity .3s}
+.proj:hover .proj-grid-ov{opacity:1}
 
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
-  .about-visual{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:26px;position:relative}
-  .about-visual .corner{position:absolute;width:14px;height:14px;border:2px solid var(--lime)}
-  .about-visual .c1{top:-1px;right:-1px;border-bottom:none;border-left:none}
-  .about-visual .c2{bottom:-1px;left:-1px;border-top:none;border-right:none}
-  .about-list{display:grid;gap:0;margin-top:30px;border-top:1px solid var(--line)}
-  .about-list .row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--line)}
-  .about-list .row .n{font-family:var(--mono);font-size:13px;color:var(--lime);padding-top:3px}
-  .about-list .row b{display:block;font-family:var(--disp);font-size:18px;margin-bottom:4px}
-  .about-list .row p{color:var(--muted);font-size:14px}
+/* STATS */
+.stats{background:var(--bg2);border-block:1px solid var(--line)}
+.stats-in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.stat{background:var(--bg2);padding:44px 26px;text-align:center}
+.stat b{display:block;font-family:'Space Grotesk';font-size:clamp(2.6rem,5vw,3.8rem);font-weight:700;color:var(--lime);line-height:1}
+.stat span{color:var(--muted);font-size:.86rem;margin-top:10px;display:block;font-family:'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase}
 
-  /* SERVICES */
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;z-index:2}
-  .svc{padding:36px 30px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);transition:.3s;position:relative;background:var(--bg)}
-  .svc:hover{background:var(--panel)}
-  .svc .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}
-  .svc .num{font-family:var(--mono);font-size:13px;color:var(--muted)}
-  .svc:hover .num{color:var(--lime)}
-  .svc .ic{font-size:34px;color:var(--lime)}
-  .svc h3{font-family:var(--disp);font-size:21px;text-transform:uppercase;margin-bottom:10px}
-  .svc p{color:var(--muted);font-size:14.5px}
-  .svc .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .svc .tags span{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);padding:3px 9px;border-radius:3px}
-  .svc::before{content:"";position:absolute;bottom:0;right:0;left:0;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:right;transition:.35s}
-  .svc:hover::before{transform:scaleX(1)}
+/* WHY / SECTORS */
+.why-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.why-frame{overflow:hidden;border-radius:var(--r);border:1px solid var(--line);aspect-ratio:3/4}
+.why-frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.why-frame:hover img{transform:scale(1.07)}
+.sectors{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.sectors li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:9px;padding:16px 18px;font-weight:500;font-size:.95rem;transition:border-color .2s,color .2s}
+.sectors li:hover{border-color:var(--lime)}
+.sectors i{color:var(--lime);font-size:1.4rem}
 
-  /* PROJECTS */
-  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;position:relative;z-index:2}
-  .proj{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);transition:.3s}
-  .proj:hover{border-color:rgba(182,245,0,.4)}
-  .proj .vis{height:240px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;background:#0f1316}
-  .proj .cat{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:11px;color:#0c0e10;background:var(--lime);padding:5px 11px;border-radius:3px;letter-spacing:.06em;z-index:2;text-transform:uppercase}
-  .proj .idx{position:absolute;bottom:16px;left:16px;font-family:var(--disp);font-size:52px;font-weight:700;color:rgba(255,255,255,.08);z-index:2;line-height:1}
-  .proj .body{padding:24px 26px}
-  .proj .body h3{font-family:var(--disp);font-size:22px;text-transform:uppercase;margin-bottom:8px}
-  .proj .body p{color:var(--muted);font-size:14px}
-  .proj .meta{display:flex;gap:22px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
-  .proj .meta b{color:var(--lime);display:block;font-size:15px}
+/* TESTIMONIALS */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:54px}
+.quote{border:1px solid var(--line);border-radius:var(--r);padding:32px;background:var(--panel);display:flex;flex-direction:column}
+.quote .mk{font-size:2.6rem;color:var(--lime);line-height:.4;font-family:'Space Grotesk';margin-bottom:14px}
+.quote p{color:var(--text);font-size:1rem;flex:1}
+.quote .who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.quote .av{width:44px;height:44px;border-radius:9px;background:var(--lime);color:#0E1200;display:grid;place-items:center;font-weight:700;font-family:'Space Grotesk'}
+.quote .who b{font-size:.95rem;font-family:'Space Grotesk'}
+.quote .who span{font-size:.8rem;color:var(--muted);display:block;font-family:'IBM Plex Mono'}
 
-  /* STATS */
-  .stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .stats .blueprint{opacity:.4}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:2}
-  .stat{padding:0 30px;border-left:1px solid var(--line)}
-  .stat:last-child{border-left:none}
-  .stat .n{font-family:var(--disp);font-size:clamp(48px,8vw,86px);font-weight:700;line-height:1;color:var(--lime)}
-  .stat .l{font-family:var(--mono);font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:12px}
-  @media(max-width:680px){.stat{padding:24px 0;border-left:none;border-bottom:1px solid var(--line)}}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
+.ci-list{list-style:none;display:grid;gap:18px;margin-top:30px}
+.ci-list li{display:flex;gap:16px;align-items:center}
+.ci-list .ic{width:50px;height:50px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;font-size:1.4rem;color:var(--lime);flex-shrink:0}
+.ci-list b{display:block;font-size:.72rem;color:var(--muted);font-family:'IBM Plex Mono';letter-spacing:.08em;text-transform:uppercase}
+.ci-list span{font-weight:600;font-family:'Space Grotesk'}
+form{border:1px solid var(--line);border-radius:var(--r);padding:34px;background:var(--panel)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.74rem;font-weight:500;margin-bottom:8px;font-family:'IBM Plex Mono';letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field input,.field textarea,.field select{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.95rem;background:var(--bg);color:var(--text);transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(182,245,0,.18)}
+.field textarea{resize:vertical;min-height:115px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form .btn-lime{width:100%;justify-content:center;margin-top:6px}
 
-  /* PROCESS */
-  .process .blueprint{opacity:.4}
-  .pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:2}
-  .pr-step{border:1px solid var(--line);border-radius:10px;padding:30px 26px;background:var(--panel);transition:.3s}
-  .pr-step:hover{border-color:rgba(182,245,0,.4);transform:translateY(-5px)}
-  .pr-step .st-n{font-family:var(--mono);font-size:14px;color:var(--lime);letter-spacing:.1em}
-  .pr-step .big{font-family:var(--disp);font-size:46px;color:rgba(255,255,255,.07);font-weight:700;line-height:1;margin:8px 0}
-  .pr-step h3{font-family:var(--disp);font-size:18px;text-transform:uppercase;margin-bottom:8px}
-  .pr-step p{color:var(--muted);font-size:14px}
-  .sectors{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:50px;position:relative;z-index:2}
-  .sector{border:1px solid var(--line);border-radius:8px;padding:22px 14px;text-align:center;transition:.25s;background:var(--bg)}
-  .sector:hover{border-color:var(--lime);background:var(--panel)}
-  .sector i{font-size:28px;color:var(--lime);display:block;margin-bottom:10px}
-  .sector b{font-size:13px;font-weight:600}
+/* FOOTER */
+footer{background:var(--bg2);color:var(--muted);padding:80px 0 32px;border-top:1px solid var(--line)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:44px;padding-bottom:50px;border-bottom:1px solid var(--line)}
+.foot-grid h4{color:var(--text);font-size:.78rem;font-weight:600;margin-bottom:20px;font-family:'IBM Plex Mono';letter-spacing:.1em;text-transform:uppercase}
+.foot-grid ul{list-style:none;display:grid;gap:11px}
+.foot-grid a{color:var(--muted);font-size:.92rem;transition:color .2s}
+.foot-grid a:hover{color:var(--lime)}
+.foot-brand .brand{color:var(--text);margin-bottom:16px}
+.foot-brand p{font-size:.92rem;max-width:310px}
+.foot-social{display:flex;gap:10px;margin-top:20px}
+.foot-social a{width:42px;height:42px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;font-size:1.2rem;color:var(--text);transition:all .2s}
+.foot-social a:hover{background:var(--lime);color:#0E1200;border-color:var(--lime)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.82rem;font-family:'IBM Plex Mono';flex-wrap:wrap;gap:12px}
 
-  /* TESTIMONIALS */
-  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:2}
-  .quote{border:1px solid var(--line);border-radius:10px;padding:32px 28px;background:var(--panel);transition:.3s;display:flex;flex-direction:column;position:relative}
-  .quote:hover{border-color:rgba(182,245,0,.4)}
-  .quote .mark{font-family:var(--disp);font-size:64px;color:var(--lime);line-height:.6;height:30px}
-  .quote p{font-size:15.5px;color:var(--text);flex:1;margin-top:14px}
-  .quote .who{display:flex;align-items:center;gap:13px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
-  .quote .av{width:46px;height:46px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--lime);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:18px}
-  .quote .who b{display:block;font-size:15px}
-  .quote .who span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+/* FLOATING */
+.float{position:fixed;inset-block-end:24px;inset-inline-end:24px;z-index:80;display:flex;flex-direction:column;gap:12px}
+.fab{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+.fab:hover{transform:translateY(-3px)}
+.fab-wa{background:#25D366;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.fab-top{background:var(--lime);color:#0E1200;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s}
+.fab-top.show{opacity:1;pointer-events:auto}
 
-  /* CONTACT */
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;position:relative;z-index:2}
-  .contact-info .ci{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
-  .contact-info .ci .ic{font-size:26px;color:var(--lime);flex:0 0 auto}
-  .contact-info .ci b{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:3px}
-  .contact-info .ci span{font-size:15px}
-  form.cform{border:1px solid var(--line);border-radius:12px;padding:34px;background:var(--panel)}
-  .field{margin-bottom:20px}
-  .field label{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
-  .field input,.field textarea,.field select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:6px;font-family:var(--body);font-size:15px;background:var(--bg);color:var(--text);transition:.2s}
-  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(182,245,0,.12)}
-  .field textarea{resize:vertical;min-height:120px}
-  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  form.cform .btn-lime{width:100%;justify-content:center;margin-top:4px}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
 
-  /* FOOTER */
-  footer.ft{border-top:1px solid var(--line);padding:74px 0 30px;position:relative}
-  footer.ft .blueprint{opacity:.3}
-  .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px;position:relative;z-index:2}
-  .ft p{font-size:14px;color:var(--muted);margin-top:16px;max-width:300px}
-  .ft h4{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--lime);margin-bottom:18px}
-  .ft ul{list-style:none;display:grid;gap:11px}
-  .ft ul li a{font-size:14px;color:var(--muted);transition:.2s}
-  .ft ul li a:hover{color:var(--text)}
-  .ft-soc{display:flex;gap:10px;margin-top:18px}
-  .ft-soc a{width:42px;height:42px;border-radius:6px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px;color:var(--muted);transition:.25s}
-  .ft-soc a:hover{border-color:var(--lime);color:var(--lime)}
-  .ft-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted);position:relative;z-index:2}
-
-  /* FLOATERS */
-  .floaters{position:fixed;bottom:24px;left:24px;z-index:900;display:flex;flex-direction:column;gap:12px}
-  .fab{width:54px;height:54px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:25px;cursor:pointer;border:1px solid var(--line);transition:.3s}
-  .fab.wa{background:var(--lime);color:#0c0e10;border-color:var(--lime)}
-  .fab.top{background:var(--panel);color:var(--text);opacity:0;pointer-events:none;transform:translateY(14px)}
-  .fab.top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
-  .fab:hover{transform:translateY(-4px)}
-
-  /* reveal */
-  .rv{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.16,1,.3,1)}
-  .rv.in{opacity:1;transform:none}
-  .rv.d1{transition-delay:.07s}.rv.d2{transition-delay:.14s}.rv.d3{transition-delay:.21s}.rv.d4{transition-delay:.28s}
-
-  @media (max-width:980px){
-    .about-grid,.contact-grid{grid-template-columns:1fr}
-    .svc-grid,.stats-grid{grid-template-columns:1fr 1fr}
-    .pr-grid{grid-template-columns:1fr 1fr}
-    .sectors{grid-template-columns:repeat(3,1fr)}
-    .ft-grid{grid-template-columns:1fr 1fr}
-  }
-  @media (max-width:680px){
-    section{padding:70px 0}
-    .nav-links,.nav-cta .btn{display:none}
-    .hamb{display:flex}
-    .svc-grid,.stats-grid,.pr-grid,.testi-grid,.proj-grid,.frow,.ft-grid,.hero-band{grid-template-columns:1fr}
-    .sectors{grid-template-columns:1fr 1fr}
-    .hero-band .hb{border-left:none;border-bottom:1px solid var(--line)}
-    .hero{padding:120px 0 60px}
-    .svc{border-left:none}
-    .floaters{bottom:16px;left:16px}
-    .ft-bottom{flex-direction:column}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{scroll-behavior:auto!important}
-    .rv{opacity:1!important;transform:none!important;transition:none!important}
-    .marq-track{animation:none}
-    .fab:hover,.proj:hover,.pr-step:hover{transform:none}
-  }
+@media (max-width:980px){
+  .about-grid,.why-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:1fr 1fr}
+  .proj,.proj.tall{grid-column:span 1;aspect-ratio:4/3}
+  .tst-grid{grid-template-columns:1fr}
+  .stats-in,.foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .sec{padding:72px 0}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .svc-grid,.gal,.sectors,.row2,.stats-in,.foot-grid{grid-template-columns:1fr}
+  .hero-meta{gap:28px}
+  .foot-bot{flex-direction:column;text-align:center}
+  .float{inset-block-end:16px;inset-inline-end:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<header class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="التنقل الرئيسي">
   <div class="wrap nav-in">
-    <a href="#home" class="brand">
-      <svg class="logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="40" height="40" rx="7" fill="#1C2024" stroke="#B6F500" stroke-width="1.5"/>
-        <path d="M9 28 L20 11 L31 28" stroke="#B6F500" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="20" cy="11" r="2.4" fill="#B6F500"/>
-        <path d="M9 31 H31" stroke="#E8EAE6" stroke-width="1.6"/>
-      </svg>
-      <span>OFOQ<small style="font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:-3px">// أُفق هندسي</small></span>
+    <a href="#hero" class="brand" aria-label="أفق للاستشارات الهندسية">
+      <span class="mark">أ</span>
+      <span>أُفق<small>OFOQ · ENGINEERING</small></span>
     </a>
-    <nav class="nav-links">
-      <a href="#about">عن المكتب</a>
-      <a href="#services">الخدمات</a>
-      <a href="#projects">المشاريع</a>
-      <a href="#process">المنهجية</a>
-      <a href="#testi">آراء</a>
-      <a href="#contact">تواصل</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-lime">ابدأ مشروعك</a>
-      <button class="hamb" id="hamb" aria-label="القائمة"><i class="ph ph-list"></i></button>
+    <ul class="nav-links">
+      <li><a href="#about">من نحن</a></li>
+      <li><a href="#services">الخدمات</a></li>
+      <li><a href="#projects">المشاريع</a></li>
+      <li><a href="#why">القطاعات</a></li>
+      <li><a href="#tst">الآراء</a></li>
+      <li><a href="#contact">تواصل</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-lime nav-cta">ابدأ الآن</a>
+    <button class="burger" id="burger" aria-label="فتح القائمة" aria-expanded="false"><i class="ph ph-list"></i></button>
+  </div>
+</nav>
+
+<!-- MOBILE -->
+<div class="mobile" id="mobile" aria-hidden="true">
+  <div class="mobile-top">
+    <span class="brand"><span class="mark">أ</span><span>أُفق</span></span>
+    <button class="close-m" id="closeM" aria-label="إغلاق القائمة"><i class="ph ph-x"></i></button>
+  </div>
+  <a href="#about">من نحن</a>
+  <a href="#services">الخدمات</a>
+  <a href="#projects">المشاريع</a>
+  <a href="#why">القطاعات</a>
+  <a href="#tst">الآراء</a>
+  <a href="#contact">تواصل معنا</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="../../../assets/img/night/02.jpg" alt="مشهد ليلي لمبنى إنشائي مضاء بإضاءة هندسية" loading="eager" width="1600" height="1000" />
+  </div>
+  <div class="hero-grid-ov"></div>
+  <div class="wrap hero-in">
+    <div class="rv in">
+      <div class="tag">EST. 2008 · RIYADH · STRUCTURAL / MEP / PM</div>
+      <h1>نبني <em>المستقبل</em><br>بدقّة هندسية</h1>
+      <p class="lead">أُفق مكتب استشارات هندسية يحوّل الأفكار الطموحة إلى منشآت قائمة — تصميم إنشائي، أنظمة MEP، إدارة مشاريع، دراسات جدوى، وإشراف ميداني صارم.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-lime">ابدأ مشروعك <i class="ph ph-arrow-left"></i></a>
+        <a href="#projects" class="btn btn-line">شاهد أعمالنا</a>
+      </div>
+      <div class="hero-meta">
+        <div><b data-count="240" data-suffix="+">٠</b><span>مشروع منجَز</span></div>
+        <div><b data-count="18">٠</b><span>عام خبرة</span></div>
+        <div><b data-count="64">٠</b><span>مهندس متخصص</span></div>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer" aria-hidden="true">
-  <div class="dr-head">
-    <span class="brand" style="font-size:18px">OFOQ // أُفق</span>
-    <button class="x-btn" id="xbtn" aria-label="إغلاق"><i class="ph ph-x"></i></button>
-  </div>
-  <a href="#about">عن المكتب</a>
-  <a href="#services">الخدمات</a>
-  <a href="#projects">المشاريع</a>
-  <a href="#process">المنهجية</a>
-  <a href="#testi">آراء العملاء</a>
-  <a href="#contact">تواصل معنا</a>
-  <a href="#contact" class="btn btn-lime" style="margin-top:18px;justify-content:center">ابدأ مشروعك</a>
-</aside>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="blueprint"></div>
-  <div class="wrap hero-in">
-    <div class="hero-top">
-      <span class="label rv in">مكتب استشارات هندسية</span>
-      <div class="hero-coords mono rv in">
-        LAT <b>24.7136°N</b><br>
-        LNG <b>46.6753°E</b><br>
-        STATUS <b>OPERATIONAL</b>
-      </div>
-    </div>
-    <h1 class="rv in">
-      نبني <span class="lime">المستحيل</span><br>
-      <span class="out">بالأرقام</span> والدقّة
-    </h1>
-    <div class="hero-top" style="margin-top:34px;align-items:flex-start">
-      <p class="hero-sub rv d1 in">«أُفق» مكتب هندسي يحوّل الأفكار الطموحة إلى منشآت قائمة — تصميم إنشائي، أنظمة MEP، إدارة مشاريع، دراسات جدوى، وإشراف بمعايير تقنية صارمة.</p>
-      <div class="hero-actions rv d2 in">
-        <a href="#services" class="btn btn-lime">استكشف الخدمات <i class="ph ph-arrow-left"></i></a>
-        <a href="#projects" class="btn btn-ghost"><i class="ph ph-cube"></i> المشاريع</a>
-      </div>
-    </div>
-    <div class="hero-band rv d2 in">
-      <div class="hb"><b>+١٨</b><span>سنة خبرة</span></div>
-      <div class="hb"><b>+٣٢٠</b><span>مشروع</span></div>
-      <div class="hb"><b>+٦٤</b><span>مهندس</span></div>
-      <div class="hb"><b>٪٩٨</b><span>رضا العملاء</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marq">
-  <div class="marq-track">
-    <span><i class="ph ph-circle-notch"></i> STRUCTURAL DESIGN</span>
-    <span><i class="ph ph-circle-notch"></i> MEP SYSTEMS</span>
-    <span><i class="ph ph-circle-notch"></i> PROJECT MANAGEMENT</span>
-    <span><i class="ph ph-circle-notch"></i> FEASIBILITY STUDIES</span>
-    <span><i class="ph ph-circle-notch"></i> SITE SUPERVISION</span>
-    <span><i class="ph ph-circle-notch"></i> BIM MODELING</span>
-    <span><i class="ph ph-circle-notch"></i> STRUCTURAL DESIGN</span>
-    <span><i class="ph ph-circle-notch"></i> MEP SYSTEMS</span>
-    <span><i class="ph ph-circle-notch"></i> PROJECT MANAGEMENT</span>
-    <span><i class="ph ph-circle-notch"></i> FEASIBILITY STUDIES</span>
-    <span><i class="ph ph-circle-notch"></i> SITE SUPERVISION</span>
-    <span><i class="ph ph-circle-notch"></i> BIM MODELING</span>
-  </div>
-</div>
-
 <!-- ABOUT -->
-<section id="about">
-  <div class="blueprint"></div>
+<section class="sec" id="about">
   <div class="wrap about-grid">
-    <div class="rv">
-      <span class="label">عن المكتب</span>
-      <h2 style="font-family:var(--disp);font-size:clamp(30px,5vw,50px);text-transform:uppercase;margin:18px 0 16px">هندسة تُقاس بالنتائج</h2>
-      <p style="color:var(--muted);font-size:17px">في «أُفق» لا نتعامل مع الهندسة كرسومات فحسب، بل كنظام دقيق يربط التصميم بالتنفيذ بالتكلفة. نوظّف النمذجة المتقدمة وأدوات التحليل لنقدّم منشآت آمنة واقتصادية تتجاوز توقّعات عملائنا.</p>
-      <div class="about-list">
-        <div class="row"><span class="n">01</span><div><b>تحليل مبني على البيانات</b><p>كل قرار تصميمي مدعوم بنمذجة وتحليل رقمي دقيق.</p></div></div>
-        <div class="row"><span class="n">02</span><div><b>تكامل التخصصات</b><p>فرق إنشائية وكهروميكانيكية وإدارية تعمل بتزامن كامل.</p></div></div>
-        <div class="row"><span class="n">03</span><div><b>التزام بالكود والجودة</b><p>مطابقة صارمة لأكواد SBC والمعايير الدولية في كل مرحلة.</p></div></div>
-      </div>
+    <div class="bp about-frame rv">
+      <img src="../../../assets/img/structural/04.jpg" alt="هيكل معدني وخرساني لمنشأة قيد الإنشاء" loading="lazy" width="640" height="480" />
     </div>
-    <div class="about-visual rv d2">
-      <span class="corner c1"></span><span class="corner c2"></span>
-      <svg viewBox="0 0 440 400" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطط هندسي تقني">
-        <rect width="440" height="400" fill="#0f1316"/>
-        <g stroke="rgba(255,255,255,.08)" stroke-width="1">
-          <line x1="0" y1="50" x2="440" y2="50"/><line x1="0" y1="100" x2="440" y2="100"/>
-          <line x1="0" y1="150" x2="440" y2="150"/><line x1="0" y1="200" x2="440" y2="200"/>
-          <line x1="0" y1="250" x2="440" y2="250"/><line x1="0" y1="300" x2="440" y2="300"/><line x1="0" y1="350" x2="440" y2="350"/>
-          <line x1="55" y1="0" x2="55" y2="400"/><line x1="110" y1="0" x2="110" y2="400"/>
-          <line x1="165" y1="0" x2="165" y2="400"/><line x1="220" y1="0" x2="220" y2="400"/>
-          <line x1="275" y1="0" x2="275" y2="400"/><line x1="330" y1="0" x2="330" y2="400"/><line x1="385" y1="0" x2="385" y2="400"/>
-        </g>
-        <!-- node diagram -->
-        <g stroke="#B6F500" stroke-width="2" fill="none">
-          <path d="M70 330 L110 180 L220 110 L330 180 L370 330"/>
-          <path d="M110 180 L220 330 L330 180"/>
-          <path d="M70 330 L370 330"/>
-          <path d="M220 110 L220 330"/>
-        </g>
-        <g fill="#B6F500">
-          <circle cx="70" cy="330" r="6"/><circle cx="370" cy="330" r="6"/>
-          <circle cx="110" cy="180" r="6"/><circle cx="330" cy="180" r="6"/>
-          <circle cx="220" cy="110" r="6"/><circle cx="220" cy="330" r="6"/>
-        </g>
-        <g fill="#8A9099" font-family="IBM Plex Mono" font-size="11">
-          <text x="58" y="352">N1</text><text x="358" y="352">N5</text>
-          <text x="96" y="172">N2</text><text x="318" y="172">N4</text><text x="208" y="100">N3</text>
-        </g>
-        <g stroke="#8A9099" stroke-width="1" stroke-dasharray="3 3">
-          <line x1="220" y1="60" x2="220" y2="104"/>
-        </g>
-        <text x="195" y="50" fill="#B6F500" font-family="IBM Plex Mono" font-size="11">24kN</text>
-      </svg>
-      <div style="display:flex;justify-content:space-between;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--muted)">
-        <span><i class="ph ph-check-circle" style="color:#B6F500"></i> FEM ANALYSIS</span>
-        <span>SBC 301 / 304</span>
-      </div>
+    <div class="rv">
+      <span class="label">من نحن</span>
+      <h2 class="dsp-title">هندسة دقيقة<br>بروح تقنية</h2>
+      <p class="sub">منذ تأسيسنا ونحن نطبّق منهجية صارمة تجمع بين النمذجة الرقمية والخبرة الميدانية. نعمل كفريق واحد متعدد التخصصات لنقدّم حلولاً آمنة واقتصادية وقابلة للتنفيذ.</p>
+      <ul class="about-list">
+        <li><i class="ph ph-cube"></i><div><b>نمذجة BIM متقدّمة</b><span>تنسيق رقمي يقلّل التعارضات ويسرّع التنفيذ.</span></div></li>
+        <li><i class="ph ph-shield-check"></i><div><b>التزام بالكود السعودي SBC</b><span>تصاميم تتوافق مع أحدث المعايير المحلية والدولية.</span></div></li>
+        <li><i class="ph ph-gauge"></i><div><b>تسليم في الموعد</b><span>إدارة مشاريع منضبطة تحترم الوقت والميزانية.</span></div></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section class="sec" id="services" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="rv">
       <span class="label">الخدمات</span>
-      <h2>قدرات هندسية متكاملة</h2>
-      <p>ستة محاور تخصصية تغطي دورة حياة المشروع كاملة، من أول خط في المخطط حتى آخر اختبار تشغيلي.</p>
+      <h2 class="dsp-title">ست تخصّصات · منظومة واحدة</h2>
+      <p class="sub">نغطّي دورة حياة المشروع بالكامل من خلال فرق متكاملة ومعايير موحّدة للجودة.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc rv d1">
-        <div class="top"><span class="num">[ 01 ]</span><i class="ph ph-blueprint ic"></i></div>
-        <h3>التصميم الإنشائي</h3>
-        <p>تصميم وتحليل المنشآت الخرسانية والمعدنية بدقة عالية ومقاومة للأحمال والزلازل.</p>
-        <div class="tags"><span>BIM</span><span>FEM</span><span>SEISMIC</span></div>
-      </div>
-      <div class="svc rv d2">
-        <div class="top"><span class="num">[ 02 ]</span><i class="ph ph-lightning ic"></i></div>
-        <h3>أنظمة MEP</h3>
-        <p>تصميم متكامل لأنظمة التكييف والكهرباء والسباكة ومكافحة الحريق بكفاءة عالية.</p>
-        <div class="tags"><span>HVAC</span><span>ELEC</span><span>FIRE</span></div>
-      </div>
-      <div class="svc rv d3">
-        <div class="top"><span class="num">[ 03 ]</span><i class="ph ph-kanban ic"></i></div>
-        <h3>إدارة المشاريع</h3>
-        <p>تخطيط وضبط للوقت والتكلفة والجودة وفق منهجيات PMI المعتمدة عالمياً.</p>
-        <div class="tags"><span>PMI</span><span>SCHEDULE</span><span>RISK</span></div>
-      </div>
-      <div class="svc rv d1">
-        <div class="top"><span class="num">[ 04 ]</span><i class="ph ph-chart-line-up ic"></i></div>
-        <h3>دراسات الجدوى</h3>
-        <p>تقييم فني ومالي شامل يضمن قرارات استثمارية مدروسة وعوائد محسوبة.</p>
-        <div class="tags"><span>ROI</span><span>MARKET</span><span>COST</span></div>
-      </div>
-      <div class="svc rv d2">
-        <div class="top"><span class="num">[ 05 ]</span><i class="ph ph-hard-hat ic"></i></div>
-        <h3>الإشراف الهندسي</h3>
-        <p>إشراف ميداني صارم يضمن مطابقة التنفيذ للمواصفات وضبط الجودة لحظياً.</p>
-        <div class="tags"><span>QC</span><span>TESTING</span><span>SITE</span></div>
-      </div>
-      <div class="svc rv d3">
-        <div class="top"><span class="num">[ 06 ]</span><i class="ph ph-stack ic"></i></div>
-        <h3>استشارات متخصصة</h3>
-        <p>تدقيق تصاميم، كفاءة طاقة، استدامة، وحلول المباني الذكية المتقدمة.</p>
-        <div class="tags"><span>LEED</span><span>AUDIT</span><span>SMART</span></div>
-      </div>
+      <article class="svc rv"><span class="n">/ 01</span><i class="ph ph-buildings"></i><h3>التصميم الإنشائي</h3><p>تحليل وتصميم الهياكل الخرسانية والمعدنية بنماذج حسابية دقيقة وآمنة.</p></article>
+      <article class="svc rv"><span class="n">/ 02</span><i class="ph ph-lightning"></i><h3>أنظمة MEP</h3><p>كهرباء وتكييف وسباكة ومكافحة حريق بكفاءة طاقة عالية واستدامة.</p></article>
+      <article class="svc rv"><span class="n">/ 03</span><i class="ph ph-kanban"></i><h3>إدارة المشاريع</h3><p>جدولة ومراقبة تكاليف وجودة لضمان تسليم منضبط دون تجاوزات.</p></article>
+      <article class="svc rv"><span class="n">/ 04</span><i class="ph ph-chart-line-up"></i><h3>دراسات الجدوى</h3><p>تحليل فني واقتصادي يدعم قراراتك الاستثمارية بأرقام واقعية.</p></article>
+      <article class="svc rv"><span class="n">/ 05</span><i class="ph ph-hard-hat"></i><h3>الإشراف الهندسي</h3><p>متابعة ميدانية صارمة تضمن مطابقة التنفيذ للمخططات والمواصفات.</p></article>
+      <article class="svc rv"><span class="n">/ 06</span><i class="ph ph-file-text"></i><h3>استخراج الرخص</h3><p>إعداد المستندات ومتابعة إصدار التراخيص لدى الجهات المختصة.</p></article>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <div class="blueprint"></div>
+<section class="sec" id="projects">
   <div class="wrap">
-    <div class="sec-head rv">
+    <div class="rv">
       <span class="label">المشاريع</span>
-      <h2>أرقام تحوّلت إلى واقع</h2>
-      <p>مختارات من مشاريعنا الهندسية عبر قطاعات متنوعة، صُمّمت ونُفّذت بأعلى معايير الدقة والسلامة.</p>
+      <h2 class="dsp-title">من المخطط إلى الواقع</h2>
+      <p class="sub">مختارات من أعمالنا عبر القطاعات السكنية والتجارية والصناعية والبنية التحتية.</p>
     </div>
-    <div class="proj-grid">
-      <div class="proj rv d1">
-        <div class="vis">
-          <span class="cat">RESIDENTIAL</span><span class="idx">01</span>
-          <svg viewBox="0 0 500 240" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="500" height="240" fill="#0f1316"/>
-            <g stroke="rgba(255,255,255,.07)"><line x1="0" y1="60" x2="500" y2="60"/><line x1="0" y1="120" x2="500" y2="120"/><line x1="0" y1="180" x2="500" y2="180"/><line x1="125" y1="0" x2="125" y2="240"/><line x1="250" y1="0" x2="250" y2="240"/><line x1="375" y1="0" x2="375" y2="240"/></g>
-            <g stroke="#B6F500" stroke-width="2" fill="none">
-              <rect x="130" y="50" width="80" height="160"/><rect x="220" y="80" width="70" height="130"/><rect x="300" y="30" width="80" height="180"/>
-            </g>
-            <line x1="70" y1="210" x2="430" y2="210" stroke="#B6F500" stroke-width="3"/>
-          </svg>
-        </div>
-        <div class="body"><h3>مجمّع أُفق السكني</h3><p>تصميم إنشائي وMEP لبرجين سكنيين بطراز معاصر.</p>
-          <div class="meta"><span>المساحة<b>٤٢٬٠٠٠م²</b></span><span>الأدوار<b>١٨</b></span><span>السنة<b>٢٠٢٤</b></span></div>
-        </div>
-      </div>
-      <div class="proj rv d2">
-        <div class="vis">
-          <span class="cat">COMMERCIAL</span><span class="idx">02</span>
-          <svg viewBox="0 0 500 240" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="500" height="240" fill="#0f1316"/>
-            <g stroke="rgba(255,255,255,.07)"><line x1="0" y1="60" x2="500" y2="60"/><line x1="0" y1="120" x2="500" y2="120"/><line x1="0" y1="180" x2="500" y2="180"/></g>
-            <path d="M80 200 L250 50 L420 200" stroke="#B6F500" stroke-width="2.4" fill="none"/>
-            <g stroke="#8A9099" stroke-width="1.4"><path d="M140 155 L250 105 M360 155 L250 105 M250 50 L250 105"/></g>
-            <circle cx="250" cy="50" r="6" fill="#B6F500"/><circle cx="250" cy="105" r="4" fill="#B6F500"/>
-          </svg>
-        </div>
-        <div class="body"><h3>مركز التجارة الذكي</h3><p>هيكل معدني واسع المجاز بسقف مقبّب وأنظمة تكييف ذكية.</p>
-          <div class="meta"><span>المساحة<b>٢٨٬٥٠٠م²</b></span><span>المجاز<b>٦٤م</b></span><span>السنة<b>٢٠٢٣</b></span></div>
-        </div>
-      </div>
-      <div class="proj rv d1">
-        <div class="vis">
-          <span class="cat">INFRASTRUCTURE</span><span class="idx">03</span>
-          <svg viewBox="0 0 500 240" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="500" height="240" fill="#0f1316"/>
-            <g stroke="rgba(255,255,255,.07)"><line x1="0" y1="80" x2="500" y2="80"/><line x1="0" y1="160" x2="500" y2="160"/></g>
-            <path d="M40 120 Q250 40 460 120" stroke="#B6F500" stroke-width="3" fill="none"/>
-            <line x1="40" y1="120" x2="460" y2="120" stroke="#E8EAE6" stroke-width="2"/>
-            <g stroke="#8A9099" stroke-width="1.4"><line x1="120" y1="101" x2="120" y2="120"/><line x1="190" y1="88" x2="190" y2="120"/><line x1="250" y1="80" x2="250" y2="120"/><line x1="310" y1="88" x2="310" y2="120"/><line x1="380" y1="101" x2="380" y2="120"/></g>
-            <rect x="60" y="120" width="12" height="70" fill="#B6F500"/><rect x="428" y="120" width="12" height="70" fill="#B6F500"/>
-          </svg>
-        </div>
-        <div class="body"><h3>جسر الواحة المعلّق</h3><p>تصميم جسر معلّق بكابلات مع تحليل ديناميكي للأحمال.</p>
-          <div class="meta"><span>الطول<b>٤٢٠م</b></span><span>المسارات<b>٦</b></span><span>السنة<b>٢٠٢٢</b></span></div>
-        </div>
-      </div>
-      <div class="proj rv d2">
-        <div class="vis">
-          <span class="cat">INDUSTRIAL</span><span class="idx">04</span>
-          <svg viewBox="0 0 500 240" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="500" height="240" fill="#0f1316"/>
-            <g stroke="rgba(255,255,255,.07)"><line x1="0" y1="80" x2="500" y2="80"/><line x1="0" y1="160" x2="500" y2="160"/><line x1="250" y1="0" x2="250" y2="240"/></g>
-            <g stroke="#B6F500" stroke-width="2" fill="none">
-              <rect x="70" y="120" width="120" height="90"/><rect x="200" y="90" width="100" height="120"/><rect x="310" y="130" width="120" height="80"/>
-            </g>
-            <path d="M70 120 L130 80 L190 120" stroke="#8A9099" stroke-width="2" fill="none"/>
-            <circle cx="250" cy="60" r="16" fill="none" stroke="#B6F500" stroke-width="2"/>
-            <line x1="250" y1="76" x2="250" y2="90" stroke="#B6F500" stroke-width="2"/>
-          </svg>
-        </div>
-        <div class="body"><h3>مصنع المعادن المتطوّر</h3><p>منشأة صناعية بأنظمة MEP ثقيلة وإدارة مشروع متكاملة.</p>
-          <div class="meta"><span>المساحة<b>٥٦٬٠٠٠م²</b></span><span>الخطوط<b>٤</b></span><span>السنة<b>٢٠٢٣</b></span></div>
-        </div>
-      </div>
+    <div class="gal">
+      <figure class="proj tall rv"><img src="../../../assets/img/structural/02.jpg" alt="هيكل خرساني ضخم لبرج قيد الإنشاء" loading="lazy" width="600" height="375" /><div class="proj-grid-ov"></div><figcaption class="proj-cap"><small>STRUCTURAL // إنشائي</small><b>برج الأفق — الرياض</b></figcaption></figure>
+      <figure class="proj tall rv"><img src="../../../assets/img/arch/03.jpg" alt="واجهة معمارية حديثة لمبنى تجاري" loading="lazy" width="600" height="375" /><div class="proj-grid-ov"></div><figcaption class="proj-cap"><small>ARCH // تجاري</small><b>مجمع النخبة</b></figcaption></figure>
+      <figure class="proj rv"><img src="../../../assets/img/structural/06.jpg" alt="أعمال تسليح وصب خرساني في الموقع" loading="lazy" width="400" height="400" /><div class="proj-grid-ov"></div><figcaption class="proj-cap"><small>INFRA // بنية</small><b>جسر الوادي</b></figcaption></figure>
+      <figure class="proj rv"><img src="../../../assets/img/arch/05.jpg" alt="مبنى مكتبي معاصر بواجهة زجاجية" loading="lazy" width="400" height="400" /><div class="proj-grid-ov"></div><figcaption class="proj-cap"><small>MEP // مكاتب</small><b>مقر الأعمال</b></figcaption></figure>
+      <figure class="proj rv"><img src="../../../assets/img/structural/08.jpg" alt="منشأة صناعية بهيكل معدني" loading="lazy" width="400" height="400" /><div class="proj-grid-ov"></div><figcaption class="proj-cap"><small>INDUSTRIAL // صناعي</small><b>مصنع الشرق</b></figcaption></figure>
     </div>
   </div>
 </section>
 
 <!-- STATS -->
-<section class="stats" id="stats">
-  <div class="blueprint"></div>
+<section class="sec stats">
   <div class="wrap">
-    <div class="stats-grid">
-      <div class="stat rv d1"><div class="n" data-count="320" data-suffix="+">٠</div><div class="l">مشروع منجز</div></div>
-      <div class="stat rv d2"><div class="n" data-count="18" data-suffix="+">٠</div><div class="l">سنة خبرة</div></div>
-      <div class="stat rv d3"><div class="n" data-count="64">٠</div><div class="l">مهندس واستشاري</div></div>
-      <div class="stat rv d4"><div class="n" data-count="98" data-suffix="٪">٠</div><div class="l">رضا العملاء</div></div>
+    <div class="stats-in">
+      <div class="stat rv"><b data-count="240" data-suffix="+">٠</b><span>مشروع منجَز</span></div>
+      <div class="stat rv"><b data-count="18">٠</b><span>عام خبرة</span></div>
+      <div class="stat rv"><b data-count="64">٠</b><span>مهندس متخصص</span></div>
+      <div class="stat rv"><b data-count="98" data-suffix="%">٠</b><span>رضا العملاء</span></div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="blueprint"></div>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="label">المنهجية</span>
-      <h2>بروتوكول التنفيذ</h2>
-      <p>أربع مراحل مُحكمة تحوّل المتطلبات إلى منشأة مكتملة، مع نقاط ضبط جودة في كل انتقال.</p>
+<!-- WHY / SECTORS -->
+<section class="sec" id="why" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap why-grid">
+    <div class="bp why-frame rv">
+      <img src="../../../assets/img/night/04.jpg" alt="مشروع إنشائي مضاء ليلاً في الموقع" loading="lazy" width="540" height="720" />
     </div>
-    <div class="pr-grid">
-      <div class="pr-step rv d1"><div class="st-n">PHASE 01</div><div class="big">٠١</div><h3>الدراسة</h3><p>تحليل المتطلبات وجمع البيانات ودراسة الموقع والقيود الفنية.</p></div>
-      <div class="pr-step rv d2"><div class="st-n">PHASE 02</div><div class="big">٠٢</div><h3>التصميم</h3><p>تطوير الحلول الهندسية ونمذجتها وتحليلها رقمياً وفق الأكواد.</p></div>
-      <div class="pr-step rv d3"><div class="st-n">PHASE 03</div><div class="big">٠٣</div><h3>الإشراف</h3><p>متابعة التنفيذ ميدانياً وضبط الجودة والالتزام بالجداول.</p></div>
-      <div class="pr-step rv d4"><div class="st-n">PHASE 04</div><div class="big">٠٤</div><h3>التسليم</h3><p>الاختبارات النهائية والتسليم والدعم بعد التشغيل.</p></div>
-    </div>
-    <div class="sectors">
-      <div class="sector rv d1"><i class="ph ph-buildings"></i><b>السكني</b></div>
-      <div class="sector rv d2"><i class="ph ph-storefront"></i><b>التجاري</b></div>
-      <div class="sector rv d3"><i class="ph ph-factory"></i><b>الصناعي</b></div>
-      <div class="sector rv d1"><i class="ph ph-road-horizon"></i><b>البنية التحتية</b></div>
-      <div class="sector rv d2"><i class="ph ph-hospital"></i><b>الصحي</b></div>
-      <div class="sector rv d3"><i class="ph ph-graduation-cap"></i><b>التعليمي</b></div>
+    <div class="rv">
+      <span class="label">لماذا أُفق · القطاعات</span>
+      <h2 class="dsp-title">شريك تقني<br>في كل قطاع</h2>
+      <p class="sub">نطوّع خبرتنا العميقة لطبيعة كل قطاع ومتطلباته التنظيمية، فنقدّم حلولاً مصمّمة خصيصاً لا قوالب جاهزة.</p>
+      <ul class="sectors">
+        <li><i class="ph ph-house-line"></i> مشاريع سكنية</li>
+        <li><i class="ph ph-storefront"></i> مجمعات تجارية</li>
+        <li><i class="ph ph-factory"></i> منشآت صناعية</li>
+        <li><i class="ph ph-hospital"></i> مرافق صحية</li>
+        <li><i class="ph ph-graduation-cap"></i> مبانٍ تعليمية</li>
+        <li><i class="ph ph-road-horizon"></i> بنية تحتية</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testi">
+<section class="sec" id="tst">
   <div class="wrap">
-    <div class="sec-head rv">
-      <span class="label">آراء العملاء</span>
-      <h2>ثقة مبنية على دقة</h2>
-      <p>شركاؤنا يتحدثون عن تجربتهم مع فريق أُفق الهندسي.</p>
+    <div class="rv">
+      <span class="label">الآراء</span>
+      <h2 class="dsp-title">ماذا يقول شركاؤنا</h2>
     </div>
-    <div class="testi-grid">
-      <div class="quote rv d1">
-        <div class="mark">"</div>
-        <p>تعامل احترافي وتقارير دقيقة في كل مرحلة. فريق أُفق رفع جودة مشروعنا والتزم بالجدول الزمني دون أي تجاوزات.</p>
-        <div class="who"><div class="av">ع</div><div><b>م. عبدالعزيز الراشد</b><span>مدير مشاريع — بنيان</span></div></div>
-      </div>
-      <div class="quote rv d2">
-        <div class="mark">"</div>
-        <p>دراسة الجدوى كانت دقيقة وأنقذتنا من قرار استثماري مكلف. خبرة فنية ومالية نادرة في مكتب واحد.</p>
-        <div class="who"><div class="av">ل</div><div><b>أ. لمياء السبيعي</b><span>مديرة الاستثمار — الأفق</span></div></div>
-      </div>
-      <div class="quote rv d3">
-        <div class="mark">"</div>
-        <p>الإشراف الميداني كان صارماً ومنظماً. اكتشفوا ملاحظات فنية مبكراً ووفّروا علينا تكاليف إعادة كبيرة.</p>
-        <div class="who"><div class="av">خ</div><div><b>م. خالد المطيري</b><span>المالك — مشروع الواحة</span></div></div>
-      </div>
+    <div class="tst-grid">
+      <figure class="quote rv"><div class="mk">”</div><p>«دقة المخططات والالتزام بالمواعيد كانا الفارق الحقيقي. فريق أُفق يفهم الهندسة والإدارة معاً.»</p><div class="who"><span class="av">خ</span><div><b>م. خالد العتيبي</b><span>BUILD GROUP</span></div></div></figure>
+      <figure class="quote rv"><div class="mk">”</div><p>«دراسة الجدوى كانت دقيقة وواقعية إلى حدّ كبير، ومنحتنا الثقة لاتخاذ القرار الاستثماري.»</p><div class="who"><span class="av">ن</span><div><b>أ. نورة الشمري</b><span>REAL ESTATE</span></div></div></figure>
+      <figure class="quote rv"><div class="mk">”</div><p>«الإشراف الميداني كان صارماً واحترافياً، وانعكس مباشرةً على جودة التنفيذ النهائية.»</p><div class="who"><span class="av">ع</span><div><b>م. عبدالله القحطاني</b><span>TATWEER CO.</span></div></div></figure>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="blueprint"></div>
+<section class="sec" id="contact" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap contact-grid">
-    <div class="contact-info rv">
+    <div class="rv">
       <span class="label">تواصل</span>
-      <h2 style="font-family:var(--disp);font-size:clamp(30px,5vw,48px);text-transform:uppercase;margin:18px 0 16px">لنبدأ التنفيذ</h2>
-      <p style="color:var(--muted);font-size:17px;margin-bottom:34px">أرسل تفاصيل مشروعك وسيتواصل معك فريقنا الهندسي عبر واتساب لمناقشة المتطلبات والجدوى.</p>
-      <div class="ci"><i class="ph ph-map-pin ic"></i><div><b>العنوان</b><span>طريق الملك فهد، حي العليا، الرياض — السعودية</span></div></div>
-      <div class="ci"><i class="ph ph-phone ic"></i><div><b>الهاتف</b><span dir="ltr">+966 50 000 0000</span></div></div>
-      <div class="ci"><i class="ph ph-envelope-simple ic"></i><div><b>البريد</b><span>hello@ofoq-eng.sa</span></div></div>
-      <div class="ci" style="border-bottom:none"><i class="ph ph-clock ic"></i><div><b>أوقات العمل</b><span>الأحد - الخميس / ٨ص - ٥م</span></div></div>
+      <h2 class="dsp-title">لنبنِ شيئاً متيناً</h2>
+      <p class="sub">شاركنا تفاصيل مشروعك وسيعاود فريقنا التواصل معك لتقديم استشارة أولية وعرض سعر مخصّص.</p>
+      <ul class="ci-list">
+        <li><div class="ic"><i class="ph ph-map-pin"></i></div><div><b>العنوان</b><span>طريق الملك فهد، الرياض، السعودية</span></div></li>
+        <li><div class="ic"><i class="ph ph-phone"></i></div><div><b>الهاتف</b><span dir="ltr">+966 50 000 0000</span></div></li>
+        <li><div class="ic"><i class="ph ph-envelope-simple"></i></div><div><b>البريد</b><span>info@ofoq-eng.sa</span></div></li>
+        <li><div class="ic"><i class="ph ph-clock"></i></div><div><b>ساعات العمل</b><span>الأحد - الخميس · ٨ ص - ٥ م</span></div></li>
+      </ul>
     </div>
-    <form class="cform rv d2" id="contactForm">
-      <div class="frow">
-        <div class="field"><label>الاسم الكامل</label><input type="text" id="f-name" required placeholder="اكتب اسمك" /></div>
-        <div class="field"><label>رقم الجوال</label><input type="tel" id="f-phone" required placeholder="05xxxxxxxx" /></div>
+    <form id="leadForm" class="rv" novalidate>
+      <div class="row2">
+        <div class="field"><label for="name">الاسم الكامل</label><input id="name" name="name" type="text" placeholder="اكتب اسمك" required /></div>
+        <div class="field"><label for="phone">رقم الجوال</label><input id="phone" name="phone" type="tel" dir="ltr" placeholder="05XXXXXXXX" required /></div>
       </div>
-      <div class="field"><label>نوع الخدمة</label>
-        <select id="f-service">
-          <option>التصميم الإنشائي</option>
-          <option>أنظمة MEP</option>
-          <option>إدارة المشاريع</option>
-          <option>دراسات الجدوى</option>
-          <option>الإشراف الهندسي</option>
-          <option>استشارة عامة</option>
-        </select>
-      </div>
-      <div class="field"><label>تفاصيل المشروع</label><textarea id="f-msg" placeholder="صف لنا مشروعك ومتطلباتك..."></textarea></div>
-      <button type="submit" class="btn btn-lime"><i class="ph ph-whatsapp-logo"></i> إرسال عبر واتساب</button>
+      <div class="field"><label for="service">نوع الخدمة</label><select id="service" name="service"><option>التصميم الإنشائي</option><option>أنظمة MEP</option><option>إدارة المشاريع</option><option>دراسات الجدوى</option><option>الإشراف الهندسي</option><option>استخراج الرخص</option></select></div>
+      <div class="field"><label for="msg">تفاصيل المشروع</label><textarea id="msg" name="msg" placeholder="أخبرنا عن مشروعك ونطاقه..." required></textarea></div>
+      <button type="submit" class="btn btn-lime">إرسال عبر واتساب <i class="ph ph-whatsapp-logo"></i></button>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="ft">
-  <div class="blueprint"></div>
+<footer>
   <div class="wrap">
-    <div class="ft-grid">
-      <div>
-        <span class="brand" style="font-size:23px">OFOQ // أُفق</span>
-        <p>مكتب استشارات هندسية يحوّل الأفكار الطموحة إلى منشآت قائمة بدقة تقنية صارمة.</p>
-        <div class="ft-soc">
-          <a href="#" aria-label="x"><i class="ph ph-x-logo"></i></a>
-          <a href="#" aria-label="linkedin"><i class="ph ph-linkedin-logo"></i></a>
-          <a href="#" aria-label="instagram"><i class="ph ph-instagram-logo"></i></a>
-          <a href="#" aria-label="whatsapp"><i class="ph ph-whatsapp-logo"></i></a>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#hero" class="brand"><span class="mark">أ</span><span>أُفق<small>OFOQ · ENGINEERING</small></span></a>
+        <p>مكتب استشارات هندسية يحوّل الطموح إلى منشآت قائمة — بدقّة، وانضباط، وروح تقنية.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="تويتر إكس"><i class="ph ph-x-logo"></i></a>
+          <a href="#" aria-label="لينكدإن"><i class="ph ph-linkedin-logo"></i></a>
+          <a href="#" aria-label="إنستغرام"><i class="ph ph-instagram-logo"></i></a>
         </div>
       </div>
-      <div><h4>الخدمات</h4><ul>
-        <li><a href="#services">التصميم الإنشائي</a></li>
-        <li><a href="#services">أنظمة MEP</a></li>
-        <li><a href="#services">إدارة المشاريع</a></li>
-        <li><a href="#services">دراسات الجدوى</a></li>
-        <li><a href="#services">الإشراف الهندسي</a></li>
-      </ul></div>
-      <div><h4>المكتب</h4><ul>
-        <li><a href="#about">عن المكتب</a></li>
-        <li><a href="#projects">المشاريع</a></li>
-        <li><a href="#process">المنهجية</a></li>
-        <li><a href="#testi">آراء العملاء</a></li>
-        <li><a href="#contact">تواصل</a></li>
-      </ul></div>
-      <div><h4>تواصل</h4><ul>
-        <li><a href="#" dir="ltr">+966 50 000 0000</a></li>
-        <li><a href="#">hello@ofoq-eng.sa</a></li>
-        <li><a href="#">الرياض، السعودية</a></li>
-        <li><a href="#">الأحد - الخميس</a></li>
-      </ul></div>
+      <div><h4>الخدمات</h4><ul><li><a href="#services">التصميم الإنشائي</a></li><li><a href="#services">أنظمة MEP</a></li><li><a href="#services">إدارة المشاريع</a></li><li><a href="#services">دراسات الجدوى</a></li></ul></div>
+      <div><h4>روابط</h4><ul><li><a href="#about">من نحن</a></li><li><a href="#projects">المشاريع</a></li><li><a href="#why">القطاعات</a></li><li><a href="#contact">تواصل</a></li></ul></div>
+      <div><h4>تواصل</h4><ul><li><a href="tel:+966500000000" dir="ltr">+966 50 000 0000</a></li><li><a href="mailto:info@ofoq-eng.sa">info@ofoq-eng.sa</a></li><li><a href="#contact">طريق الملك فهد، الرياض</a></li></ul></div>
     </div>
-    <div class="ft-bottom">
-      <span>© ٢٠٢٦ OFOQ ENGINEERING — ALL RIGHTS RESERVED</span>
-      <span>PRIVACY · TERMS</span>
+    <div class="foot-bot">
+      <span>© ٢٠٢٦ OFOQ ENGINEERING — جميع الحقوق محفوظة</span>
+      <span style="color:var(--lime)">// BUILT WITH PRECISION</span>
     </div>
   </div>
 </footer>
 
-<!-- FLOATERS -->
-<div class="floaters">
-  <button class="fab top" id="toTop" aria-label="للأعلى"><i class="ph ph-arrow-up"></i></button>
-  <a class="fab wa" id="waFab" href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20OFOQ" target="_blank" rel="noopener" aria-label="واتساب"><i class="ph ph-whatsapp-logo"></i></a>
+<!-- FLOATING -->
+<div class="float">
+  <button class="fab fab-top" id="toTop" aria-label="العودة للأعلى"><i class="ph ph-arrow-up"></i></button>
+  <a class="fab fab-wa" href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب"><i class="ph ph-whatsapp-logo"></i></a>
 </div>
 
 <script>
 (function(){
   var nav=document.getElementById('nav');
-  var hamb=document.getElementById('hamb');
-  var drawer=document.getElementById('drawer');
-  var overlay=document.getElementById('overlay');
-  var xbtn=document.getElementById('xbtn');
+  var burger=document.getElementById('burger');
+  var mobile=document.getElementById('mobile');
+  var closeM=document.getElementById('closeM');
   var toTop=document.getElementById('toTop');
 
-  function openDrawer(){drawer.classList.add('open');overlay.classList.add('open');drawer.setAttribute('aria-hidden','false');}
-  function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open');drawer.setAttribute('aria-hidden','true');}
-  hamb.addEventListener('click',openDrawer);
-  xbtn.addEventListener('click',closeDrawer);
-  overlay.addEventListener('click',closeDrawer);
-  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeDrawer);});
+  function openMenu(){mobile.classList.add('open');mobile.setAttribute('aria-hidden','false');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function closeMenu(){mobile.classList.remove('open');mobile.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  burger.addEventListener('click',openMenu);
+  closeM.addEventListener('click',closeMenu);
+  mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
 
   window.addEventListener('scroll',function(){
-    if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
-    if(window.scrollY>500)toTop.classList.add('show');else toTop.classList.remove('show');
+    nav.classList.toggle('scrolled',window.scrollY>10);
+    toTop.classList.toggle('show',window.scrollY>500);
   });
   toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      var id=a.getAttribute('href');
-      if(id.length>1){
-        var el=document.querySelector(id);
-        if(el){e.preventDefault();var y=el.getBoundingClientRect().top+window.scrollY-66;window.scrollTo({top:y,behavior:'smooth'});}
+  var AR='٠١٢٣٤٥٦٧٨٩';
+  function toAr(n){return String(n).replace(/[0-9]/g,function(d){return AR[+d];});}
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll('[data-count]').forEach(runCount);
+        io.unobserve(e.target);
       }
     });
-  });
+  },{threshold:.18});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 
-  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var rvs=document.querySelectorAll('.rv');
-  if(reduce){rvs.forEach(function(el){el.classList.add('in');});}
-  else{
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-    },{threshold:.12});
-    rvs.forEach(function(el){io.observe(el);});
-  }
-
-  function toArabic(n){return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[d];});}
-  function animate(el){
-    var target=+el.getAttribute('data-count');
-    var suffix=el.getAttribute('data-suffix')||'';
-    if(reduce){el.textContent=toArabic(target)+suffix;return;}
-    var dur=1600,start=null;
+  function runCount(el){
+    if(el.dataset.done)return; el.dataset.done='1';
+    var target=+el.dataset.count, suf=el.dataset.suffix||'', start=null, dur=1600;
     function step(ts){
       if(!start)start=ts;
       var p=Math.min((ts-start)/dur,1);
-      var eased=1-Math.pow(1-p,3);
-      el.textContent=toArabic(Math.round(target*eased))+suffix;
+      var val=Math.floor((1-Math.pow(1-p,3))*target);
+      el.textContent=toAr(val)+suf;
       if(p<1)requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
-  var counters=document.querySelectorAll('[data-count]');
-  var cio=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting){animate(en.target);cio.unobserve(en.target);}});
-  },{threshold:.5});
-  counters.forEach(function(c){cio.observe(c);});
 
-  document.getElementById('contactForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    var name=document.getElementById('f-name').value.trim();
-    var phone=document.getElementById('f-phone').value.trim();
-    var service=document.getElementById('f-service').value;
-    var msg=document.getElementById('f-msg').value.trim();
-    var url='https://wa.me/966500000000?text='+encodeURIComponent('مرحباً OFOQ،\n\nالاسم: '+name+'\nالجوال: '+phone+'\nالخدمة: '+service+'\nالتفاصيل: '+msg);
-    window.open(url,'_blank');
+  document.getElementById('leadForm').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var n=document.getElementById('name').value.trim();
+    var p=document.getElementById('phone').value.trim();
+    var s=document.getElementById('service').value;
+    var m=document.getElementById('msg').value.trim();
+    if(!n||!p||!m){alert('يرجى تعبئة الحقول المطلوبة');return;}
+    var txt='مرحباً مكتب أُفق،%0A'+
+      'الاسم: '+encodeURIComponent(n)+'%0A'+
+      'الجوال: '+encodeURIComponent(p)+'%0A'+
+      'الخدمة: '+encodeURIComponent(s)+'%0A'+
+      'التفاصيل: '+encodeURIComponent(m);
+    window.open('https://wa.me/966500000000?text='+txt,'_blank');
   });
 })();
 </script>
