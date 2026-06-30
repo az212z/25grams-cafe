@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بِناء · BINAA — مكتب هندسة إنشائية ومقاولات</title>
+<meta name="description" content="بِناء BINAA — مكتب هندسة إنشائية ومقاولات: تصميم إنشائي، فحص واختبار الخرسانة، إدارة تنفيذ، تدعيم وترميم المباني، إشراف هندسي.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<style>
+:root{
+  --bg:#15161A; --panel:#1E2025; --panel2:#23262C;
+  --accent:#F25C05; --accent-2:#FF7A2E;
+  --steel:#8A9099; --text:#ECECEA; --muted:#9CA0A8;
+  --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.06);
+  --display:'Space Grotesk', sans-serif;
+  --body:'IBM Plex Sans Arabic', sans-serif;
+  --mono:'IBM Plex Mono', monospace;
+  --maxw:1280px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--body);
+  line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--accent);color:#15161A}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono)}
+.display{font-family:var(--display)}
+
+/* hazard stripe */
+.hazard{
+  background-image:repeating-linear-gradient(-45deg,var(--accent) 0 14px,#15161A 14px 28px);
+  height:8px;width:100%;
+}
+.hazard-thin{
+  background-image:repeating-linear-gradient(-45deg,var(--accent) 0 9px,transparent 9px 18px);
+}
+
+/* ---------- NAV ---------- */
+header.nav{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  transition:background .3s, border-color .3s, padding .3s;
+  border-bottom:1px solid transparent;
+}
+header.nav.scrolled{
+  background:rgba(21,22,26,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:.5px}
+.brand .logo{
+  width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;
+  background:var(--accent);position:relative;
+}
+.brand .logo svg{width:24px;height:24px}
+.brand small{font-family:var(--mono);font-size:10px;color:var(--steel);letter-spacing:2px;font-weight:500;display:block;margin-top:-4px}
+.brand .stack{line-height:1.05}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:14.5px;color:var(--muted);font-weight:500;position:relative;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:"";position:absolute;bottom:-6px;right:0;width:0;height:2px;background:var(--accent);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:var(--accent);color:#15161A!important;padding:11px 22px;font-weight:600;
+  font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,background .2s;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+}
+.nav-cta:hover{background:var(--accent-2);transform:translateY(-2px)}
+.burger{display:none;background:none;border:1px solid var(--line);width:46px;height:46px;color:var(--text);cursor:pointer;font-size:24px}
+/* overlay */
+.mobile-menu{
+  position:fixed;inset:0;z-index:99;background:#15161A;
+  transform:translateY(-100%);transition:transform .4s cubic-bezier(.7,0,.2,1);
+  display:flex;flex-direction:column;padding:96px 28px 40px;
+}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:var(--display);font-size:30px;font-weight:600;padding:16px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.mobile-menu a span{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.mobile-menu .mm-cta{background:var(--accent);color:#15161A;justify-content:center;margin-top:24px;border:none;font-size:20px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:150px 0 90px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;opacity:.5}
+.hero-grid-svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-glow{position:absolute;top:-10%;left:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,92,5,.16),transparent 65%);filter:blur(20px)}
+.hero .wrap{position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:1px;border:1px solid var(--line);padding:8px 16px;margin-bottom:28px}
+.hero-tag .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(40px,7vw,86px);line-height:1.02;letter-spacing:-1px;margin-bottom:8px}
+.hero h1 .ar{font-family:var(--body);font-weight:700}
+.hero h1 .out{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+.hero-sub{font-size:18px;color:var(--muted);max-width:560px;margin:26px 0 38px;line-height:1.8}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;font-weight:600;font-size:15px;transition:transform .15s,background .2s,border-color .2s;cursor:pointer;border:none;font-family:var(--body)}
+.btn-primary{background:var(--accent);color:#15161A;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
+.hero-meta .m{padding:24px 0;border-left:1px solid var(--line)}
+.hero-meta .m:first-child{padding-right:0}
+.hero-meta .m:last-child{border-left:none}
+.hero-meta .m b{font-family:var(--display);font-size:34px;font-weight:700;display:block;color:var(--accent)}
+.hero-meta .m span{font-family:var(--mono);font-size:12px;color:var(--steel);letter-spacing:.5px}
+.hero-frame{position:absolute;left:0;top:120px;width:42%;height:80%;z-index:1;opacity:.85;display:none}
+@media(min-width:1080px){.hero-frame{display:block}}
+
+/* section base */
+section{position:relative;padding:96px 0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--accent)}
+.sec-title{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.5vw,52px);line-height:1.08;letter-spacing:-.5px;margin-bottom:18px}
+.sec-title .ar{font-family:var(--body);font-weight:700}
+.sec-intro{color:var(--muted);max-width:620px;font-size:16.5px}
+.sec-head{margin-bottom:56px}
+.bignum{position:absolute;font-family:var(--display);font-weight:700;font-size:clamp(120px,22vw,300px);color:var(--panel);left:-10px;top:-40px;z-index:0;line-height:1;pointer-events:none;opacity:.6}
+
+/* ---------- ABOUT ---------- */
+.about{background:linear-gradient(180deg,var(--bg),var(--panel) 120%)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative;z-index:2}
+.about-grid p{color:var(--muted);font-size:16.5px;margin-bottom:18px}
+.about-grid p strong{color:var(--text);font-weight:600}
+.about-points{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.about-points li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--text)}
+.about-points i{color:var(--accent);font-size:18px;margin-top:2px}
+.about-visual{position:relative;border:1px solid var(--line);background:var(--panel);padding:30px;aspect-ratio:1/1.05}
+.about-visual .corner{position:absolute;width:18px;height:18px;border:2px solid var(--accent)}
+.about-visual .corner.tl{top:-1px;right:-1px;border-bottom:none;border-left:none}
+.about-visual .corner.br{bottom:-1px;left:-1px;border-top:none;border-right:none}
+.about-visual .lab{position:absolute;bottom:14px;right:14px;font-family:var(--mono);font-size:11px;color:var(--steel)}
+
+/* ---------- SERVICES ---------- */
+.services{background:var(--panel)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--bg);padding:38px 32px;position:relative;transition:background .25s;overflow:hidden}
+.svc:hover{background:var(--panel2)}
+.svc .num{font-family:var(--mono);font-size:12px;color:var(--steel);position:absolute;top:24px;left:32px}
+.svc .ic{width:54px;height:54px;display:grid;place-items:center;border:1px solid var(--line);margin-bottom:24px;color:var(--accent);font-size:26px;transition:background .25s,color .25s}
+.svc:hover .ic{background:var(--accent);color:#15161A;border-color:var(--accent)}
+.svc h3{font-size:20px;font-weight:600;margin-bottom:12px}
+.svc p{color:var(--muted);font-size:14.5px;line-height:1.75}
+.svc .bar{position:absolute;bottom:0;right:0;width:0;height:3px;background:var(--accent);transition:width .35s}
+.svc:hover .bar{width:100%}
+
+/* ---------- PROJECTS ---------- */
+.projects{background:var(--bg)}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.proj{border:1px solid var(--line);background:var(--panel);overflow:hidden;position:relative;transition:transform .25s,border-color .25s}
+.proj:hover{transform:translateY(-4px);border-color:var(--accent)}
+.proj-vis{aspect-ratio:16/10;position:relative;background:linear-gradient(135deg,#1A1C21,#101113);overflow:hidden}
+.proj-vis svg{position:absolute;inset:0;width:100%;height:100%}
+.proj-cat{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:11px;background:var(--accent);color:#15161A;padding:5px 12px;font-weight:600;letter-spacing:.5px;z-index:3}
+.proj-body{padding:24px 26px}
+.proj-body h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.proj-body p{color:var(--muted);font-size:14px}
+.proj-body .meta{display:flex;gap:18px;margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--steel)}
+.proj-body .meta span{display:flex;align-items:center;gap:6px}
+.proj-body .meta i{color:var(--accent)}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--accent);color:#15161A;padding:0;position:relative;overflow:hidden}
+.stats .hazard-top{height:10px;background-image:repeating-linear-gradient(-45deg,#15161A 0 16px,transparent 16px 32px)}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:64px 0}
+.stat{text-align:center;padding:10px 20px;border-left:1px solid rgba(21,22,26,.18)}
+.stat:last-child{border-left:none}
+.stat b{font-family:var(--display);font-weight:700;font-size:clamp(46px,6vw,72px);line-height:1;display:block}
+.stat span{font-family:var(--body);font-size:14.5px;font-weight:600;margin-top:10px;display:block}
+
+/* ---------- PROCESS / WHY ---------- */
+.process{background:var(--panel)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px}
+.proc{border:1px solid var(--line);padding:30px 26px;position:relative;background:var(--bg);transition:border-color .25s}
+.proc:hover{border-color:var(--accent)}
+.proc .step{font-family:var(--display);font-size:40px;font-weight:700;color:var(--panel2);position:absolute;top:14px;left:22px}
+.proc .ic{font-size:30px;color:var(--accent);margin-bottom:22px}
+.proc h4{font-size:18px;font-weight:600;margin-bottom:10px}
+.proc p{color:var(--muted);font-size:14px}
+.safety{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;margin-top:80px;padding-top:64px;border-top:1px solid var(--line)}
+.safety ul{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.safety li{display:flex;gap:14px;align-items:flex-start}
+.safety li i{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;background:var(--panel2);color:var(--accent);font-size:20px;border:1px solid var(--line)}
+.safety li b{font-weight:600;display:block;font-size:15.5px}
+.safety li p{color:var(--muted);font-size:13.5px}
+.safety-vis{border:1px solid var(--line);background:var(--bg);padding:24px;aspect-ratio:1/1}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tcard{border:1px solid var(--line);background:var(--panel);padding:34px 30px;position:relative;transition:border-color .25s}
+.tcard:hover{border-color:var(--accent)}
+.tcard .q{font-family:var(--display);font-size:60px;color:var(--accent);line-height:.6;height:30px}
+.tcard p{font-size:15px;color:var(--text);margin:18px 0 24px;line-height:1.8}
+.tcard .who{display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:18px}
+.tcard .av{width:46px;height:46px;flex:0 0 46px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#8A3A02);display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#15161A;font-size:18px}
+.tcard .who b{font-size:15px;font-weight:600;display:block}
+.tcard .who span{font-family:var(--mono);font-size:11.5px;color:var(--steel)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--panel)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px}
+.contact-info h3{font-family:var(--display);font-size:30px;font-weight:700;margin-bottom:16px}
+.contact-info>p{color:var(--muted);margin-bottom:30px;font-size:16px}
+.cinfo-item{display:flex;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.cinfo-item i{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line);color:var(--accent);font-size:22px}
+.cinfo-item small{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.5px;display:block}
+.cinfo-item b{font-size:15.5px;font-weight:500}
+form{background:var(--bg);border:1px solid var(--line);padding:34px}
+.field{margin-bottom:20px}
+.field label{font-family:var(--mono);font-size:12px;color:var(--steel);letter-spacing:.5px;display:block;margin-bottom:8px;text-transform:uppercase}
+.field input,.field textarea,.field select{
+  width:100%;background:var(--panel);border:1px solid var(--line);color:var(--text);
+  padding:14px 16px;font-family:var(--body);font-size:15px;transition:border-color .2s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:110px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form .btn-primary{width:100%;justify-content:center;margin-top:6px}
+.form-note{font-family:var(--mono);font-size:11.5px;color:var(--steel);text-align:center;margin-top:16px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--bg);border-top:1px solid var(--line);padding:64px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.foot-brand .brand{margin-bottom:18px}
+.foot-brand p{color:var(--muted);font-size:14px;max-width:300px}
+.foot-soc{display:flex;gap:12px;margin-top:20px}
+.foot-soc a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);color:var(--muted);font-size:19px;transition:.2s}
+.foot-soc a:hover{background:var(--accent);color:#15161A;border-color:var(--accent)}
+.foot-col h5{font-family:var(--mono);font-size:12px;color:var(--steel);letter-spacing:1px;text-transform:uppercase;margin-bottom:18px}
+.foot-col a{display:block;color:var(--muted);font-size:14px;padding:7px 0;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:12px;color:var(--steel)}
+
+/* ---------- FLOATING ---------- */
+.float-wa,.float-top{position:fixed;left:24px;width:54px;height:54px;display:grid;place-items:center;z-index:90;cursor:pointer;transition:transform .2s,opacity .3s;border:none}
+.float-wa{bottom:24px;background:#25D366;color:#fff;font-size:28px;border-radius:50%;box-shadow:0 8px 24px rgba(37,211,102,.35)}
+.float-top{bottom:90px;background:var(--accent);color:#15161A;font-size:24px;opacity:0;pointer-events:none;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.float-top.show{opacity:1;pointer-events:auto}
+.float-wa:hover,.float-top:hover{transform:scale(1.08)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+/* responsive */
+@media(max-width:980px){
+  .about-grid,.contact-grid,.safety{grid-template-columns:1fr;gap:40px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .stats-inner,.proc-grid{grid-template-columns:1fr 1fr;gap:0}
+  .proc-grid{gap:18px}
+  .testi-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:680px){
+  .wrap{padding:0 18px}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:grid;place-items:center}
+  .hero{padding:120px 0 70px}
+  .hero-meta{grid-template-columns:1fr;gap:0}
+  .hero-meta .m{border-left:none;border-bottom:1px solid var(--line);padding:18px 0}
+  .svc-grid,.proj-grid,.proc-grid,.testi-grid,.foot-grid,.stats-inner{grid-template-columns:1fr}
+  .stat{border-left:none;border-bottom:1px solid rgba(21,22,26,.18);padding:26px 0}
+  .stat:last-child{border-bottom:none}
+  .frow,.about-points{grid-template-columns:1fr}
+  .foot-bottom{flex-direction:column;text-align:center}
+  section{padding:70px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="hazard"></div>
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand">
+      <span class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#15161A" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+      </span>
+      <span class="stack">بِناء<small>BINAA · STRUCTURAL</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">المكتب</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#projects">أعمالنا</a>
+      <a href="#process">منهجيتنا</a>
+      <a href="#testi">آراء العملاء</a>
+    </nav>
+    <a href="#contact" class="nav-cta"><i class="ph-bold ph-paper-plane-tilt"></i> اطلب استشارة</a>
+    <button class="burger" id="burger" aria-label="القائمة"><i class="ph-bold ph-list"></i></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">المكتب <span>01</span></a>
+  <a href="#services">خدماتنا <span>02</span></a>
+  <a href="#projects">أعمالنا <span>03</span></a>
+  <a href="#process">منهجيتنا <span>04</span></a>
+  <a href="#testi">آراء العملاء <span>05</span></a>
+  <a href="#contact" class="mm-cta">اطلب استشارة</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <svg class="hero-grid-svg" preserveAspectRatio="none">
+      <defs>
+        <pattern id="g1" width="56" height="56" patternUnits="userSpaceOnUse">
+          <path d="M56 0H0V56" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g1)"/>
+    </svg>
+    <div class="hero-glow"></div>
+  </div>
+  <!-- structural frame svg -->
+  <svg class="hero-frame" viewBox="0 0 400 600" fill="none">
+    <g stroke="#F25C05" stroke-width="2" opacity=".55">
+      <rect x="60" y="40" width="280" height="520"/>
+      <line x1="60" y1="180" x2="340" y2="180"/>
+      <line x1="60" y1="320" x2="340" y2="320"/>
+      <line x1="60" y1="460" x2="340" y2="460"/>
+      <line x1="200" y1="40" x2="200" y2="560"/>
+      <line x1="60" y1="40" x2="200" y2="180"/><line x1="340" y1="40" x2="200" y2="180"/>
+      <line x1="60" y1="320" x2="200" y2="180"/><line x1="340" y1="320" x2="200" y2="180"/>
+    </g>
+    <g fill="#F25C05">
+      <circle cx="60" cy="40" r="5"/><circle cx="340" cy="40" r="5"/><circle cx="200" cy="40" r="5"/>
+      <circle cx="60" cy="180" r="5"/><circle cx="340" cy="180" r="5"/><circle cx="200" cy="180" r="5"/>
+      <circle cx="60" cy="320" r="5"/><circle cx="340" cy="320" r="5"/>
+      <circle cx="60" cy="560" r="5"/><circle cx="340" cy="560" r="5"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <span class="hero-tag rv"><span class="dot"></span> مكتب هندسة إنشائية ومقاولات · معتمد</span>
+    <h1 class="rv d1">
+      <span class="display">نبني</span> <span class="ar">بهندسةٍ</span><br>
+      <span class="out display">تتحمّل</span> <span class="ar">الزمن.</span>
+    </h1>
+    <p class="hero-sub rv d2">في «بِناء» نحوّل المخططات إلى منشآت آمنة وموثوقة — من التصميم الإنشائي وفحص الخرسانة إلى إدارة التنفيذ والتدعيم والإشراف الهندسي، بمعايير دقيقة ومسؤولية كاملة.</p>
+    <div class="hero-actions rv d3">
+      <a href="#contact" class="btn btn-primary"><i class="ph-bold ph-blueprint"></i> ابدأ مشروعك</a>
+      <a href="#projects" class="btn btn-ghost"><i class="ph ph-stack"></i> استعرض أعمالنا</a>
+    </div>
+    <div class="hero-meta rv d4">
+      <div class="m"><b data-count="18" data-suffix="+">٠</b><span>سنة من الخبرة الميدانية</span></div>
+      <div class="m"><b data-count="240" data-suffix="+">٠</b><span>مشروع إنشائي مُنفّذ</span></div>
+      <div class="m"><b data-count="100" data-suffix="٪">٠</b><span>التزام بكود البناء</span></div>
+    </div>
+  </div>
+</section>
+<div class="hazard hazard-thin" style="height:14px"></div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <span class="bignum">01</span>
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow rv">من نحن</div>
+        <h2 class="sec-title rv d1"><span class="ar">هندسةٌ إنشائية</span> <span class="display out">بمعايير</span> <span class="ar">صارمة</span></h2>
+        <p class="rv d2"><strong>بِناء BINAA</strong> مكتب هندسي متخصص في الإنشاءات والمقاولات، تأسّس على قاعدةٍ واحدة: لا تنازل عن السلامة الإنشائية. نعمل مع المطوّرين والمقاولين والملّاك على مشاريع سكنية وتجارية وصناعية، من الفكرة الأولى حتى التسليم.</p>
+        <p class="rv d2">فريقنا من المهندسين الإنشائيين وفنيي المختبرات يجمع بين الحساب الدقيق والخبرة الميدانية، مع توثيقٍ كامل لكل مرحلة وفحوصاتٍ معتمدة تضمن مطابقة المنشأ للمواصفات والكود السعودي للبناء.</p>
+        <ul class="about-points rv d3">
+          <li><i class="ph-bold ph-check-circle"></i> تحليل وتصميم إنشائي بأنظمة حديثة</li>
+          <li><i class="ph-bold ph-check-circle"></i> مختبر معتمد لفحص الخرسانة</li>
+          <li><i class="ph-bold ph-check-circle"></i> إدارة تنفيذ وإشراف ميداني</li>
+          <li><i class="ph-bold ph-check-circle"></i> حلول تدعيم وترميم المباني</li>
+        </ul>
+      </div>
+      <div class="about-visual rv d2">
+        <span class="corner tl"></span><span class="corner br"></span>
+        <svg viewBox="0 0 320 340" fill="none" width="100%">
+          <!-- foundation section -->
+          <rect x="0" y="0" width="320" height="340" fill="#15161A"/>
+          <g stroke="#2C2F36" stroke-width="1">
+            <line x1="0" y1="60" x2="320" y2="60"/><line x1="0" y1="120" x2="320" y2="120"/>
+            <line x1="0" y1="180" x2="320" y2="180"/><line x1="0" y1="240" x2="320" y2="240"/>
+            <line x1="0" y1="300" x2="320" y2="300"/>
+            <line x1="80" y1="0" x2="80" y2="340"/><line x1="160" y1="0" x2="160" y2="340"/><line x1="240" y1="0" x2="240" y2="340"/>
+          </g>
+          <!-- column + footing -->
+          <rect x="135" y="40" width="50" height="200" fill="#1E2025" stroke="#F25C05" stroke-width="2"/>
+          <path d="M70 240 H250 L230 300 H90 Z" fill="#1E2025" stroke="#F25C05" stroke-width="2"/>
+          <!-- rebar dots -->
+          <g fill="#F25C05">
+            <circle cx="148" cy="60" r="3"/><circle cx="172" cy="60" r="3"/>
+            <circle cx="148" cy="220" r="3"/><circle cx="172" cy="220" r="3"/>
+          </g>
+          <!-- ground hatch -->
+          <g stroke="#8A9099" stroke-width="1" opacity=".5">
+            <line x1="20" y1="300" x2="35" y2="315"/><line x1="50" y1="300" x2="65" y2="315"/>
+            <line x1="260" y1="300" x2="275" y2="315"/><line x1="290" y1="300" x2="305" y2="315"/>
+          </g>
+          <text x="160" y="330" fill="#8A9099" font-family="monospace" font-size="11" text-anchor="middle">FOUNDATION SECTION · A-A</text>
+        </svg>
+        <span class="lab mono">FIG.01 — قاعدة منفصلة</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow rv">ما نقدّمه</div>
+      <h2 class="sec-title rv d1"><span class="display">خدمات</span> <span class="ar">هندسية متكاملة</span></h2>
+      <p class="sec-intro rv d2">من المخطط الإنشائي الأول إلى آخر اختبار جودة — منظومة خدمات تغطي دورة حياة المنشأ بالكامل.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv">
+        <span class="num">/ 01</span>
+        <div class="ic"><i class="ph ph-blueprint"></i></div>
+        <h3>التصميم الإنشائي</h3>
+        <p>تحليل وتصميم الهياكل الخرسانية والمعدنية، حساب الأحمال والزلازل، وإصدار مخططات تنفيذية مطابقة للكود.</p>
+        <span class="bar"></span>
+      </div>
+      <div class="svc rv d1">
+        <span class="num">/ 02</span>
+        <div class="ic"><i class="ph ph-flask"></i></div>
+        <h3>فحص واختبار الخرسانة</h3>
+        <p>اختبارات الضغط والشد، فحص الركام والمواد، تقييم جودة الصب ميدانياً ومخبرياً بشهادات معتمدة.</p>
+        <span class="bar"></span>
+      </div>
+      <div class="svc rv d2">
+        <span class="num">/ 03</span>
+        <div class="ic"><i class="ph ph-traffic-cone"></i></div>
+        <h3>إدارة التنفيذ</h3>
+        <p>تخطيط وجدولة المشاريع، إدارة المقاولين والموارد، ضبط التكلفة والجودة حتى التسليم النهائي.</p>
+        <span class="bar"></span>
+      </div>
+      <div class="svc rv">
+        <span class="num">/ 04</span>
+        <div class="ic"><i class="ph ph-wrench"></i></div>
+        <h3>التدعيم والترميم</h3>
+        <p>تقييم المباني القائمة، معالجة الشروخ والصدأ، تدعيم الأعمدة والأساسات بأنظمة FRP والخرسانة المعدّلة.</p>
+        <span class="bar"></span>
+      </div>
+      <div class="svc rv d1">
+        <span class="num">/ 05</span>
+        <div class="ic"><i class="ph ph-eye"></i></div>
+        <h3>الإشراف الهندسي</h3>
+        <p>إشراف ميداني يومي، مطابقة التنفيذ للمخططات، توثيق المراحل وإصدار تقارير الجودة الدورية.</p>
+        <span class="bar"></span>
+      </div>
+      <div class="svc rv d2">
+        <span class="num">/ 06</span>
+        <div class="ic"><i class="ph ph-shield-check"></i></div>
+        <h3>التقييم وفحص السلامة</h3>
+        <p>الكشف الإنشائي على المباني، تقارير السلامة، دراسات الجدوى الإنشائية وحلول رفع كفاءة المنشأ.</p>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects">
+  <span class="bignum">03</span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow rv">من أعمالنا</div>
+      <h2 class="sec-title rv d1"><span class="ar">مشاريع</span> <span class="display out">نُنفّذها</span> <span class="ar">بثقة</span></h2>
+      <p class="sec-intro rv d2">نماذج من منشآتٍ صمّمناها وأشرفنا على تنفيذها عبر قطاعاتٍ متعددة.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj rv">
+        <div class="proj-vis">
+          <span class="proj-cat">مبانٍ تجارية</span>
+          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="480" height="300" fill="#101113"/>
+            <g stroke="#2C2F36"><line x1="0" y1="250" x2="480" y2="250"/></g>
+            <g stroke="#F25C05" stroke-width="2" fill="none">
+              <rect x="120" y="60" width="240" height="190"/>
+              <line x1="120" y1="110" x2="360" y2="110"/><line x1="120" y1="160" x2="360" y2="160"/><line x1="120" y1="210" x2="360" y2="210"/>
+              <line x1="200" y1="60" x2="200" y2="250"/><line x1="280" y1="60" x2="280" y2="250"/>
+            </g>
+            <g fill="#F25C05">
+              <circle cx="120" cy="60" r="4"/><circle cx="360" cy="60" r="4"/><circle cx="240" cy="60" r="4"/>
+            </g>
+            <g stroke="#8A9099" opacity=".4"><line x1="40" y1="60" x2="40" y2="250"/><line x1="35" y1="65" x2="45" y2="65"/><line x1="35" y1="245" x2="45" y2="245"/></g>
+            <text x="50" y="158" fill="#8A9099" font-family="monospace" font-size="10">H+4</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <h3>برج مكتبي — حي الملقا</h3>
+          <p>تصميم إنشائي لهيكل خرساني من ٥ طوابق مع بدروم وقبو خدمات، وإشراف كامل على التنفيذ.</p>
+          <div class="meta"><span><i class="ph-bold ph-ruler"></i> ٤٢٠٠ م²</span><span><i class="ph-bold ph-calendar"></i> ٢٠٢٤</span></div>
+        </div>
+      </div>
+      <div class="proj rv d1">
+        <div class="proj-vis">
+          <span class="proj-cat">منشآت صناعية</span>
+          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="480" height="300" fill="#101113"/>
+            <g stroke="#2C2F36"><line x1="0" y1="250" x2="480" y2="250"/></g>
+            <g stroke="#F25C05" stroke-width="2" fill="none">
+              <path d="M60 250 V120 L240 60 L420 120 V250"/>
+              <path d="M60 120 L240 180 L420 120"/>
+              <line x1="240" y1="60" x2="240" y2="180"/>
+              <path d="M100 250 V150 M180 250 V150 M300 250 V150 M380 250 V150"/>
+            </g>
+            <g fill="#F25C05"><circle cx="60" cy="120" r="4"/><circle cx="420" cy="120" r="4"/><circle cx="240" cy="60" r="4"/></g>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <h3>مستودع لوجستي — المدينة الصناعية</h3>
+          <p>هيكل معدني بجمالونات فضائية بحرٍ يصل إلى ٣٦ متراً دون أعمدة وسطية، مع أساسات منفصلة.</p>
+          <div class="meta"><span><i class="ph-bold ph-ruler"></i> ٨٠٠٠ م²</span><span><i class="ph-bold ph-calendar"></i> ٢٠٢٣</span></div>
+        </div>
+      </div>
+      <div class="proj rv d2">
+        <div class="proj-vis">
+          <span class="proj-cat">تدعيم وترميم</span>
+          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="480" height="300" fill="#101113"/>
+            <g stroke="#F25C05" stroke-width="2" fill="none">
+              <rect x="180" y="50" width="60" height="200"/>
+              <path d="M150 70 Q180 70 180 70 M240 70 Q270 80 270 70" stroke="#8A9099"/>
+            </g>
+            <!-- FRP wrap -->
+            <g stroke="#F25C05" stroke-width="3" opacity=".8">
+              <line x1="175" y1="90" x2="245" y2="90"/><line x1="175" y1="120" x2="245" y2="120"/>
+              <line x1="175" y1="150" x2="245" y2="150"/><line x1="175" y1="180" x2="245" y2="180"/>
+              <line x1="175" y1="210" x2="245" y2="210"/>
+            </g>
+            <g stroke="#8A9099" stroke-width="1" opacity=".7">
+              <path d="M200 60 l8 14 l-6 12 l7 13" fill="none"/>
+            </g>
+            <text x="300" y="150" fill="#8A9099" font-family="monospace" font-size="11">FRP WRAP</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <h3>تدعيم أعمدة — مجمّع سكني</h3>
+          <p>معالجة شروخ إنشائية وتدعيم ١٤ عموداً بألياف الكربون FRP بعد دراسة تحليلية كاملة للأحمال.</p>
+          <div class="meta"><span><i class="ph-bold ph-columns"></i> ١٤ عموداً</span><span><i class="ph-bold ph-calendar"></i> ٢٠٢٤</span></div>
+        </div>
+      </div>
+      <div class="proj rv d3">
+        <div class="proj-vis">
+          <span class="proj-cat">بنية تحتية</span>
+          <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="480" height="300" fill="#101113"/>
+            <g stroke="#F25C05" stroke-width="2" fill="none">
+              <path d="M30 130 Q240 60 450 130"/>
+              <path d="M30 160 Q240 90 450 160"/>
+              <line x1="30" y1="130" x2="30" y2="250"/><line x1="450" y1="130" x2="450" y2="250"/>
+              <line x1="100" y1="120" x2="100" y2="250"/><line x1="170" y1="105" x2="170" y2="250"/>
+              <line x1="240" y1="100" x2="240" y2="250"/><line x1="310" y1="105" x2="310" y2="250"/><line x1="380" y1="120" x2="380" y2="250"/>
+            </g>
+            <g stroke="#2C2F36"><line x1="0" y1="250" x2="480" y2="250"/></g>
+            <g fill="#F25C05"><circle cx="30" cy="130" r="4"/><circle cx="450" cy="130" r="4"/><circle cx="240" cy="100" r="4"/></g>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <h3>جسر مشاة — كورنيش</h3>
+          <p>تصميم جسر مشاة خرساني سابق الإجهاد بطول ٤٨ متراً، مع تحليل ديناميكي للاهتزاز والحمل المتحرك.</p>
+          <div class="meta"><span><i class="ph-bold ph-ruler"></i> ٤٨ م</span><span><i class="ph-bold ph-calendar"></i> ٢٠٢٢</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" id="stats">
+  <div class="hazard-top"></div>
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="stat rv"><b data-count="240" data-suffix="+">٠</b><span>مشروع منجز</span></div>
+      <div class="stat rv d1"><b data-count="18" data-suffix="">٠</b><span>سنة خبرة</span></div>
+      <div class="stat rv d2"><b data-count="65" data-suffix="+">٠</b><span>مهندس وفني</span></div>
+      <div class="stat rv d3"><b data-count="99" data-suffix="٪">٠</b><span>تسليم في الموعد</span></div>
+    </div>
+  </div>
+  <div class="hazard-top"></div>
+</section>
+
+<!-- ============ PROCESS / SAFETY ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow rv">منهجية العمل</div>
+      <h2 class="sec-title rv d1"><span class="display">أربع</span> <span class="ar">مراحل مُحكَمة</span></h2>
+      <p class="sec-intro rv d2">نسير في كل مشروع وفق منهجية واضحة تضمن الجودة والشفافية من أول اجتماع حتى التسليم.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc rv">
+        <span class="step">01</span>
+        <div class="ic"><i class="ph ph-magnifying-glass"></i></div>
+        <h4>الدراسة والتحليل</h4>
+        <p>معاينة الموقع، دراسة التربة والأحمال، وتحديد النظام الإنشائي الأنسب.</p>
+      </div>
+      <div class="proc rv d1">
+        <span class="step">02</span>
+        <div class="ic"><i class="ph ph-pencil-ruler"></i></div>
+        <h4>التصميم والاعتماد</h4>
+        <p>إعداد المخططات التنفيذية والحسابات الإنشائية واعتمادها من الجهات.</p>
+      </div>
+      <div class="proc rv d2">
+        <span class="step">03</span>
+        <div class="ic"><i class="ph ph-hard-hat"></i></div>
+        <h4>التنفيذ والإشراف</h4>
+        <p>إدارة المقاول، ضبط الجودة، واختبارات الخرسانة في كل مرحلة صب.</p>
+      </div>
+      <div class="proc rv d3">
+        <span class="step">04</span>
+        <div class="ic"><i class="ph ph-seal-check"></i></div>
+        <h4>التسليم والتوثيق</h4>
+        <p>الفحص النهائي، تقرير السلامة الإنشائية، وملف المشروع الكامل.</p>
+      </div>
+    </div>
+
+    <div class="safety">
+      <div>
+        <div class="eyebrow rv">لماذا بِناء</div>
+        <h2 class="sec-title rv d1"><span class="ar">السلامة</span> <span class="display out">أولاً</span></h2>
+        <p class="sec-intro rv d2">السلامة الإنشائية ليست بنداً نضيفه — إنها أساس كل قرار هندسي نتخذه.</p>
+        <ul>
+          <li class="rv d2"><i class="ph-bold ph-shield-check"></i><div><b>التزام كامل بالكود السعودي للبناء (SBC)</b><p>كل تصميم يخضع لمراجعة مزدوجة قبل الاعتماد.</p></div></li>
+          <li class="rv d2"><i class="ph-bold ph-flask"></i><div><b>مختبر داخلي معتمد للجودة</b><p>اختبارات معتمدة للخرسانة والركام والحديد.</p></div></li>
+          <li class="rv d3"><i class="ph-bold ph-files"></i><div><b>توثيق هندسي شفّاف لكل مرحلة</b><p>تقارير دورية وملف فني كامل يُسلَّم للعميل.</p></div></li>
+        </ul>
+      </div>
+      <div class="safety-vis rv d2">
+        <svg viewBox="0 0 300 300" fill="none" width="100%">
+          <rect width="300" height="300" fill="#15161A"/>
+          <g stroke="#2C2F36"><circle cx="150" cy="150" r="120"/><circle cx="150" cy="150" r="80"/><circle cx="150" cy="150" r="40"/></g>
+          <g stroke="#F25C05" stroke-width="2">
+            <path d="M150 30 L150 270 M30 150 L270 150"/>
+          </g>
+          <path d="M150 150 L240 90" stroke="#F25C05" stroke-width="2"/>
+          <circle cx="240" cy="90" r="6" fill="#F25C05"/>
+          <g fill="#8A9099" font-family="monospace" font-size="10">
+            <text x="155" y="45">LOAD</text>
+            <text x="200" y="200">σ = N/A</text>
+          </g>
+          <text x="150" y="155" fill="#F25C05" font-family="monospace" font-size="13" text-anchor="middle" font-weight="bold">SAFE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testi" id="testi">
+  <span class="bignum">05</span>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow rv">آراء عملائنا</div>
+      <h2 class="sec-title rv d1"><span class="ar">ثقةٌ</span> <span class="display">تُبنى</span> <span class="ar">على نتائج</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard rv">
+        <div class="q">”</div>
+        <p>سلّمنا «بِناء» تصميم برجٍ سكني معقّد، فجاء الحل الإنشائي ذكياً ووفّر علينا في الحديد دون أي تنازل عن الأمان. إشرافهم الميداني كان دقيقاً يومياً.</p>
+        <div class="who"><div class="av">م</div><div><b>م. عبدالله الراشد</b><span>مدير مشاريع · شركة تطوير</span></div></div>
+      </div>
+      <div class="tcard rv d1">
+        <div class="q">”</div>
+        <p>تقارير فحص الخرسانة وصلتنا في وقتها وبتفصيلٍ مهني عالٍ. تعاملهم مع نتائج اختبارٍ ضعيفٍ كان شفّافاً ووضعوا خطة معالجة واضحة فوراً.</p>
+        <div class="who"><div class="av">ن</div><div><b>م. نورة القحطاني</b><span>استشاري جودة · مقاولات</span></div></div>
+      </div>
+      <div class="tcard rv d2">
+        <div class="q">”</div>
+        <p>اعتمدنا عليهم في تدعيم مبنى قديم كنّا على وشك هدمه. بعد دراستهم وحلّ FRP أصبح المبنى آمناً ووفّرنا تكلفة إعادة البناء بالكامل.</p>
+        <div class="who"><div class="av">س</div><div><b>سعد العتيبي</b><span>مالك عقاري</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow rv">تواصل معنا</div>
+        <h3 class="rv d1">لنبدأ مشروعك الإنشائي</h3>
+        <p class="rv d2">أرسل تفاصيل مشروعك وسيعود إليك فريقنا الهندسي خلال يوم عمل واحد. عبئ النموذج وسيُفتح واتساب برسالتك جاهزة.</p>
+        <div class="cinfo-item rv d2"><i class="ph ph-phone"></i><div><small>هاتف / واتساب</small><b dir="ltr">+966 50 000 0000</b></div></div>
+        <div class="cinfo-item rv d2"><i class="ph ph-envelope-simple"></i><div><small>البريد</small><b dir="ltr">info@binaa-eng.sa</b></div></div>
+        <div class="cinfo-item rv d3"><i class="ph ph-map-pin"></i><div><small>المقر</small><b>الرياض — حي العليا، طريق الملك فهد</b></div></div>
+        <div class="cinfo-item rv d3"><i class="ph ph-clock"></i><div><small>ساعات العمل</small><b>الأحد – الخميس · ٨ ص – ٥ م</b></div></div>
+      </div>
+      <form id="leadForm" class="rv d2">
+        <div class="frow">
+          <div class="field"><label>الاسم</label><input type="text" id="f-name" placeholder="اسمك الكامل" required></div>
+          <div class="field"><label>الجوال</label><input type="tel" id="f-phone" placeholder="05xxxxxxxx" required></div>
+        </div>
+        <div class="field">
+          <label>نوع الخدمة</label>
+          <select id="f-service">
+            <option>تصميم إنشائي</option>
+            <option>فحص واختبار خرسانة</option>
+            <option>إدارة تنفيذ</option>
+            <option>تدعيم وترميم</option>
+            <option>إشراف هندسي</option>
+            <option>فحص سلامة وتقييم</option>
+          </select>
+        </div>
+        <div class="field"><label>تفاصيل المشروع</label><textarea id="f-msg" placeholder="اكتب وصفاً موجزاً عن مشروعك وموقعه..."></textarea></div>
+        <button type="submit" class="btn btn-primary"><i class="ph-bold ph-whatsapp-logo"></i> إرسال عبر واتساب</button>
+        <p class="form-note">سيتم فتح تطبيق واتساب مع رسالتك جاهزة للإرسال.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#home" class="brand">
+          <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#15161A" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>
+          <span class="stack">بِناء<small>BINAA · STRUCTURAL</small></span>
+        </a>
+        <p>مكتب هندسة إنشائية ومقاولات — نصمّم ونفحص وننفّذ ونشرف بمعايير سلامةٍ لا تتزحزح.</p>
+        <div class="foot-soc">
+          <a href="#" aria-label="x"><i class="ph-bold ph-x-logo"></i></a>
+          <a href="#" aria-label="linkedin"><i class="ph-bold ph-linkedin-logo"></i></a>
+          <a href="#" aria-label="instagram"><i class="ph-bold ph-instagram-logo"></i></a>
+          <a href="#" aria-label="whatsapp"><i class="ph-bold ph-whatsapp-logo"></i></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>خدماتنا</h5>
+        <a href="#services">التصميم الإنشائي</a>
+        <a href="#services">فحص الخرسانة</a>
+        <a href="#services">إدارة التنفيذ</a>
+        <a href="#services">التدعيم والترميم</a>
+        <a href="#services">الإشراف الهندسي</a>
+      </div>
+      <div class="foot-col">
+        <h5>روابط</h5>
+        <a href="#about">عن المكتب</a>
+        <a href="#projects">أعمالنا</a>
+        <a href="#process">منهجيتنا</a>
+        <a href="#testi">آراء العملاء</a>
+        <a href="#contact">تواصل معنا</a>
+      </div>
+      <div class="foot-col">
+        <h5>تواصل</h5>
+        <a href="tel:+966500000000" dir="ltr">+966 50 000 0000</a>
+        <a href="mailto:info@binaa-eng.sa" dir="ltr">info@binaa-eng.sa</a>
+        <a href="#contact">الرياض — حي العليا</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© ٢٠٢٦ بِناء BINAA — جميع الحقوق محفوظة.</span>
+      <span>سجل تجاري ٠٠٠٠٠٠٠٠٠٠ · عضوية الهيئة السعودية للمهندسين</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating -->
+<a class="float-wa" id="floatWa" href="#" aria-label="واتساب"><i class="ph-bold ph-whatsapp-logo"></i></a>
+<button class="float-top" id="floatTop" aria-label="للأعلى"><i class="ph-bold ph-arrow-up"></i></button>
+
+<script>
+(function(){
+  var WA="966500000000";
+  // nav scroll state
+  var nav=document.getElementById('nav');
+  var floatTop=document.getElementById('floatTop');
+  function onScroll(){
+    if(window.scrollY>30)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+    if(window.scrollY>500)floatTop.classList.add('show');else floatTop.classList.remove('show');
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // mobile menu
+  var burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+  var burgerIcon=burger.querySelector('i');
+  function toggleMenu(force){
+    var open=force!==undefined?force:!mm.classList.contains('open');
+    mm.classList.toggle('open',open);
+    burgerIcon.className=open?'ph-bold ph-x':'ph-bold ph-list';
+    document.body.style.overflow=open?'hidden':'';
+  }
+  burger.addEventListener('click',function(){toggleMenu();});
+  mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMenu(false);});});
+
+  // smooth anchors (with offset for fixed nav)
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href');
+      if(id.length>1){
+        var el=document.querySelector(id);
+        if(el){e.preventDefault();var y=el.getBoundingClientRect().top+window.scrollY-70;window.scrollTo({top:y,behavior:'smooth'});}
+      }
+    });
+  });
+
+  // reveal
+  var prefersReduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rv=document.querySelectorAll('.rv');
+  if(prefersReduce){rv.forEach(function(e){e.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12});
+    rv.forEach(function(e){io.observe(e);});
+  }
+
+  // arabic-indic counters
+  function toArabic(n){return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[+d];});}
+  function animateCount(el){
+    var target=+el.getAttribute('data-count');
+    var suffix=el.getAttribute('data-suffix')||'';
+    if(prefersReduce){el.textContent=toArabic(target)+suffix;return;}
+    var dur=1600,start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var ease=1-Math.pow(1-p,3);
+      el.textContent=toArabic(Math.round(target*ease))+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters=document.querySelectorAll('[data-count]');
+  var cio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){animateCount(en.target);cio.unobserve(en.target);}});
+  },{threshold:.5});
+  counters.forEach(function(c){cio.observe(c);});
+
+  // whatsapp form
+  function waLink(msg){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg);}
+  document.getElementById('floatWa').addEventListener('click',function(e){
+    e.preventDefault();
+    window.open(waLink('مرحباً «بِناء» — أرغب بالاستفسار عن خدماتكم الهندسية.'),'_blank');
+  });
+  document.getElementById('leadForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('f-name').value.trim();
+    var phone=document.getElementById('f-phone').value.trim();
+    var svc=document.getElementById('f-service').value;
+    var msg=document.getElementById('f-msg').value.trim();
+    var text='طلب استشارة هندسية — بِناء BINAA%0A'
+      .replace('%0A','\n')
+      +'الاسم: '+name+'\n'
+      +'الجوال: '+phone+'\n'
+      +'الخدمة: '+svc+'\n'
+      +'التفاصيل: '+(msg||'—');
+    window.open(waLink(text),'_blank');
+  });
+
+  // back to top
+  floatTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:prefersReduce?'auto':'smooth'});});
+})();
+</script>
+</body>
+</html>

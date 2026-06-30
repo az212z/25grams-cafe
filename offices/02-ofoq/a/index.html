@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>أُفق · OFOQ — استشارات هندسية متكاملة</title>
+<meta name="description" content="مكتب أُفق للاستشارات الهندسية: تصميم إنشائي، أنظمة كهروميكانيكية MEP، إدارة مشاريع، دراسات جدوى، وإشراف هندسي بمعايير عالمية." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F4F7FB;
+    --ink:#0E1726;
+    --accent:#2563EB;
+    --accent-2:#1E40AF;
+    --muted:#64748B;
+    --line:#E2E8F0;
+    --shadow-sm:0 1px 2px rgba(14,23,38,.04),0 1px 3px rgba(14,23,38,.06);
+    --shadow-md:0 8px 30px rgba(14,23,38,.08);
+    --shadow-lg:0 20px 50px rgba(30,64,175,.12);
+    --radius:16px;
+    --maxw:1200px;
+    --serif:'Manrope',sans-serif;
+    --body:'IBM Plex Sans Arabic',sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:var(--serif);font-weight:800;line-height:1.15;letter-spacing:-.01em}
+  .mono{font-family:var(--mono);font-weight:500;letter-spacing:.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;
+    letter-spacing:.18em;color:var(--accent);font-weight:600;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--body);font-weight:600;font-size:15px;
+    padding:13px 24px;border-radius:12px;border:1px solid transparent;
+    cursor:pointer;transition:.25s ease;white-space:nowrap;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{background:var(--accent-2);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  section{padding:96px 0;position:relative}
+  .sec-head{max-width:720px;margin-bottom:56px}
+  .sec-head h2{font-size:clamp(28px,4vw,42px);margin:16px 0 14px}
+  .sec-head p{color:var(--muted);font-size:17px}
+
+  /* NAV */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(255,255,255,.72);backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;transition:.3s ease;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);box-shadow:var(--shadow-sm);background:rgba(255,255,255,.9)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:800;font-size:20px}
+  .brand .logo{width:38px;height:38px;flex:0 0 auto}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a{
+    padding:9px 14px;border-radius:9px;font-size:15px;font-weight:500;color:var(--muted);transition:.2s;
+  }
+  .nav-links a:hover{color:var(--ink);background:var(--bg-soft)}
+  .nav-cta{display:flex;align-items:center;gap:10px}
+  .hamb{display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;font-size:22px;color:var(--ink)}
+
+  .overlay{
+    position:fixed;inset:0;z-index:1100;background:rgba(14,23,38,.55);
+    backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:.3s;
+  }
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{
+    position:fixed;top:0;left:0;bottom:0;width:min(82%,360px);z-index:1200;
+    background:#fff;transform:translateX(-100%);transition:.35s cubic-bezier(.4,0,.2,1);
+    padding:28px 24px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow-lg);
+  }
+  .drawer.open{transform:translateX(0)}
+  .drawer .dr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+  .drawer a{padding:14px 12px;border-radius:10px;font-size:18px;font-weight:600;border-bottom:1px solid var(--line)}
+  .drawer a:hover{background:var(--bg-soft);color:var(--accent)}
+  .x-btn{width:42px;height:42px;border:1px solid var(--line);background:#fff;border-radius:10px;cursor:pointer;font-size:22px}
+
+  /* HERO */
+  .hero{padding:148px 0 90px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(36px,5.4vw,62px);margin:22px 0}
+  .hero h1 .hl{color:var(--accent)}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:540px;margin-bottom:32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap}
+  .hero-meta .m b{font-family:var(--serif);font-size:30px;display:block;color:var(--ink)}
+  .hero-meta .m span{font-size:13px;color:var(--muted);font-family:var(--mono)}
+  .hero-visual{position:relative}
+  .hero-card{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow-lg);padding:22px;position:relative;overflow:hidden;
+  }
+  .hero-card .tag{position:absolute;top:18px;left:18px;font-family:var(--mono);font-size:11px;color:var(--accent);background:#EFF4FF;padding:5px 10px;border-radius:7px;letter-spacing:.08em}
+  .blur-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;z-index:-1}
+  .blur-blob.b1{width:360px;height:360px;background:#BFD4FF;top:-80px;right:-60px}
+  .blur-blob.b2{width:300px;height:300px;background:#E2ECFF;bottom:-120px;left:-40px}
+
+  /* trust strip */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .trust-in{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center;padding:26px 0}
+  .trust-in span{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.05em;display:flex;align-items:center;gap:8px}
+  .trust-in i{color:var(--accent);font-size:18px}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-points{display:grid;gap:18px;margin-top:28px}
+  .about-points .pt{display:flex;gap:14px;align-items:flex-start}
+  .about-points .pt .ic{width:42px;height:42px;flex:0 0 auto;border-radius:11px;background:#EFF4FF;color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px}
+  .about-points .pt b{display:block;font-weight:600;margin-bottom:2px}
+  .about-points .pt p{color:var(--muted);font-size:14px}
+  .about-visual{border:1px solid var(--line);border-radius:20px;padding:28px;background:var(--bg-soft);box-shadow:var(--shadow-sm)}
+
+  /* SERVICES */
+  .services{background:var(--bg-soft)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;
+    transition:.3s ease;position:relative;overflow:hidden;
+  }
+  .svc::after{content:"";position:absolute;inset:0;border-radius:var(--radius);border:1px solid transparent;transition:.3s}
+  .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:#CFE0FF}
+  .svc .num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+  .svc .ic{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#EFF4FF,#DCE8FF);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:28px;margin:14px 0 18px}
+  .svc h3{font-size:20px;margin-bottom:10px}
+  .svc p{color:var(--muted);font-size:14.5px}
+  .svc ul{list-style:none;margin-top:16px;display:grid;gap:7px}
+  .svc ul li{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .svc ul li i{color:var(--accent);font-size:15px}
+
+  /* PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .proj{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.3s;box-shadow:var(--shadow-sm);
+  }
+  .proj:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+  .proj .vis{height:230px;background:var(--bg-soft);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .proj .cat{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:11px;color:#fff;background:var(--accent);padding:5px 11px;border-radius:7px;letter-spacing:.06em;z-index:2}
+  .proj .body{padding:22px 24px}
+  .proj .body h3{font-size:20px;margin-bottom:6px}
+  .proj .body p{color:var(--muted);font-size:14px}
+  .proj .meta{display:flex;gap:18px;margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .proj .meta b{color:var(--ink)}
+
+  /* STATS */
+  .stats{background:linear-gradient(135deg,#1E40AF,#2563EB);color:#fff;position:relative;overflow:hidden}
+  .stats .wrap{position:relative;z-index:2}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+  .stat .n{font-family:var(--serif);font-size:clamp(40px,6vw,60px);font-weight:800;line-height:1}
+  .stat .l{font-family:var(--mono);font-size:13px;opacity:.85;margin-top:10px;letter-spacing:.04em}
+  .stat .bar{height:3px;width:46px;background:rgba(255,255,255,.45);border-radius:3px;margin-top:14px}
+  .stats-bg{position:absolute;inset:0;opacity:.16;z-index:1}
+
+  /* PROCESS / WHY */
+  .process .pr-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+  .pr-step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative;transition:.3s}
+  .pr-step:hover{border-color:#CFE0FF;box-shadow:var(--shadow-md)}
+  .pr-step .st-n{font-family:var(--serif);font-size:40px;color:#DCE8FF;font-weight:800;line-height:1}
+  .pr-step h3{font-size:18px;margin:8px 0 8px}
+  .pr-step p{color:var(--muted);font-size:14px}
+  .pr-step .line{position:absolute;top:42px;left:-12px;color:var(--line);font-size:20px}
+
+  .sectors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+  .sector{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#fff;transition:.25s}
+  .sector:hover{border-color:var(--accent);background:#FAFCFF}
+  .sector i{font-size:26px;color:var(--accent)}
+  .sector b{font-weight:600;font-size:15px}
+
+  /* TESTIMONIALS */
+  .testi{background:var(--bg-soft)}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;box-shadow:var(--shadow-sm);transition:.3s;display:flex;flex-direction:column}
+  .quote:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+  .quote .stars{color:#F5A623;font-size:16px;margin-bottom:14px;display:flex;gap:2px}
+  .quote p{font-size:15.5px;color:var(--ink);flex:1}
+  .quote .who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .quote .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#1E40AF);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:18px}
+  .quote .who b{display:block;font-size:15px}
+  .quote .who span{font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+  .contact-info .ci{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+  .contact-info .ci .ic{width:46px;height:46px;border-radius:12px;background:#EFF4FF;color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto}
+  .contact-info .ci b{display:block;font-weight:600}
+  .contact-info .ci span{color:var(--muted);font-size:14px}
+  form.cform{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;box-shadow:var(--shadow-md)}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;font-family:var(--mono);color:var(--muted)}
+  .field input,.field textarea,.field select{
+    width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:11px;
+    font-family:var(--body);font-size:15px;background:#FBFCFE;transition:.2s;color:var(--ink);
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+  .field textarea{resize:vertical;min-height:110px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form.cform .btn-primary{width:100%;justify-content:center;margin-top:6px}
+
+  /* FOOTER */
+  footer.ft{background:var(--ink);color:#CBD5E1;padding:72px 0 30px}
+  .ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  .ft .brand{color:#fff}
+  .ft p{font-size:14px;color:#94A3B8;margin-top:16px;max-width:300px}
+  .ft h4{color:#fff;font-family:var(--serif);font-size:15px;margin-bottom:18px}
+  .ft ul{list-style:none;display:grid;gap:11px}
+  .ft ul li a{font-size:14px;color:#94A3B8;transition:.2s}
+  .ft ul li a:hover{color:#fff}
+  .ft-soc{display:flex;gap:10px;margin-top:18px}
+  .ft-soc a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:19px;color:#CBD5E1;transition:.25s}
+  .ft-soc a:hover{background:var(--accent);color:#fff}
+  .ft-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#64748B;font-family:var(--mono)}
+
+  /* FLOATING */
+  .floaters{position:fixed;bottom:24px;left:24px;z-index:900;display:flex;flex-direction:column;gap:12px}
+  .fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;border:none;box-shadow:var(--shadow-lg);transition:.3s}
+  .fab.wa{background:#25D366;color:#fff}
+  .fab.top{background:#fff;color:var(--accent);border:1px solid var(--line);opacity:0;pointer-events:none;transform:translateY(14px)}
+  .fab.top.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .fab:hover{transform:translateY(-4px) scale(1.05)}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.16,1,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+  @media (max-width:920px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+    .svc-grid,.stats-grid,.process .pr-grid,.testi-grid,.sectors{grid-template-columns:1fr 1fr}
+    .ft-grid{grid-template-columns:1fr 1fr}
+    .pr-step .line{display:none}
+  }
+  @media (max-width:680px){
+    section{padding:64px 0}
+    .nav-links,.nav-cta .btn{display:none}
+    .hamb{display:flex}
+    .svc-grid,.stats-grid,.process .pr-grid,.testi-grid,.proj-grid,.sectors,.frow,.ft-grid{grid-template-columns:1fr}
+    .hero{padding:120px 0 60px}
+    .hero-meta{gap:24px}
+    .floaters{bottom:16px;left:16px}
+    .ft-bottom{flex-direction:column}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .rv{opacity:1!important;transform:none!important;transition:none!important}
+    .fab:hover,.svc:hover,.proj:hover,.quote:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#home" class="brand">
+      <svg class="logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="11" fill="#2563EB"/>
+        <path d="M8 26 L20 10 L32 26" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 30 H32" stroke="#93B4FF" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="20" cy="10" r="2.4" fill="#fff"/>
+      </svg>
+      <span>أُفق<small style="font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:-4px;letter-spacing:.1em">OFOQ ENGINEERING</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">من نحن</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#projects">أعمالنا</a>
+      <a href="#process">منهجيتنا</a>
+      <a href="#testi">شهادات</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">طلب استشارة <i class="ph ph-arrow-left"></i></a>
+      <button class="hamb" id="hamb" aria-label="القائمة"><i class="ph ph-list"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="dr-head">
+    <span class="brand" style="font-size:18px">أُفق · OFOQ</span>
+    <button class="x-btn" id="xbtn" aria-label="إغلاق"><i class="ph ph-x"></i></button>
+  </div>
+  <a href="#about">من نحن</a>
+  <a href="#services">خدماتنا</a>
+  <a href="#projects">أعمالنا</a>
+  <a href="#process">منهجيتنا</a>
+  <a href="#testi">شهادات العملاء</a>
+  <a href="#contact">تواصل معنا</a>
+  <a href="#contact" class="btn btn-primary" style="margin-top:18px;justify-content:center">طلب استشارة</a>
+</aside>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="blur-blob b1"></div>
+  <div class="blur-blob b2"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy rv in">
+      <span class="eyebrow">استشارات هندسية متكاملة</span>
+      <h1>نُهندس <span class="hl">الثقة</span> في كل تفصيلة من مشروعك</h1>
+      <p class="lead">مكتب «أُفق» يقدّم حلولاً هندسية دقيقة في التصميم الإنشائي وأنظمة MEP وإدارة المشاريع ودراسات الجدوى والإشراف — من الفكرة الأولى حتى التسليم النهائي بمعايير عالمية.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">اكتشف خدماتنا <i class="ph ph-arrow-left"></i></a>
+        <a href="#projects" class="btn btn-ghost"><i class="ph ph-buildings"></i> أعمالنا</a>
+      </div>
+      <div class="hero-meta">
+        <div class="m"><b>+١٨</b><span>سنة خبرة</span></div>
+        <div class="m"><b>+٣٢٠</b><span>مشروع منجز</span></div>
+        <div class="m"><b>٪٩٨</b><span>رضا العملاء</span></div>
+      </div>
+    </div>
+    <div class="hero-visual rv d2 in">
+      <div class="hero-card">
+        <span class="tag mono">STRUCTURAL ANALYSIS</span>
+        <svg viewBox="0 0 460 360" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="رسم تحليل إنشائي">
+          <defs>
+            <linearGradient id="gA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#EFF4FF"/><stop offset="1" stop-color="#fff"/>
+            </linearGradient>
+            <pattern id="gridA" width="28" height="28" patternUnits="userSpaceOnUse">
+              <path d="M28 0 H0 V28" stroke="#E2E8F0" stroke-width="1" fill="none"/>
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="460" height="360" rx="12" fill="url(#gA)"/>
+          <rect x="0" y="0" width="460" height="360" rx="12" fill="url(#gridA)"/>
+          <!-- truss frame -->
+          <g stroke="#2563EB" stroke-width="2.4" fill="none" stroke-linecap="round">
+            <path d="M50 300 H410"/>
+            <path d="M50 300 L110 150 L170 300 L230 150 L290 300 L350 150 L410 300"/>
+            <path d="M110 150 H350"/>
+            <path d="M50 300 L110 150 M170 300 L110 150"/>
+          </g>
+          <g fill="#1E40AF">
+            <circle cx="50" cy="300" r="5"/><circle cx="170" cy="300" r="5"/>
+            <circle cx="290" cy="300" r="5"/><circle cx="410" cy="300" r="5"/>
+            <circle cx="110" cy="150" r="5"/><circle cx="230" cy="150" r="5"/><circle cx="350" cy="150" r="5"/>
+          </g>
+          <!-- load arrows -->
+          <g stroke="#94A3B8" stroke-width="1.8" stroke-dasharray="4 4">
+            <path d="M110 60 V140"/><path d="M230 60 V140"/><path d="M350 60 V140"/>
+          </g>
+          <g fill="#64748B" font-family="IBM Plex Mono" font-size="11">
+            <text x="98" y="50">12kN</text><text x="218" y="50">18kN</text><text x="338" y="50">12kN</text>
+          </g>
+          <!-- support triangles -->
+          <path d="M40 312 L60 312 L50 300 Z" fill="#64748B"/>
+          <path d="M400 312 L420 312 L410 300 Z" fill="#64748B"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--muted)">
+          <span><i class="ph ph-check-circle" style="color:#16a34a"></i> SAFETY FACTOR 1.85</span>
+          <span>BS / SBC CODE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in rv">
+    <span><i class="ph ph-seal-check"></i> ISO 9001:2015</span>
+    <span><i class="ph ph-shield-check"></i> اعتماد الهيئة السعودية للمهندسين</span>
+    <span><i class="ph ph-certificate"></i> LEED معتمد</span>
+    <span><i class="ph ph-buildings"></i> تصنيف مقاولين معتمد</span>
+    <span><i class="ph ph-globe-hemisphere-east"></i> معايير SBC الدولية</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <span class="eyebrow">من نحن</span>
+      <h2 style="font-size:clamp(28px,4vw,42px);margin:16px 0 14px">شريكك الهندسي من الفكرة حتى التشغيل</h2>
+      <p style="color:var(--muted);font-size:17px">تأسس مكتب «أُفق» على قاعدة من الخبرة الفنية والالتزام بالجودة. نجمع بين الكفاءات الهندسية المتخصصة وأحدث برامج النمذجة والتحليل لنقدّم حلولاً قابلة للتنفيذ، اقتصادية، وآمنة. نؤمن أن الهندسة الجيدة تبدأ بفهم عميق لاحتياج العميل وبيئة المشروع.</p>
+      <div class="about-points">
+        <div class="pt"><div class="ic"><i class="ph ph-ruler"></i></div><div><b>دقة فنية موثّقة</b><p>تصاميم مدعومة بالنمذجة BIM والتحليل الإنشائي وفق الأكواد المعتمدة.</p></div></div>
+        <div class="pt"><div class="ic"><i class="ph ph-handshake"></i></div><div><b>شفافية كاملة</b><p>تقارير دورية واضحة وميزانيات مفصّلة في كل مرحلة من المشروع.</p></div></div>
+        <div class="pt"><div class="ic"><i class="ph ph-leaf"></i></div><div><b>استدامة وكفاءة</b><p>حلول موفّرة للطاقة تراعي الأثر البيئي وتكاليف التشغيل طويلة المدى.</p></div></div>
+      </div>
+    </div>
+    <div class="about-visual rv d2">
+      <svg viewBox="0 0 440 380" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطط طبقات المبنى">
+        <defs>
+          <pattern id="gridB" width="22" height="22" patternUnits="userSpaceOnUse">
+            <path d="M22 0 H0 V22" stroke="#E2E8F0" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="440" height="380" rx="14" fill="#fff"/>
+        <rect width="440" height="380" rx="14" fill="url(#gridB)"/>
+        <!-- building section -->
+        <g>
+          <rect x="120" y="60" width="200" height="260" rx="6" fill="#EFF4FF" stroke="#2563EB" stroke-width="2"/>
+          <line x1="120" y1="112" x2="320" y2="112" stroke="#2563EB" stroke-width="1.4"/>
+          <line x1="120" y1="164" x2="320" y2="164" stroke="#2563EB" stroke-width="1.4"/>
+          <line x1="120" y1="216" x2="320" y2="216" stroke="#2563EB" stroke-width="1.4"/>
+          <line x1="120" y1="268" x2="320" y2="268" stroke="#2563EB" stroke-width="1.4"/>
+          <!-- core -->
+          <rect x="200" y="60" width="40" height="260" fill="#DCE8FF"/>
+          <!-- windows -->
+          <g fill="#93B4FF">
+            <rect x="140" y="76" width="40" height="22" rx="3"/><rect x="260" y="76" width="40" height="22" rx="3"/>
+            <rect x="140" y="128" width="40" height="22" rx="3"/><rect x="260" y="128" width="40" height="22" rx="3"/>
+            <rect x="140" y="180" width="40" height="22" rx="3"/><rect x="260" y="180" width="40" height="22" rx="3"/>
+            <rect x="140" y="232" width="40" height="22" rx="3"/><rect x="260" y="232" width="40" height="22" rx="3"/>
+          </g>
+        </g>
+        <!-- foundation -->
+        <rect x="90" y="320" width="260" height="20" fill="#1E40AF"/>
+        <g stroke="#64748B" stroke-width="1.4" stroke-dasharray="3 3">
+          <line x1="80" y1="60" x2="120" y2="60"/><line x1="80" y1="320" x2="120" y2="320"/>
+          <line x1="80" y1="60" x2="80" y2="320"/>
+        </g>
+        <text x="40" y="195" fill="#64748B" font-family="IBM Plex Mono" font-size="12" transform="rotate(-90 40 195)">52.0 m</text>
+        <g fill="#2563EB" font-family="IBM Plex Mono" font-size="11">
+          <text x="338" y="88">L8</text><text x="338" y="140">L6</text><text x="338" y="192">L4</text><text x="338" y="244">L2</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">خدماتنا</span>
+      <h2>حلول هندسية شاملة تحت سقف واحد</h2>
+      <p>نغطّي دورة حياة المشروع كاملة عبر فرق متخصصة تعمل بتكامل لضمان الجودة والكفاءة وخفض المخاطر.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv d1">
+        <span class="num">SVC / 01</span>
+        <div class="ic"><i class="ph ph-blueprint"></i></div>
+        <h3>التصميم الإنشائي</h3>
+        <p>تصميم وتحليل المنشآت الخرسانية والمعدنية بدقة عالية وفق أحدث الأكواد.</p>
+        <ul>
+          <li><i class="ph ph-check"></i> نمذجة BIM ثلاثية الأبعاد</li>
+          <li><i class="ph ph-check"></i> تحليل الزلازل والأحمال</li>
+          <li><i class="ph ph-check"></i> مخططات تنفيذية تفصيلية</li>
+        </ul>
+      </div>
+      <div class="svc rv d2">
+        <span class="num">SVC / 02</span>
+        <div class="ic"><i class="ph ph-lightning"></i></div>
+        <h3>أنظمة MEP الكهروميكانيكية</h3>
+        <p>تصميم متكامل لأنظمة التكييف والكهرباء والسباكة ومكافحة الحريق.</p>
+        <ul>
+          <li><i class="ph ph-check"></i> أنظمة HVAC موفّرة</li>
+          <li><i class="ph ph-check"></i> توزيع كهربائي آمن</li>
+          <li><i class="ph ph-check"></i> أنظمة إطفاء وإنذار</li>
+        </ul>
+      </div>
+      <div class="svc rv d3">
+        <span class="num">SVC / 03</span>
+        <div class="ic"><i class="ph ph-kanban"></i></div>
+        <h3>إدارة المشاريع</h3>
+        <p>إدارة احترافية للوقت والتكلفة والجودة وفق منهجيات PMI المعتمدة.</p>
+        <ul>
+          <li><i class="ph ph-check"></i> جداول زمنية دقيقة</li>
+          <li><i class="ph ph-check"></i> ضبط الميزانية</li>
+          <li><i class="ph ph-check"></i> إدارة المخاطر</li>
+        </ul>
+      </div>
+      <div class="svc rv d1">
+        <span class="num">SVC / 04</span>
+        <div class="ic"><i class="ph ph-chart-line-up"></i></div>
+        <h3>دراسات الجدوى</h3>
+        <p>تقييم اقتصادي وفني شامل يضمن قرارات استثمارية مدروسة وآمنة.</p>
+        <ul>
+          <li><i class="ph ph-check"></i> تحليل التكلفة والعائد</li>
+          <li><i class="ph ph-check"></i> دراسة السوق</li>
+          <li><i class="ph ph-check"></i> تقييم المخاطر المالية</li>
+        </ul>
+      </div>
+      <div class="svc rv d2">
+        <span class="num">SVC / 05</span>
+        <div class="ic"><i class="ph ph-hard-hat"></i></div>
+        <h3>الإشراف الهندسي</h3>
+        <p>إشراف ميداني صارم يضمن مطابقة التنفيذ للمواصفات والمعايير.</p>
+        <ul>
+          <li><i class="ph ph-check"></i> ضبط الجودة الميداني</li>
+          <li><i class="ph ph-check"></i> اختبارات المواد</li>
+          <li><i class="ph ph-check"></i> تقارير تقدّم دورية</li>
+        </ul>
+      </div>
+      <div class="svc rv d3">
+        <span class="num">SVC / 06</span>
+        <div class="ic"><i class="ph ph-stack"></i></div>
+        <h3>الاستشارات المتخصصة</h3>
+        <p>استشارات فنية في الواجهات والاستدامة وكفاءة الطاقة وأنظمة الذكاء.</p>
+        <ul>
+          <li><i class="ph ph-check"></i> تدقيق التصاميم</li>
+          <li><i class="ph ph-check"></i> كفاءة الطاقة والاستدامة</li>
+          <li><i class="ph ph-check"></i> المباني الذكية</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">أعمالنا</span>
+      <h2>مشاريع نفخر بإنجازها</h2>
+      <p>نخبة من المشاريع التي صمّمناها وأشرفنا عليها عبر قطاعات متنوّعة بمعايير الجودة والسلامة.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj rv d1">
+        <div class="vis">
+          <span class="cat mono">RESIDENTIAL</span>
+          <svg viewBox="0 0 500 230" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#F4F7FB"/>
+            <pattern id="pg1" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#E2E8F0"/></pattern>
+            <rect width="500" height="230" fill="url(#pg1)"/>
+            <g stroke="#2563EB" stroke-width="2" fill="#EFF4FF">
+              <rect x="120" y="40" width="80" height="160"/><rect x="210" y="70" width="80" height="130"/><rect x="300" y="20" width="80" height="180"/>
+            </g>
+            <g fill="#93B4FF">
+              <rect x="132" y="56" width="22" height="16"/><rect x="166" y="56" width="22" height="16"/>
+              <rect x="312" y="40" width="22" height="16"/><rect x="346" y="40" width="22" height="16"/>
+            </g>
+            <line x1="60" y1="200" x2="440" y2="200" stroke="#1E40AF" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>مجمّع أُفق السكني</h3>
+          <p>تصميم إنشائي و MEP متكامل لبرجين سكنيين بطراز معاصر.</p>
+          <div class="meta"><span>المساحة <b>٤٢٬٠٠٠م²</b></span><span>الأدوار <b>١٨</b></span><span>السنة <b>٢٠٢٤</b></span></div>
+        </div>
+      </div>
+      <div class="proj rv d2">
+        <div class="vis">
+          <span class="cat mono">COMMERCIAL</span>
+          <svg viewBox="0 0 500 230" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#F4F7FB"/><rect width="500" height="230" fill="url(#pg1)"/>
+            <path d="M80 200 L250 50 L420 200" stroke="#2563EB" stroke-width="2.4" fill="#EFF4FF"/>
+            <g stroke="#1E40AF" stroke-width="1.6">
+              <path d="M80 200 L250 50 M250 50 L420 200 M140 155 L250 110 M360 155 L250 110 M250 50 L250 110"/>
+            </g>
+            <circle cx="250" cy="50" r="5" fill="#1E40AF"/><circle cx="250" cy="110" r="4" fill="#2563EB"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>مركز التجارة الذكي</h3>
+          <p>هيكل معدني واسع المجاز بسقف مقبّب مع أنظمة تكييف عالية الكفاءة.</p>
+          <div class="meta"><span>المساحة <b>٢٨٬٥٠٠م²</b></span><span>المجاز <b>٦٤م</b></span><span>السنة <b>٢٠٢٣</b></span></div>
+        </div>
+      </div>
+      <div class="proj rv d1">
+        <div class="vis">
+          <span class="cat mono">INFRASTRUCTURE</span>
+          <svg viewBox="0 0 500 230" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#F4F7FB"/><rect width="500" height="230" fill="url(#pg1)"/>
+            <path d="M40 120 Q250 40 460 120" stroke="#2563EB" stroke-width="3" fill="none"/>
+            <line x1="40" y1="120" x2="460" y2="120" stroke="#1E40AF" stroke-width="3"/>
+            <g stroke="#93B4FF" stroke-width="1.6">
+              <line x1="110" y1="103" x2="110" y2="120"/><line x1="180" y1="88" x2="180" y2="120"/>
+              <line x1="250" y1="80" x2="250" y2="120"/><line x1="320" y1="88" x2="320" y2="120"/><line x1="390" y1="103" x2="390" y2="120"/>
+            </g>
+            <rect x="60" y="120" width="14" height="70" fill="#1E40AF"/><rect x="426" y="120" width="14" height="70" fill="#1E40AF"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>جسر الواحة المعلّق</h3>
+          <p>دراسة وتصميم جسر معلّق بكابلات مع تحليل ديناميكي للأحمال.</p>
+          <div class="meta"><span>الطول <b>٤٢٠م</b></span><span>المسارات <b>٦</b></span><span>السنة <b>٢٠٢٢</b></span></div>
+        </div>
+      </div>
+      <div class="proj rv d2">
+        <div class="vis">
+          <span class="cat mono">INDUSTRIAL</span>
+          <svg viewBox="0 0 500 230" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="230" fill="#F4F7FB"/><rect width="500" height="230" fill="url(#pg1)"/>
+            <g stroke="#2563EB" stroke-width="2" fill="#EFF4FF">
+              <rect x="70" y="110" width="120" height="90"/><rect x="200" y="80" width="100" height="120"/><rect x="310" y="120" width="120" height="80"/>
+            </g>
+            <g stroke="#1E40AF" stroke-width="2"><path d="M70 110 L130 70 L190 110"/></g>
+            <circle cx="250" cy="55" r="16" fill="none" stroke="#1E40AF" stroke-width="2"/>
+            <line x1="250" y1="71" x2="250" y2="80" stroke="#1E40AF" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>مصنع المعادن المتطوّر</h3>
+          <p>تصميم منشأة صناعية بأنظمة MEP ثقيلة وإدارة مشروع متكاملة.</p>
+          <div class="meta"><span>المساحة <b>٥٦٬٠٠٠م²</b></span><span>الخطوط <b>٤</b></span><span>السنة <b>٢٠٢٣</b></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats" id="stats">
+  <svg class="stats-bg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><pattern id="sg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#fff" stroke-width="1"/></pattern></defs>
+    <rect width="1200" height="400" fill="url(#sg)"/>
+  </svg>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat rv d1"><div class="n" data-count="320" data-suffix="+">٠</div><div class="l">مشروع منجز بنجاح</div><div class="bar"></div></div>
+      <div class="stat rv d2"><div class="n" data-count="18" data-suffix="+">٠</div><div class="l">سنة من الخبرة الفنية</div><div class="bar"></div></div>
+      <div class="stat rv d3"><div class="n" data-count="64">٠</div><div class="l">مهندس واستشاري</div><div class="bar"></div></div>
+      <div class="stat rv d4"><div class="n" data-count="98" data-suffix="٪">٠</div><div class="l">نسبة رضا العملاء</div><div class="bar"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">منهجيتنا</span>
+      <h2>عملية عمل واضحة من البداية للنهاية</h2>
+      <p>أربع مراحل مدروسة تضمن وضوح الرؤية، دقة التنفيذ، وجودة التسليم في كل مشروع.</p>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-step rv d1"><div class="st-n">٠١</div><h3>الدراسة والتحليل</h3><p>فهم احتياج العميل وجمع البيانات ودراسة الموقع والقيود الفنية.</p></div>
+      <div class="pr-step rv d2"><div class="st-n">٠٢</div><h3>التصميم والنمذجة</h3><p>تطوير الحلول الهندسية ونمذجتها وتحليلها وفق الأكواد المعتمدة.</p></div>
+      <div class="pr-step rv d3"><div class="st-n">٠٣</div><h3>التنفيذ والإشراف</h3><p>متابعة التنفيذ ميدانياً وضبط الجودة والالتزام بالجداول الزمنية.</p></div>
+      <div class="pr-step rv d4"><div class="st-n">٠٤</div><h3>التسليم والتشغيل</h3><p>الاختبارات النهائية والتسليم وتقديم الدعم بعد التشغيل.</p></div>
+    </div>
+    <div class="sectors">
+      <div class="sector rv d1"><i class="ph ph-buildings"></i><b>القطاع العقاري والسكني</b></div>
+      <div class="sector rv d2"><i class="ph ph-storefront"></i><b>القطاع التجاري</b></div>
+      <div class="sector rv d3"><i class="ph ph-factory"></i><b>القطاع الصناعي</b></div>
+      <div class="sector rv d1"><i class="ph ph-road-horizon"></i><b>البنية التحتية</b></div>
+      <div class="sector rv d2"><i class="ph ph-hospital"></i><b>القطاع الصحي</b></div>
+      <div class="sector rv d3"><i class="ph ph-graduation-cap"></i><b>القطاع التعليمي</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testi">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">شهادات العملاء</span>
+      <h2>ثقة تبنيها النتائج</h2>
+      <p>كلمات من شركائنا تعكس التزامنا بالجودة والمهنية في كل مشروع.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="quote rv d1">
+        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p>«تعامل احترافي وتقارير دقيقة في كل مرحلة. فريق أُفق رفع جودة مشروعنا والتزم بالجدول الزمني دون أي تجاوزات.»</p>
+        <div class="who"><div class="av">م</div><div><b>م. عبدالعزيز الراشد</b><span>مدير مشاريع — شركة بنيان</span></div></div>
+      </div>
+      <div class="quote rv d2">
+        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p>«دراسة الجدوى التي قدّمها المكتب كانت دقيقة وأنقذتنا من قرار استثماري مكلف. خبرة فنية ومالية نادرة.»</p>
+        <div class="who"><div class="av">ل</div><div><b>أ. لمياء السبيعي</b><span>مديرة الاستثمار — مجموعة الأفق</span></div></div>
+      </div>
+      <div class="quote rv d3">
+        <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+        <p>«الإشراف الميداني كان صارماً ومنظماً. اكتشفوا ملاحظات فنية مبكراً ووفّروا علينا تكاليف إعادة كبيرة.»</p>
+        <div class="who"><div class="av">خ</div><div><b>م. خالد المطيري</b><span>المالك — مشروع الواحة</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg-soft)">
+  <div class="wrap contact-grid">
+    <div class="contact-info rv">
+      <span class="eyebrow">تواصل معنا</span>
+      <h2 style="font-size:clamp(28px,4vw,40px);margin:16px 0 14px">لنبدأ مشروعك القادم معاً</h2>
+      <p style="color:var(--muted);font-size:17px;margin-bottom:30px">املأ النموذج وسيتواصل معك فريقنا الهندسي عبر واتساب خلال ساعات العمل لمناقشة تفاصيل مشروعك.</p>
+      <div class="ci"><div class="ic"><i class="ph ph-map-pin"></i></div><div><b>العنوان</b><span>طريق الملك فهد، حي العليا، الرياض — المملكة العربية السعودية</span></div></div>
+      <div class="ci"><div class="ic"><i class="ph ph-phone"></i></div><div><b>الهاتف</b><span dir="ltr">+966 50 000 0000</span></div></div>
+      <div class="ci"><div class="ic"><i class="ph ph-envelope-simple"></i></div><div><b>البريد الإلكتروني</b><span>info@ofoq-eng.sa</span></div></div>
+      <div class="ci"><div class="ic"><i class="ph ph-clock"></i></div><div><b>ساعات العمل</b><span>الأحد - الخميس: ٨ ص - ٥ م</span></div></div>
+    </div>
+    <form class="cform rv d2" id="contactForm">
+      <div class="frow">
+        <div class="field"><label>الاسم الكامل</label><input type="text" id="f-name" required placeholder="اكتب اسمك" /></div>
+        <div class="field"><label>رقم الجوال</label><input type="tel" id="f-phone" required placeholder="05xxxxxxxx" /></div>
+      </div>
+      <div class="field"><label>نوع الخدمة</label>
+        <select id="f-service">
+          <option>التصميم الإنشائي</option>
+          <option>أنظمة MEP الكهروميكانيكية</option>
+          <option>إدارة المشاريع</option>
+          <option>دراسات الجدوى</option>
+          <option>الإشراف الهندسي</option>
+          <option>استشارة عامة</option>
+        </select>
+      </div>
+      <div class="field"><label>تفاصيل المشروع</label><textarea id="f-msg" placeholder="صف لنا مشروعك ومتطلباتك..."></textarea></div>
+      <button type="submit" class="btn btn-primary"><i class="ph ph-whatsapp-logo"></i> إرسال عبر واتساب</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <span class="brand" style="font-size:22px;color:#fff">أُفق · OFOQ</span>
+        <p>مكتب استشارات هندسية متكامل يقدّم حلولاً دقيقة في التصميم الإنشائي وأنظمة MEP وإدارة المشاريع ودراسات الجدوى والإشراف.</p>
+        <div class="ft-soc">
+          <a href="#" aria-label="x"><i class="ph ph-x-logo"></i></a>
+          <a href="#" aria-label="linkedin"><i class="ph ph-linkedin-logo"></i></a>
+          <a href="#" aria-label="instagram"><i class="ph ph-instagram-logo"></i></a>
+          <a href="#" aria-label="whatsapp"><i class="ph ph-whatsapp-logo"></i></a>
+        </div>
+      </div>
+      <div><h4>الخدمات</h4><ul>
+        <li><a href="#services">التصميم الإنشائي</a></li>
+        <li><a href="#services">أنظمة MEP</a></li>
+        <li><a href="#services">إدارة المشاريع</a></li>
+        <li><a href="#services">دراسات الجدوى</a></li>
+        <li><a href="#services">الإشراف الهندسي</a></li>
+      </ul></div>
+      <div><h4>المكتب</h4><ul>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#projects">أعمالنا</a></li>
+        <li><a href="#process">منهجيتنا</a></li>
+        <li><a href="#testi">شهادات العملاء</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul></div>
+      <div><h4>تواصل</h4><ul>
+        <li><a href="#" dir="ltr">+966 50 000 0000</a></li>
+        <li><a href="#">info@ofoq-eng.sa</a></li>
+        <li><a href="#">الرياض، السعودية</a></li>
+        <li><a href="#">الأحد - الخميس</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bottom">
+      <span>© ٢٠٢٦ مكتب أُفق للاستشارات الهندسية — جميع الحقوق محفوظة</span>
+      <span>سياسة الخصوصية · الشروط والأحكام</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATERS -->
+<div class="floaters">
+  <button class="fab top" id="toTop" aria-label="للأعلى"><i class="ph ph-arrow-up"></i></button>
+  <a class="fab wa" id="waFab" href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D9%85%D9%83%D8%AA%D8%A8%20%D8%A3%D9%8F%D9%81%D9%82" target="_blank" rel="noopener" aria-label="واتساب"><i class="ph ph-whatsapp-logo"></i></a>
+</div>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var hamb=document.getElementById('hamb');
+  var drawer=document.getElementById('drawer');
+  var overlay=document.getElementById('overlay');
+  var xbtn=document.getElementById('xbtn');
+  var toTop=document.getElementById('toTop');
+
+  function openDrawer(){drawer.classList.add('open');overlay.classList.add('open');drawer.setAttribute('aria-hidden','false');}
+  function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open');drawer.setAttribute('aria-hidden','true');}
+  hamb.addEventListener('click',openDrawer);
+  xbtn.addEventListener('click',closeDrawer);
+  overlay.addEventListener('click',closeDrawer);
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeDrawer);});
+
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled');
+    if(window.scrollY>500)toTop.classList.add('show');else toTop.classList.remove('show');
+  });
+  toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  // smooth anchor (native scroll-behavior handles it; ensure offset)
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href');
+      if(id.length>1){
+        var el=document.querySelector(id);
+        if(el){e.preventDefault();var y=el.getBoundingClientRect().top+window.scrollY-64;window.scrollTo({top:y,behavior:'smooth'});}
+      }
+    });
+  });
+
+  // reveal
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce){rvs.forEach(function(el){el.classList.add('in');});}
+  else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12});
+    rvs.forEach(function(el){io.observe(el);});
+  }
+
+  // arabic-indic counters
+  function toArabic(n){return String(n).replace(/[0-9]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[d];});}
+  function animate(el){
+    var target=+el.getAttribute('data-count');
+    var suffix=el.getAttribute('data-suffix')||'';
+    if(reduce){el.textContent=toArabic(target)+suffix;return;}
+    var dur=1600,start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var eased=1-Math.pow(1-p,3);
+      el.textContent=toArabic(Math.round(target*eased))+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var counters=document.querySelectorAll('[data-count]');
+  var cio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){animate(en.target);cio.unobserve(en.target);}});
+  },{threshold:.5});
+  counters.forEach(function(c){cio.observe(c);});
+
+  // form -> whatsapp
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('f-name').value.trim();
+    var phone=document.getElementById('f-phone').value.trim();
+    var service=document.getElementById('f-service').value;
+    var msg=document.getElementById('f-msg').value.trim();
+    var text='مرحباً مكتب أُفق،%0A%0Aالاسم: '+name+'%0Aالجوال: '+phone+'%0Aالخدمة: '+service+'%0Aالتفاصيل: '+msg;
+    var url='https://wa.me/966500000000?text='+encodeURIComponent('مرحباً مكتب أُفق،\n\nالاسم: '+name+'\nالجوال: '+phone+'\nالخدمة: '+service+'\nالتفاصيل: '+msg);
+    window.open(url,'_blank');
+  });
+})();
+</script>
+</body>
+</html>
